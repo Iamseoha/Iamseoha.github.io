@@ -1,13 +1,2081 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="ko">
 <head>
-<title>Page Title</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>임서하 | 서비스 기획자·PM 포트폴리오</title>
+  <meta name="description" content="문제에서 출발해 쓰임이 있는 서비스로 만드는 서비스 기획자·PM 임서하의 포트폴리오입니다.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23e9e9e4'/%3E%3Cpath d='M9 43h46v7H9zM9 14h34v7H9zM9 28h24v7H9z' fill='%23243130'/%3E%3Ccircle cx='49' cy='19' r='8' fill='%23ed5aa1'/%3E%3C/svg%3E">
+  <style>
+    @font-face {
+      font-family: "Seoha Sans";
+      src: url("assets/fonts/WantedSansVariable.woff2") format("woff2-variations");
+      font-style: normal;
+      font-weight: 400 1000;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Seoha Serif";
+      src: url("assets/fonts/NotoSerifKR-VF.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Seoha Fashion";
+      src: url("assets/fonts/SeohaFashion-Regular.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400 700;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Seoha Fashion";
+      src: url("assets/fonts/SeohaFashion-Italic.ttf") format("truetype");
+      font-style: italic;
+      font-weight: 400 700;
+      font-display: swap;
+    }
+
+    :root {
+      --ink: #243130;
+      --ink-soft: #4e5d5a;
+      --paper: #e9e9e4;
+      --white: #f8f5f0;
+      --line: #243130;
+      --mute: #6e7774;
+      --blue: #4f7f83;
+      --green: #668e85;
+      --red: #ed5aa1;
+      --yellow: #c7d9d2;
+      --violet: #70566a;
+      --pink-deep: #b83d79;
+      --pink-pale: #ffd0e5;
+      --mint: #8fb5aa;
+      --shadow: 10px 12px 0 rgba(237, 90, 161, 0.2);
+      --radius: 0;
+      --mono: "Seoha Sans", "Wanted Sans Variable", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --sans: "Seoha Sans", "Wanted Sans Variable", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --serif: "Seoha Sans", "Wanted Sans Variable", "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
+      --fashion: "Seoha Fashion", Georgia, "Times New Roman", serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      letter-spacing: 0;
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+      color: inherit;
+    }
+
+    .skip {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+      transform: translateY(-160%);
+      background: var(--yellow);
+      border: 2px solid var(--ink);
+      padding: 10px 12px;
+    }
+
+    .skip:focus {
+      transform: translateY(0);
+    }
+
+    .progress {
+      position: fixed;
+      inset: 0 auto auto 0;
+      z-index: 900;
+      width: 100%;
+      height: 3px;
+      background: transparent;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      background: var(--red);
+    }
+
+    .topbar {
+      position: fixed;
+      z-index: 800;
+      top: 5px;
+      left: 0;
+      right: 0;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 14px 22px;
+      background: rgba(236, 236, 234, 0.94);
+      border-bottom: 1px solid rgba(23, 23, 23, 0.7);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      display: inline-grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      color: var(--paper);
+      background: var(--ink);
+      border: 1px solid var(--ink);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      min-width: 0;
+    }
+
+    .nav a,
+    .mail-link {
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border: 1px solid transparent;
+      border-radius: var(--radius);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+      background: transparent;
+      white-space: nowrap;
+    }
+
+    .nav a.is-active,
+    .nav a:hover,
+    .mail-link:hover {
+      border-color: var(--ink);
+      background: var(--white);
+    }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      place-items: stretch;
+      isolation: isolate;
+      overflow: hidden;
+      border-bottom: 1px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background:
+        linear-gradient(90deg, rgba(14, 14, 14, 0.93) 0 22%, rgba(14, 14, 14, 0.36) 52%, rgba(14, 14, 14, 0.82) 100%),
+        linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      background-size: auto, 46px 46px;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 58px 0 0 0;
+      z-index: -2;
+      display: grid;
+      grid-template-columns: 18% 35% 26% 21%;
+      gap: 0;
+      opacity: 0.92;
+    }
+
+    .media-slice {
+      min-height: 100%;
+      border-right: 2px solid rgba(255, 255, 255, 0.25);
+      background-size: cover;
+      background-position: center;
+      filter: saturate(0.45) contrast(1.08);
+    }
+
+    .media-slice:nth-child(1) {
+      background-image: url("assets/literacy-map.png");
+      background-position: 34% center;
+    }
+
+    .media-slice:nth-child(2) {
+      background-image: url("assets/literacy-report.png");
+      background-position: 14% center;
+    }
+
+    .media-slice:nth-child(3) {
+      background-image: url("assets/holoorder-start.png");
+      background-position: center 18%;
+    }
+
+    .media-slice:nth-child(4) {
+      background-image: url("assets/xaas-admin-home.png");
+      background-position: center;
+    }
+
+    .hero-inner {
+      width: min(1540px, 100%);
+      margin: 0 auto;
+      padding: 134px 28px 34px;
+      display: grid;
+      grid-template-rows: 1fr auto;
+      min-height: 100svh;
+    }
+
+    .hero-main {
+      align-self: end;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(340px, 430px);
+      gap: 54px;
+      align-items: end;
+    }
+
+    .hero-copy {
+      max-width: 980px;
+    }
+
+    .kicker {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 34px;
+      padding: 5px 10px;
+      border: 1px solid currentColor;
+      border-radius: var(--radius);
+      background: rgba(16, 16, 16, 0.36);
+    }
+
+    .tag.is-yellow {
+      color: var(--ink);
+      background: var(--yellow);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 82px;
+      font-weight: 760;
+      line-height: 1.02;
+      letter-spacing: 0;
+      text-wrap: balance;
+      max-width: 1080px;
+      text-shadow: 0 2px 16px rgba(16, 16, 16, 0.4);
+    }
+
+    h1 span {
+      display: block;
+    }
+
+    .hero-statement {
+      margin: 26px 0 0;
+      max-width: 830px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      text-wrap: balance;
+    }
+
+    .hero-capabilities {
+      border-top: 1px solid rgba(255, 255, 255, 0.72);
+      background: rgba(18, 18, 18, 0.34);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-capability {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      padding: 16px 4px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.72);
+    }
+
+    .hero-capability > b {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .hero-capability h2 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 850;
+      line-height: 1.25;
+    }
+
+    .hero-capability p {
+      margin: 6px 0 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 28px;
+      align-items: end;
+      margin-top: 42px;
+    }
+
+    .metric-rack {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(120px, 1fr));
+      gap: 10px;
+      max-width: 830px;
+    }
+
+    .metric {
+      min-height: 118px;
+      display: grid;
+      align-content: space-between;
+      padding: 12px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid rgba(23, 23, 23, 0.8);
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+      transform: none;
+    }
+
+    .metric b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 30px;
+      line-height: 1;
+    }
+
+    .metric span {
+      display: block;
+      margin-top: 8px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 6px;
+      color: var(--mute);
+      font-size: 12px;
+      line-height: 1.35;
+    }
+
+    .hero-signature {
+      display: grid;
+      gap: 7px;
+      justify-items: end;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.84);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    .section {
+      scroll-margin-top: 92px;
+      padding: 96px 28px;
+      border-bottom: 1px solid var(--ink);
+      background: var(--paper);
+    }
+
+    .section.dark {
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .section.yellow {
+      background: var(--yellow);
+    }
+
+    .wrap {
+      width: min(1420px, 100%);
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(160px, 270px) 1fr;
+      gap: 38px;
+      align-items: start;
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .section-title {
+      margin: 0;
+      max-width: 980px;
+      font-family: var(--serif);
+      font-size: 45px;
+      font-weight: 900;
+      line-height: 1.14;
+      text-wrap: balance;
+    }
+
+    .section-copy {
+      margin: 14px 0 0;
+      max-width: 780px;
+      color: var(--ink-soft);
+      font-size: 18px;
+      font-weight: 650;
+      text-wrap: balance;
+    }
+
+    .dark .section-copy {
+      color: rgba(247, 247, 244, 0.76);
+    }
+
+    .case-layout {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .case-tabs {
+      position: sticky;
+      top: 94px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .case-tab {
+      width: 100%;
+      min-height: 66px;
+      padding: 12px;
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      background: var(--white);
+      cursor: pointer;
+      text-align: left;
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease;
+    }
+
+    .case-tab:hover,
+    .case-tab.is-active {
+      transform: translateX(7px);
+      background: var(--ink);
+      color: var(--paper);
+    }
+
+    .case-tab small,
+    .case-tab span {
+      display: block;
+    }
+
+    .case-tab small {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--mute);
+    }
+
+    .case-tab.is-active small,
+    .case-tab:hover small {
+      color: rgba(247, 247, 244, 0.7);
+    }
+
+    .case-tab span {
+      margin-top: 4px;
+      font-weight: 850;
+      font-size: 17px;
+    }
+
+    .case-stage {
+      border: 1px solid var(--ink);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .stage-top {
+      display: grid;
+      grid-template-columns: 1fr minmax(310px, 34%);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .stage-copy {
+      padding: 28px;
+    }
+
+    .stage-index {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 850;
+      color: var(--red);
+    }
+
+    .stage-title {
+      margin: 12px 0 0;
+      font-family: var(--serif);
+      font-size: 48px;
+      line-height: 1.08;
+    }
+
+    .stage-meta {
+      margin-top: 10px;
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--mute);
+    }
+
+    .stage-statement {
+      margin: 28px 0 0;
+      max-width: 760px;
+      font-size: 21px;
+      font-weight: 760;
+      text-wrap: balance;
+    }
+
+    .stage-media {
+      position: relative;
+      min-height: 430px;
+      border-left: 1px solid var(--ink);
+      background: var(--ink);
+      overflow: hidden;
+    }
+
+    .stage-media img {
+      width: 100%;
+      height: 100%;
+      min-height: 430px;
+      object-fit: cover;
+      filter: saturate(0.92) contrast(1.04);
+    }
+
+    .stage-media.is-diagram {
+      display: grid;
+      place-items: stretch;
+      padding: 18px;
+      color: var(--paper);
+      background: var(--ink);
+    }
+
+    .diagram {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      align-content: center;
+    }
+
+    .diagram-item {
+      min-height: 128px;
+      display: grid;
+      align-content: space-between;
+      padding: 12px;
+      border: 1px solid var(--paper);
+      border-radius: var(--radius);
+      background: rgba(247, 247, 244, 0.08);
+    }
+
+    .diagram-item b {
+      font-family: var(--mono);
+      font-size: 12px;
+    }
+
+    .diagram-item span {
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .caption-chip {
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      padding: 10px;
+      color: var(--ink);
+      background: rgba(250, 250, 247, 0.94);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .stage-bottom {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-bottom: 1px solid var(--ink);
+    }
+
+    .case-metric {
+      min-height: 122px;
+      padding: 18px;
+      border-right: 1px solid var(--ink);
+    }
+
+    .case-metric:last-child {
+      border-right: 0;
+    }
+
+    .case-metric b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 34px;
+      line-height: 1;
+    }
+
+    .case-metric span {
+      display: block;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .case-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .case-block {
+      padding: 24px 28px 28px;
+      border-right: 1px solid var(--ink);
+    }
+
+    .case-block:last-child {
+      border-right: 0;
+    }
+
+    .case-block h4 {
+      margin: 0 0 14px;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .case-block ul {
+      margin: 0;
+      padding-left: 19px;
+    }
+
+    .case-block li + li {
+      margin-top: 9px;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.8fr 1fr;
+      grid-auto-rows: minmax(170px, auto);
+      gap: 14px;
+    }
+
+    .archive-shot {
+      position: relative;
+      min-height: 260px;
+      padding: 0;
+      border: 1px solid rgba(236, 236, 234, 0.68);
+      border-radius: var(--radius);
+      background: var(--ink);
+      color: var(--paper);
+      cursor: zoom-in;
+      overflow: hidden;
+      text-align: left;
+    }
+
+    .archive-shot:nth-child(1) {
+      grid-row: span 2;
+    }
+
+    .archive-shot:nth-child(4) {
+      grid-column: span 2;
+    }
+
+    .archive-shot img {
+      width: 100%;
+      height: 100%;
+      min-height: 260px;
+      object-fit: cover;
+      transition: transform 260ms ease, filter 260ms ease;
+    }
+
+    .archive-shot:hover img {
+      transform: scale(1.04);
+      filter: saturate(1.08) contrast(1.08);
+    }
+
+    .shot-label {
+      position: absolute;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid var(--ink);
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .work-method {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--ink);
+      background: var(--white);
+    }
+
+    .method {
+      min-height: 310px;
+      padding: 20px;
+      border-right: 1px solid var(--ink);
+    }
+
+    .method:last-child {
+      border-right: 0;
+    }
+
+    .method b {
+      display: block;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .method h3 {
+      margin: 36px 0 14px;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .method p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-weight: 650;
+    }
+
+    .role-tape {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border: 1px solid var(--ink);
+      background: var(--white);
+    }
+
+    .role {
+      min-height: 180px;
+      padding: 18px;
+      border-right: 1px solid var(--ink);
+    }
+
+    .role:nth-child(4n) {
+      border-right: 0;
+    }
+
+    .role small {
+      display: block;
+      font-family: var(--mono);
+      color: var(--mute);
+      font-weight: 800;
+    }
+
+    .role b {
+      display: block;
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    .role span {
+      display: block;
+      margin-top: 8px;
+      color: var(--ink-soft);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .closing {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 360px;
+      gap: 24px;
+      align-items: end;
+    }
+
+    .closing h2 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: 68px;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+
+    .closing p {
+      margin: 22px 0 0;
+      max-width: 820px;
+      font-size: 20px;
+      font-weight: 700;
+      color: rgba(247, 247, 244, 0.78);
+    }
+
+    .contact-plate {
+      display: grid;
+      gap: 10px;
+      padding: 18px;
+      border: 1px solid rgba(236, 236, 234, 0.7);
+      border-radius: var(--radius);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .contact-plate a {
+      color: var(--yellow);
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+
+    .footer-note {
+      margin-top: 48px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: rgba(247, 247, 244, 0.62);
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      padding: 28px;
+      background: rgba(16, 16, 16, 0.9);
+    }
+
+    .lightbox.is-open {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+    }
+
+    .lightbox-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+
+    .lightbox button {
+      min-height: 38px;
+      padding: 7px 12px;
+      border: 2px solid var(--paper);
+      border-radius: var(--radius);
+      color: var(--paper);
+      background: transparent;
+      cursor: pointer;
+    }
+
+    .lightbox img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: var(--ink);
+    }
+
+    /* Faded Tokyo editorial direction */
+    .topbar {
+      background: rgba(233, 233, 228, 0.9);
+      border-bottom-color: rgba(184, 61, 121, 0.72);
+    }
+
+    .brand-mark {
+      color: var(--white);
+      background: var(--red);
+      border-color: var(--pink-deep);
+    }
+
+    .nav a.is-active,
+    .nav a:hover,
+    .mail-link:hover {
+      border-color: var(--pink-deep);
+      color: var(--pink-deep);
+      background: rgba(255, 208, 229, 0.42);
+    }
+
+    .lang-switch {
+      display: inline-grid;
+      grid-template-columns: repeat(2, 42px);
+      border: 1px solid var(--pink-deep);
+      background: rgba(248, 245, 240, 0.76);
+    }
+
+    .lang-switch button {
+      min-height: 36px;
+      padding: 6px;
+      border: 0;
+      border-right: 1px solid var(--pink-deep);
+      background: transparent;
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .lang-switch button:last-child {
+      border-right: 0;
+    }
+
+    .lang-switch button.is-active {
+      color: var(--white);
+      background: var(--red);
+    }
+
+    .hero {
+      color: var(--ink);
+      background: var(--paper);
+      border-bottom-color: var(--pink-deep);
+    }
+
+    .hero::after {
+      background: rgba(25, 35, 34, 0.08);
+      background-size: auto;
+    }
+
+    .hero-media {
+      display: block;
+      background: url("assets/retro-cafe-hero-v2.png") center 48% / cover no-repeat;
+      opacity: 0.98;
+      filter: saturate(0.72) contrast(0.94) brightness(0.82);
+      transform: scale(1.006);
+    }
+
+    .media-slice {
+      border-right: 1px solid rgba(184, 61, 121, 0.4);
+      filter: saturate(0.42) contrast(0.78) brightness(1.18) blur(0.7px);
+      transform: scale(1.006);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-main {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .tag {
+      color: var(--ink);
+      border-color: var(--ink);
+      background: rgba(248, 245, 240, 0.74);
+    }
+
+    .tag.is-yellow {
+      color: var(--ink);
+      border-color: var(--pink-deep);
+      background: var(--pink-pale);
+    }
+
+    h1 {
+      color: #ff91c5;
+      -webkit-text-stroke: 1px var(--pink-deep);
+      text-shadow: 2px 2px 0 var(--pink-deep), -1px -1px 0 #ffe9f2;
+    }
+
+    .hero-statement {
+      width: fit-content;
+      padding: 10px 14px;
+      color: var(--ink);
+      background: rgba(248, 245, 240, 0.78);
+      border-left: 5px solid var(--red);
+      text-shadow: none;
+    }
+
+    .hero-capabilities {
+      border-top-color: var(--pink-deep);
+      background: rgba(240, 242, 236, 0.72);
+    }
+
+    .hero-capability {
+      border-bottom-color: var(--pink-deep);
+    }
+
+    .hero-capability h2 {
+      color: var(--pink-deep);
+    }
+
+    .hero-capability p {
+      color: var(--ink-soft);
+    }
+
+    .metric {
+      background: rgba(248, 245, 240, 0.9);
+      border-color: var(--ink);
+      box-shadow: 5px 6px 0 rgba(184, 61, 121, 0.3);
+      transform: rotate(-0.25deg);
+    }
+
+    .metric:nth-child(even) {
+      background: rgba(199, 217, 210, 0.92);
+      transform: rotate(0.25deg);
+    }
+
+    .metric-rack {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 980px;
+    }
+
+    .metric {
+      min-height: 142px;
+    }
+
+    .metric small {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .hero-signature {
+      color: rgba(248, 245, 240, 0.82);
+    }
+
+    .hero-artword {
+      position: absolute;
+      z-index: 1;
+      top: 76px;
+      right: -48px;
+      color: #ff87bf;
+      font-family: var(--fashion);
+      font-size: 176px;
+      font-style: italic;
+      font-weight: 700;
+      line-height: 0.8;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0.62;
+      transform: scaleX(0.8);
+      transform-origin: right top;
+      -webkit-text-stroke: 1px var(--pink-deep);
+      text-shadow: 3px 3px 0 rgba(184, 61, 121, 0.56), -1px -1px 0 #ffe4f0;
+      mix-blend-mode: multiply;
+    }
+
+    .section {
+      border-bottom-color: var(--pink-deep);
+    }
+
+    .section.dark {
+      color: var(--white);
+      background: #355b56;
+    }
+
+    .section-label {
+      color: var(--pink-deep);
+      font-family: var(--fashion);
+      font-size: 24px;
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .dark .section-copy {
+      color: rgba(248, 245, 240, 0.8);
+    }
+
+    .dark .section-label,
+    .dark .section-title {
+      color: var(--pink-pale);
+    }
+
+    .case-tab {
+      box-shadow: 4px 4px 0 rgba(143, 181, 170, 0.46);
+      transition: transform 160ms ease, background 160ms ease, color 160ms ease, box-shadow 160ms ease;
+    }
+
+    .case-tab:hover,
+    .case-tab.is-active {
+      color: var(--ink);
+      background: var(--pink-pale);
+      border-color: var(--pink-deep);
+      box-shadow: 6px 6px 0 rgba(184, 61, 121, 0.34);
+    }
+
+    .case-tab.is-active small,
+    .case-tab:hover small {
+      color: var(--pink-deep);
+    }
+
+    .case-stage {
+      border-color: var(--pink-deep);
+    }
+
+    .stage-index {
+      font-family: var(--fashion);
+      font-size: 20px;
+      font-style: italic;
+    }
+
+    .stage-title {
+      color: var(--pink-deep);
+    }
+
+    .stage-media,
+    .stage-media.is-diagram {
+      background: #355b56;
+    }
+
+    .stage-media img {
+      filter: saturate(0.86) contrast(0.98);
+    }
+
+    .caption-chip,
+    .shot-label {
+      background: rgba(255, 208, 229, 0.94);
+      border-color: var(--pink-deep);
+    }
+
+    .case-metric:nth-child(2) {
+      background: rgba(199, 217, 210, 0.58);
+    }
+
+    .archive-shot {
+      border-color: var(--pink-pale);
+    }
+
+    .work-method,
+    .role-tape {
+      box-shadow: var(--shadow);
+    }
+
+    .method:nth-child(2),
+    .method:nth-child(4) {
+      background: rgba(199, 217, 210, 0.42);
+    }
+
+    .method b {
+      color: var(--pink-deep);
+    }
+
+    .role:nth-child(odd) {
+      background: rgba(255, 208, 229, 0.3);
+    }
+
+    .closing h2 {
+      color: var(--pink-pale);
+    }
+
+    .contact-plate {
+      border-color: var(--pink-pale);
+    }
+
+    .contact-plate a {
+      color: var(--pink-pale);
+    }
+
+    html[lang="en"] h1 {
+      font-size: 72px;
+    }
+
+    html[lang="en"] h1 span {
+      white-space: normal;
+    }
+
+    @media (max-width: 1180px) {
+      h1 {
+        font-size: 68px;
+      }
+
+      .stage-top,
+      .case-layout,
+      .closing {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-main {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .hero-capabilities {
+        max-width: 760px;
+      }
+
+      .hero-artword {
+        top: 88px;
+        right: -86px;
+        font-size: 132px;
+      }
+
+      html[lang="en"] h1 {
+        font-size: 60px;
+      }
+
+      .case-tabs {
+        position: static;
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stage-media {
+        border-left: 0;
+        border-top: 3px solid var(--ink);
+      }
+
+      .work-method,
+      .role-tape {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .method:nth-child(2n),
+      .role:nth-child(2n) {
+        border-right: 0;
+      }
+
+      .method:nth-child(-n + 2),
+      .role:nth-child(-n + 2) {
+        border-bottom: 3px solid var(--ink);
+      }
+    }
+
+    @media (max-width: 800px) {
+      body {
+        font-size: 15px;
+      }
+
+      .topbar {
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+        padding: 10px 12px;
+      }
+
+      .nav {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        justify-content: space-between;
+        gap: 4px;
+        overflow: hidden;
+      }
+
+      .nav a {
+        min-height: 32px;
+        padding: 5px 4px;
+        font-size: 11px;
+      }
+
+      .mail-link {
+        display: none;
+      }
+
+      .lang-switch {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+      }
+
+      .hero-inner {
+        padding: 156px 16px 26px;
+      }
+
+      .hero-media {
+        inset: 116px 0 0;
+        background-position: 49% center;
+        opacity: 0.9;
+      }
+
+      .hero-artword {
+        top: 124px;
+        right: -74px;
+        font-size: 92px;
+        opacity: 0.5;
+      }
+
+      .media-slice:nth-child(1),
+      .media-slice:nth-child(4) {
+        display: none;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      h1 span {
+        white-space: nowrap;
+      }
+
+      .hero-statement {
+        font-size: 18px;
+      }
+
+      .hero-capability {
+        padding: 13px 4px;
+      }
+
+      .hero-bottom,
+      .section-head,
+      .stage-bottom,
+      .case-body,
+      .archive-grid,
+      .work-method,
+      .role-tape {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-rack {
+        grid-template-columns: 1fr;
+      }
+
+      html[lang="en"] h1 {
+        font-size: 32px;
+      }
+
+      .metric {
+        min-height: 96px;
+      }
+
+      .hero-signature {
+        justify-items: start;
+        text-align: left;
+      }
+
+      .section {
+        scroll-margin-top: 124px;
+        padding: 70px 16px;
+      }
+
+      .section-title,
+      .stage-title {
+        font-size: 34px;
+      }
+
+      .case-tabs {
+        grid-template-columns: 1fr;
+      }
+
+      .case-tab:hover,
+      .case-tab.is-active {
+        transform: none;
+      }
+
+      .stage-copy {
+        padding: 22px;
+      }
+
+      .stage-media,
+      .stage-media img {
+        min-height: 320px;
+      }
+
+      .case-metric,
+      .case-block,
+      .method,
+      .role {
+        border-right: 0;
+        border-bottom: 3px solid var(--ink);
+      }
+
+      .case-metric:last-child,
+      .case-block:last-child,
+      .method:last-child,
+      .role:last-child {
+        border-bottom: 0;
+      }
+
+      .archive-shot,
+      .archive-shot:nth-child(1),
+      .archive-shot:nth-child(4) {
+        grid-column: auto;
+        grid-row: auto;
+      }
+
+      .closing h2 {
+        font-size: 42px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      h1 {
+        font-size: 30px;
+      }
+    }
+  </style>
 </head>
 <body>
+  <a class="skip" href="#main" data-ko="본문으로 이동" data-en="Skip to content">본문으로 이동</a>
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
-<h1>My First Heading</h1>
-<p>Hi!</p>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="임서하 포트폴리오 처음으로">
+      <span class="brand-mark">SL</span>
+      <span data-ko="임서하 / 서비스 기획 포트폴리오" data-en="SEOHA LIM / PORTFOLIO">임서하 / 서비스 기획 포트폴리오</span>
+    </a>
+    <nav class="nav" aria-label="주요 섹션">
+      <a href="#top" data-ko="소개" data-en="About">소개</a>
+      <a href="#cases" data-ko="프로젝트" data-en="Projects">프로젝트</a>
+      <a href="#archive" data-ko="결과물" data-en="Outputs">결과물</a>
+      <a href="#method" data-ko="일하는 방식" data-en="Process">일하는 방식</a>
+      <a href="#contact" data-ko="연락" data-en="Contact">연락</a>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="언어 선택">
+      <button class="lang-button is-active" type="button" data-lang="ko" aria-pressed="true">KR</button>
+      <button class="lang-button" type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
 
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="heroTitle">
+      <div class="hero-media" aria-hidden="true"></div>
+      <div class="hero-artword" aria-hidden="true">Portfolio</div>
+      <div class="hero-inner">
+        <div class="hero-main">
+          <div class="hero-copy">
+            <div class="kicker">
+              <span class="tag is-yellow" data-ko="서비스 기획자 · PM" data-en="SERVICE PLANNER · PM">서비스 기획자 · PM</span>
+              <span class="tag">B2C · B2B · B2G</span>
+              <span class="tag" data-ko="2024.10 - 현재" data-en="2024.10 - PRESENT">2024.10 - 현재</span>
+            </div>
+            <h1 id="heroTitle"><span data-ko="문제에서 출발해," data-en="From problems,">문제에서 출발해,</span><span data-ko="쓰임이 있는 서비스로." data-en="to services people use.">쓰임이 있는 서비스로.</span></h1>
+            <p class="hero-statement" data-ko="교육·HR·AI·키오스크 분야에서 사용자와 사업의 문제를 정의하고, 팀이 실행할 수 있는 제품 구조로 구체화해 실제 사용과 운영까지 이끌어 왔습니다." data-en="Across education, HR, AI and kiosk products, I define user and business problems, turn them into structures teams can execute, and carry them through real-world use and operations.">교육·HR·AI·키오스크 분야에서 사용자와 사업의 문제를 정의하고, 팀이 실행할 수 있는 제품 구조로 구체화해 실제 사용과 운영까지 이끌어 왔습니다.</p>
+          </div>
+        </div>
+
+        <div class="hero-bottom">
+          <div class="metric-rack" aria-label="핵심 역량">
+            <div class="metric" style="--tilt:-1.2deg">
+              <b>01</b>
+              <span data-ko="문제 정의" data-en="Problem definition">문제 정의</span>
+              <small data-ko="흩어진 요구에서 사용자와 사업이 함께 풀어야 할 문제를 찾습니다." data-en="Find the shared problem behind fragmented user and business needs.">흩어진 요구에서 사용자와 사업이 함께 풀어야 할 문제를 찾습니다.</small>
+            </div>
+            <div class="metric" style="--tilt:1.5deg">
+              <b>02</b>
+              <span data-ko="제품 설계" data-en="Product design">제품 설계</span>
+              <small data-ko="정책과 화면 흐름, 예외 기준을 팀이 실행할 수 있는 구조로 만듭니다." data-en="Turn policy, flows and edge cases into an executable product structure.">정책과 화면 흐름, 예외 기준을 팀이 실행할 수 있는 구조로 만듭니다.</small>
+            </div>
+            <div class="metric" style="--tilt:-0.7deg">
+              <b>03</b>
+              <span data-ko="실행과 개선" data-en="Delivery &amp; improvement">실행과 개선</span>
+              <small data-ko="협업과 QA, 운영 피드백을 거쳐 실제로 쓰이는 서비스까지 이끕니다." data-en="Align teams, validate through QA, and improve products with operational feedback.">협업과 QA, 운영 피드백을 거쳐 실제로 쓰이는 서비스까지 이끕니다.</small>
+            </div>
+          </div>
+          <div class="hero-signature">
+            <span data-ko="서비스 기획 포트폴리오 / 2026" data-en="PRODUCT PLANNING PORTFOLIO / 2026">서비스 기획 포트폴리오 / 2026</span>
+            <span data-ko="실제 화면과 검증 자료를 바탕으로 구성" data-en="BUILT FROM REAL SCREENS AND VERIFIED RECORDS">실제 화면과 검증 자료를 바탕으로 구성</span>
+            <span data-ko="임서하" data-en="SEOHA LIM">임서하</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="cases" aria-labelledby="casesTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label" data-ko="01 / 주요 프로젝트" data-en="01 / SELECTED PROJECTS">01 / 주요 프로젝트</div>
+          <div>
+            <h2 class="section-title" id="casesTitle" data-ko="기능보다, 문제를 해결한 과정을 보여드립니다." data-en="Not just features, but how each problem was solved.">기능보다, 문제를 해결한 과정을 보여드립니다.</h2>
+            <p class="section-copy" data-ko="각 프로젝트에서 무엇이 문제였고, 어떤 기준으로 결정했으며, 어디까지 실행했는지 핵심만 정리했습니다." data-en="Each case focuses on the problem, the reasoning behind key decisions, and how far the work was carried into delivery.">각 프로젝트에서 무엇이 문제였고, 어떤 기준으로 결정했으며, 어디까지 실행했는지 핵심만 정리했습니다.</p>
+          </div>
+        </div>
+
+        <div class="case-layout">
+          <div class="case-tabs" id="caseTabs" aria-label="프로젝트 선택"></div>
+
+          <article class="case-stage" id="caseStage" aria-live="polite">
+            <div class="stage-top">
+              <div class="stage-copy">
+                 <div class="stage-index" id="caseIndex">프로젝트 01</div>
+                <h3 class="stage-title" id="caseTitle">문해력탐험대</h3>
+                 <div class="stage-meta" id="caseMeta">AI 문해력 진단·학습 서비스</div>
+                <p class="stage-statement" id="caseStatement"></p>
+              </div>
+              <div class="stage-media is-diagram" id="caseMedia"></div>
+            </div>
+
+            <div class="stage-bottom" id="caseMetrics"></div>
+
+            <div class="case-body">
+              <div class="case-block">
+                 <h4 data-ko="맡은 일" data-en="WHAT I OWNED">맡은 일</h4>
+                <ul id="caseOwned"></ul>
+              </div>
+              <div class="case-block">
+                 <h4 data-ko="만든 변화" data-en="WHAT CHANGED">만든 변화</h4>
+                <ul id="caseMatter"></ul>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="archive" aria-labelledby="archiveTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label" data-ko="02 / 실제 결과물" data-en="02 / LIVE OUTPUTS">02 / 실제 결과물</div>
+          <div>
+            <h2 class="section-title" id="archiveTitle" data-ko="완성된 서비스 화면으로 말합니다." data-en="The finished product screens speak for the work.">완성된 서비스 화면으로 말합니다.</h2>
+            <p class="section-copy" data-ko="기획 보드나 작업 중인 시안이 아니라, 실제로 완성된 서비스 화면과 결과 화면만 담았습니다." data-en="These are completed product and result screens, not planning boards or work-in-progress mockups.">기획 보드나 작업 중인 시안이 아니라, 실제로 완성된 서비스 화면과 결과 화면만 담았습니다.</p>
+          </div>
+        </div>
+
+        <div class="archive-grid">
+          <button class="archive-shot" type="button" data-full="assets/literacy-map.png" data-title="문해력탐험대 / 학습맵" data-title-ko="문해력탐험대 / 학습맵" data-title-en="Literacy Expedition / Learning Map">
+            <img src="assets/literacy-map.png" alt="문해력탐험대 완성된 학습맵 화면" data-alt-ko="문해력탐험대 완성된 학습맵 화면" data-alt-en="Completed Literacy Expedition learning map screen">
+            <span class="shot-label"><span data-ko="문해력탐험대" data-en="Literacy Expedition">문해력탐험대</span><span data-ko="학습맵" data-en="Learning map">학습맵</span></span>
+          </button>
+          <button class="archive-shot" type="button" data-full="assets/jobkok-main.jpg" data-title="잡콕 / 실제 서비스 메인" data-title-ko="잡콕 / 실제 서비스 메인" data-title-en="JobKok / Live Service Home">
+            <img src="assets/jobkok-main.jpg" alt="잡콕 실서비스 메인 화면" data-alt-ko="잡콕 실서비스 메인 화면" data-alt-en="JobKok live service home screen">
+            <span class="shot-label"><span>JobKok</span><span data-ko="직무 탐색" data-en="Career discovery">직무 탐색</span></span>
+          </button>
+          <button class="archive-shot" type="button" data-full="assets/xaas-admin-home.png" data-title="XaaS / 개편된 관리자 홈" data-title-ko="XaaS / 개편된 관리자 홈" data-title-en="XaaS / Redesigned Admin Home">
+            <img src="assets/xaas-admin-home.png" alt="XaaS 관리자 홈 대시보드 화면" data-alt-ko="XaaS 관리자 홈 대시보드 화면" data-alt-en="XaaS redesigned admin dashboard">
+            <span class="shot-label"><span>XaaS</span><span data-ko="관리자 대시보드" data-en="Admin dashboard">관리자 대시보드</span></span>
+          </button>
+          <button class="archive-shot" type="button" data-full="assets/literacy-report.png" data-title="문해력탐험대 / 진단 결과" data-title-ko="문해력탐험대 / 진단 결과" data-title-en="Literacy Expedition / Assessment Result">
+            <img src="assets/literacy-report.png" alt="문해력탐험대 완성된 진단 결과 화면" data-alt-ko="문해력탐험대 완성된 진단 결과 화면" data-alt-en="Completed Literacy Expedition assessment result screen">
+            <span class="shot-label"><span data-ko="문해력탐험대" data-en="Literacy Expedition">문해력탐험대</span><span data-ko="진단 결과" data-en="Assessment result">진단 결과</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="method" aria-labelledby="methodTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label" data-ko="03 / 일하는 방식" data-en="03 / HOW I WORK">03 / 일하는 방식</div>
+          <div>
+            <h2 class="section-title" id="methodTitle" data-ko="문제 정의부터 운영 개선까지, 한 사이클을 책임집니다." data-en="I own the full cycle, from problem definition to operational improvement.">문제 정의부터 운영 개선까지, 한 사이클을 책임집니다.</h2>
+            <p class="section-copy" data-ko="서비스 기획자와 PM에게 필요한 역량을 말로 설명하지 않고, 실제 프로젝트의 결정과 결과로 보여드립니다." data-en="Rather than listing PM skills, I show them through decisions made and outcomes delivered in real projects.">서비스 기획자와 PM에게 필요한 역량을 말로 설명하지 않고, 실제 프로젝트의 결정과 결과로 보여드립니다.</p>
+          </div>
+        </div>
+
+        <div class="work-method">
+          <article class="method">
+            <b data-ko="01 / 문제 정의" data-en="01 / PROBLEM DEFINITION">01 / 문제 정의</b>
+            <h3 data-ko="요청 뒤에 있는 진짜 문제를 찾습니다" data-en="Find the real problem behind the request">요청 뒤에 있는 진짜 문제를 찾습니다</h3>
+            <p data-ko="사업 요구와 사용자 상황, 기술 제약을 함께 살펴 해결할 문제와 제외할 범위를 먼저 정합니다." data-en="Review business goals, user context and technical constraints to define the problem and set clear boundaries.">사업 요구와 사용자 상황, 기술 제약을 함께 살펴 해결할 문제와 제외할 범위를 먼저 정합니다.</p>
+          </article>
+          <article class="method">
+            <b data-ko="02 / 제품 설계" data-en="02 / PRODUCT DESIGN">02 / 제품 설계</b>
+            <h3 data-ko="모호한 요구를 개발 가능한 기준으로 바꿉니다" data-en="Turn ambiguity into buildable product rules">모호한 요구를 개발 가능한 기준으로 바꿉니다</h3>
+            <p data-ko="요구사항, IA, 정책, 상태값, 예외 처리와 화면 흐름을 연결해 개발과 디자인이 바로 실행할 수 있게 만듭니다." data-en="Connect requirements, IA, policies, states, edge cases and screen flows so design and engineering can move directly into execution.">요구사항, IA, 정책, 상태값, 예외 처리와 화면 흐름을 연결해 개발과 디자인이 바로 실행할 수 있게 만듭니다.</p>
+          </article>
+          <article class="method">
+            <b data-ko="03 / 협업과 실행" data-en="03 / ALIGNMENT &amp; DELIVERY">03 / 협업과 실행</b>
+            <h3 data-ko="여러 직군의 언어를 하나의 목표로 맞춥니다" data-en="Align different disciplines around one goal">여러 직군의 언어를 하나의 목표로 맞춥니다</h3>
+            <p data-ko="개발, 디자인, 사업, 외부 파트너 사이에서 결정 기준과 일정, 산출물을 관리하며 프로젝트를 실제 결과까지 끌고 갑니다." data-en="Manage decisions, schedules and deliverables across engineering, design, business and external partners to carry projects into real outcomes.">개발, 디자인, 사업, 외부 파트너 사이에서 결정 기준과 일정, 산출물을 관리하며 프로젝트를 실제 결과까지 끌고 갑니다.</p>
+          </article>
+          <article class="method">
+            <b data-ko="04 / 검증과 개선" data-en="04 / VALIDATION &amp; IMPROVEMENT">04 / 검증과 개선</b>
+            <h3 data-ko="출시 뒤의 문제까지 다시 기획합니다" data-en="Plan for the problems that appear after delivery">출시 뒤의 문제까지 다시 기획합니다</h3>
+            <p data-ko="QA로 기획과 구현의 차이를 확인하고, 고객 요청과 운영 데이터를 다음 요구사항과 개선 과제로 연결합니다." data-en="Use QA to identify gaps between intent and implementation, then turn customer requests and operating data into the next set of improvements.">QA로 기획과 구현의 차이를 확인하고, 고객 요청과 운영 데이터를 다음 요구사항과 개선 과제로 연결합니다.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section yellow" aria-labelledby="supportTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-label" data-ko="04 / 그 밖의 프로젝트" data-en="04 / OTHER PROJECTS">04 / 그 밖의 프로젝트</div>
+          <div>
+            <h2 class="section-title" id="supportTitle" data-ko="넓게 경험하고, 핵심은 분명하게 남겼습니다." data-en="Broad experience, distilled into clear contributions.">넓게 경험하고, 핵심은 분명하게 남겼습니다.</h2>
+            <p class="section-copy" data-ko="하이어, 승무원, 면접왕, 인터뷰마스터에서 맡은 역할과 확인된 결과만 간결하게 정리했습니다." data-en="A concise view of the roles and verified outcomes from Hire, Cabin Crew Interview, Interview King and Interview Master.">하이어, 승무원, 면접왕, 인터뷰마스터에서 맡은 역할과 확인된 결과만 간결하게 정리했습니다.</p>
+          </div>
+        </div>
+
+        <div class="role-tape">
+          <article class="role">
+            <small data-ko="하이어" data-en="Hire">하이어</small>
+            <b data-ko="장애인 취업지원 AI 플랫폼 공동개발" data-en="AI employment platform for people with disabilities">장애인 취업지원 AI 플랫폼 공동개발</b>
+            <span data-ko="1~4단계 서비스 구조, 필수·권장·선택 데이터, 자기소개서 생성 정책." data-en="Four-stage service structure, required/recommended/optional data, and cover-letter generation policies.">1~4단계 서비스 구조, 필수·권장·선택 데이터, 자기소개서 생성 정책.</span>
+          </article>
+          <article class="role">
+            <small data-ko="승무원 면접" data-en="Cabin Crew Interview">승무원 면접</small>
+            <b data-ko="승무원 AI 면접훈련" data-en="AI interview training for cabin crew">승무원 AI 면접훈련</b>
+            <span data-ko="질문 DB 1,335행에서 3,596행으로 확장, 스키마 정규화." data-en="Expanded the question database from 1,335 to 3,596 rows and normalized the schema.">질문 DB 1,335행에서 3,596행으로 확장, 스키마 정규화.</span>
+          </article>
+          <article class="role">
+            <small data-ko="면접왕" data-en="Interview King">면접왕</small>
+            <b data-ko="면접왕·면접코치 2.0" data-en="Interview King · Interview Coach 2.0">면접왕·면접코치 2.0</b>
+            <span data-ko="28화면, 입력필드 26개, 생기부 PDF 판정 7유형." data-en="28 screens, 26 input fields and seven PDF record-classification types.">28화면, 입력필드 26개, 생기부 PDF 판정 7유형.</span>
+          </article>
+          <article class="role">
+            <small data-ko="인터뷰마스터" data-en="Interview Master">인터뷰마스터</small>
+            <b data-ko="인터뷰마스터 질문 DB" data-en="Interview Master question database">인터뷰마스터 질문 DB</b>
+            <span data-ko="40직무, 고유 질문 3,393문항, Q&amp;A 데이터 19,596건." data-en="40 roles, 3,393 unique questions and 19,596 Q&amp;A records.">40직무, 고유 질문 3,393문항, Q&amp;A 데이터 19,596건.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="contact" aria-labelledby="contactTitle">
+      <div class="wrap">
+        <div class="closing">
+          <div>
+            <h2 id="contactTitle" data-ko="사용자에게 필요한 서비스가 실제로 작동할 때까지." data-en="Until a needed service works in the real world.">사용자에게 필요한 서비스가 실제로 작동할 때까지.</h2>
+            <p data-ko="문제를 정의하고, 제품을 설계하고, 팀과 함께 실행한 뒤 운영 결과로 다시 개선합니다. 임서하는 그 전 과정을 책임지는 서비스 기획자이자 PM입니다." data-en="I define the problem, design the product, deliver it with the team, and improve it through operational results. I am a service planner and PM who owns that full process.">문제를 정의하고, 제품을 설계하고, 팀과 함께 실행한 뒤 운영 결과로 다시 개선합니다. 임서하는 그 전 과정을 책임지는 서비스 기획자이자 PM입니다.</p>
+          </div>
+          <address class="contact-plate">
+            <span data-ko="임서하" data-en="SEOHA LIM">임서하</span>
+            <span data-ko="서비스 기획 · PM" data-en="PRODUCT PLANNING · PM">서비스 기획 · PM</span>
+            <a href="mailto:dart93@withmind.net">dart93@withmind.net</a>
+            <span data-ko="위드마인드 · 2024.10 - 현재" data-en="WITHMIND · 2024.10 - PRESENT">위드마인드 · 2024.10 - 현재</span>
+          </address>
+        </div>
+        <p class="footer-note" data-ko="본 포트폴리오는 실제 산출물과 운영 자료를 바탕으로 작성했습니다. 확인되지 않은 매출, 인증, 출시 성과와 테스트 데이터는 사용하지 않았습니다." data-en="This portfolio is based on actual deliverables and operational records. Unverified revenue, certifications, launch outcomes and test data are excluded.">본 포트폴리오는 실제 산출물과 운영 자료를 바탕으로 작성했습니다. 확인되지 않은 매출, 인증, 출시 성과와 테스트 데이터는 사용하지 않았습니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="이미지 확대 보기">
+    <div class="lightbox-bar">
+      <span id="lightboxTitle" data-ko="이미지" data-en="Image">이미지</span>
+      <button type="button" id="lightboxClose" data-ko="닫기" data-en="Close">닫기</button>
+    </div>
+    <img id="lightboxImage" src="" alt="">
+  </div>
+
+  <script>
+    const cases = [
+      {
+        id: "literacy",
+        index: "프로젝트 01",
+        tab: "문해력탐험대",
+        title: "문해력탐험대",
+        meta: "AI 문해력 진단·학습 서비스 / 전 과정 기획",
+        statement: "교사와 학생이 실제로 사용할 수 있도록 진단·학습·운영 흐름을 다시 정리하고, 요구사항부터 정책, QA, 매뉴얼까지 전 과정을 맡았습니다.",
+        media: "assets/literacy-map.png",
+        caption: "완성된 문해력탐험대 학습맵 화면",
+        metrics: [
+          ["11곳", "실제 도입 학교"],
+          ["844건", "누적 진단 응시"],
+          ["1,548건", "학생 리포트 발행"],
+        ],
+        owned: [
+          "요구사항정의서, 기능명세 v3.0, 운영정책, 데이터정책 작성",
+          "진단글 분류와 14단계 레벨 체계, 트레이닝 생성 규칙 정의",
+          "11인 분담 QA, 학생·관리자 매뉴얼, 약관 개정"
+        ],
+        matter: [
+          "테스트 기관을 제외한 11개 학교에서 실제 운영",
+          "복잡했던 진단·학습 정책을 교사와 학생이 이해할 수 있는 흐름으로 정리",
+          "기획서와 운영 DB의 수치 충돌을 찾아 최종 기준을 바로잡음"
+        ]
+      },
+      {
+        id: "holoorder",
+        index: "프로젝트 02",
+        tab: "홀로오더",
+        title: "홀로오더",
+        meta: "AI 홀로그램 키오스크 / 신규 사업 기획",
+        statement: "낯선 하드웨어 환경의 제약과 고객 경험을 빠르게 파악해 사업기획, 기기 선정, 화면·정책 설계, QA, 실증, 전시까지 신규 서비스를 구체화했습니다.",
+        media: "assets/holoorder-start.png",
+        caption: "완성된 홀로오더 키오스크 시작 화면",
+        metrics: [
+          ["286개", "프로토타입 HTML"],
+          ["144건", "QA 케이스"],
+          ["6개사", "K-ICT 상담 실적"]
+        ],
+        owned: [
+          "경쟁사 분석, HW 스펙 비교, FTO 선행조사",
+          "ORD-01~13, ADM-01~15 화면 기획과 관리자 정책 정의",
+          "QA 자동 생성 스크립트, 전시 홍보물, 성과보고서 작성"
+        ],
+        matter: [
+          "기존 사업과 다른 하드웨어 제품을 빠르게 학습해 실증 단계까지 연결",
+          "고객 화면뿐 아니라 기기 관리 정책과 운영 로그까지 함께 설계",
+          "확인할 수 없는 데모 매출과 주문 수치는 성과에서 제외"
+        ]
+      },
+      {
+        id: "jango",
+        index: "프로젝트 03",
+        tab: "장고",
+        title: "장고",
+        meta: "서울형 R&D / 장애인 취업지원 AI 플랫폼",
+        statement: "구직자·복지기관·기업의 서로 다른 요구를 하나의 플랫폼 구조로 정리하고, 접근성·신뢰성·사용성 검증까지 제품 기준으로 설계했습니다.",
+        media: null,
+        caption: "요구사항에서 사용성 검증까지 이어지는 구조",
+        metrics: [
+          ["80건", "기능명세"],
+          ["176건", "사용성 검증 시나리오"],
+          ["28종", "AI 신뢰성 증빙문서"]
+        ],
+        owned: [
+          "구직자·복지기관·기업 3도메인 요구사항과 기능명세 작성",
+          "AI 추천 적합도 산식과 50% 이상 노출 정책 정의",
+          "ISO/IEC 25023 기반 사용성 검증과 신뢰성 증빙 문서 작성"
+        ],
+        matter: [
+          "사용자 3개 유형의 요구를 하나의 서비스 구조로 통합",
+          "생각시간 60초 기획 대비 15초 구현 불일치를 검증에서 적발",
+          "접근성과 AI 설명 가능성을 서비스 정책 수준에서 설계"
+        ]
+      },
+      {
+        id: "jobkok",
+        index: "프로젝트 04",
+        tab: "잡콕",
+        title: "잡콕",
+        meta: "AI 면접 분석 + 채용공고 통합 플랫폼",
+        statement: "기획서와 구현 사이의 빈틈을 QA로 찾아내고, 직무·역량 데이터를 서비스 구조와 연결해 고도화 기준을 세웠습니다.",
+        media: "assets/jobkok-main.jpg",
+        caption: "잡콕 실제 서비스 메인 화면",
+        metrics: [
+          ["397건", "QA 테스트 케이스"],
+          ["336건", "통과"],
+          ["12건", "기획 미정의"]
+        ],
+        owned: [
+          "QA 작성 규칙과 4단계 테스트 체계 적용",
+          "직무분류, 하드스킬 DB, AI 생성용 프롬프트 정리",
+          "약관, 구직자 매뉴얼, 기관 실증 기획서 작성"
+        ],
+        matter: [
+          "QA를 통해 구현 오류뿐 아니라 정의되지 않은 정책까지 확인",
+          "실서비스 IA의 20개 대분류와 데이터 자산을 연결",
+          "AI 채용 서비스에서 프롬프트와 정책을 분리해 관리"
+        ]
+      },
+      {
+        id: "xaas",
+        index: "프로젝트 05",
+        tab: "XaaS",
+        title: "XaaS",
+        meta: "상담원 AI 면접·교육 / NIPA 선도프로젝트",
+        statement: "교육 운영자가 한 화면에서 현재 상태와 다음 할 일을 판단할 수 있도록 관리자 홈의 정보 구조와 교육·평가 흐름을 다시 설계했습니다.",
+        media: "assets/xaas-admin-home.png",
+        caption: "개편된 XaaS 관리자 홈 화면",
+        metrics: [
+          ["53%", "관리자 홈 세로 길이 축소"],
+          ["4개국어", "다국어 리소스 정리"],
+          ["검증", "AI 면접·교육 시나리오"]
+        ],
+        owned: [
+          "요구사항정의서, 교육 스토리보드, TS/TC 작성",
+          "상담사·관리자 매뉴얼, 다국어 리소스 정리",
+          "관리자 홈 정보구조와 차트 표현 개선"
+        ],
+        matter: [
+          "입사 초기부터 QA, 매뉴얼, 화면 구조 개선을 함께 담당",
+          "운영자가 보는 화면의 정보 밀도와 비교 가능성을 개선",
+          "완성된 관리자 화면으로 정보 구조 개선 결과를 확인"
+        ]
+      }
+    ];
+
+    const caseEnglish = {
+      literacy: {
+        index: "Project 01",
+        tab: "Literacy Expedition",
+        title: "Literacy Expedition",
+        meta: "AI literacy assessment & learning / End-to-end planning",
+        statement: "Restructured assessment, learning and operational flows for real classroom use, owning the process from requirements and policies through QA and manuals.",
+        caption: "Completed Literacy Expedition learning map",
+        metrics: [
+          ["11 schools", "Live adoption"],
+          ["844", "Assessments completed"],
+          ["1,548", "Student reports issued"]
+        ],
+        owned: [
+          "Authored requirements, functional specification v3.0, operating policies and data policies",
+          "Defined content classification, a 14-level system and training-generation rules",
+          "Coordinated 11-person QA, student/admin manuals and terms updates"
+        ],
+        matter: [
+          "Supported live operations across 11 schools, excluding test institutions",
+          "Turned complex assessment and learning policies into flows teachers and students could understand",
+          "Resolved conflicting figures between planning documents and the operational database"
+        ]
+      },
+      holoorder: {
+        index: "Project 02",
+        tab: "HoloOrder",
+        title: "HoloOrder",
+        meta: "AI hologram kiosk / New business planning",
+        statement: "Learned the constraints of an unfamiliar hardware environment, then shaped a new service from business planning and device selection through screen policy, QA, field validation and exhibition.",
+        caption: "Completed HoloOrder kiosk start screen",
+        metrics: [
+          ["286", "HTML prototypes"],
+          ["144", "QA cases"],
+          ["6 firms", "K-ICT consultations"]
+        ],
+        owned: [
+          "Competitive research, hardware specification comparison and prior-art review",
+          "Planned ORD-01–13 and ADM-01–15 screens and defined admin policies",
+          "Created a QA-generation script, exhibition materials and performance reports"
+        ],
+        matter: [
+          "Learned a hardware product outside the existing business and advanced it to field validation",
+          "Designed device-management policies and operational logs alongside the customer experience",
+          "Excluded demo revenue and order figures that could not be verified"
+        ]
+      },
+      jango: {
+        index: "Project 03",
+        tab: "Jango",
+        title: "Jango",
+        meta: "Seoul R&D / AI employment platform for people with disabilities",
+        statement: "Unified the different needs of job seekers, welfare organizations and employers into one product structure, including accessibility, reliability and usability standards.",
+        caption: "From requirements to usability validation",
+        metrics: [
+          ["80", "Functional specs"],
+          ["176", "Usability scenarios"],
+          ["28", "AI reliability records"]
+        ],
+        owned: [
+          "Defined requirements and functions across job seeker, welfare organization and employer domains",
+          "Designed the AI recommendation-fit formula and 50% visibility threshold",
+          "Prepared ISO/IEC 25023-based usability validation and reliability evidence"
+        ],
+        matter: [
+          "Integrated three distinct user groups into one service architecture",
+          "Found a 15-second implementation mismatch against the planned 60-second thinking time",
+          "Defined accessibility and AI explainability at the product-policy level"
+        ]
+      },
+      jobkok: {
+        index: "Project 04",
+        tab: "JobKok",
+        title: "JobKok",
+        meta: "AI interview analysis + integrated job platform",
+        statement: "Used QA to uncover gaps between planning and implementation, then connected role and competency data to a clearer product-improvement standard.",
+        caption: "JobKok live service home",
+        metrics: [
+          ["397", "QA test cases"],
+          ["336", "Passed"],
+          ["12", "Undefined policies"]
+        ],
+        owned: [
+          "Applied QA authoring rules and a four-stage test framework",
+          "Structured job categories, a hard-skill database and AI-generation prompts",
+          "Prepared terms, job-seeker manuals and institutional validation plans"
+        ],
+        matter: [
+          "Used QA to identify undefined policies as well as implementation defects",
+          "Connected 20 top-level live-service IA categories with existing data assets",
+          "Separated prompts from product policy for maintainable AI recruitment operations"
+        ]
+      },
+      xaas: {
+        index: "Project 05",
+        tab: "XaaS",
+        title: "XaaS",
+        meta: "AI interview & training for agents / NIPA flagship project",
+        statement: "Redesigned the admin home and training-evaluation flow so operators could understand current status and the next action from a single screen.",
+        caption: "Redesigned XaaS admin home",
+        metrics: [
+          ["53%", "Shorter admin home"],
+          ["4 languages", "Localized resources"],
+          ["Validated", "AI interview flows"]
+        ],
+        owned: [
+          "Authored requirements, training storyboards and test scenarios/cases",
+          "Prepared agent/admin manuals and multilingual resource structures",
+          "Improved the information architecture and chart presentation of the admin home"
+        ],
+        matter: [
+          "Owned QA, manuals and screen-structure improvements from the beginning of the role",
+          "Improved information density and comparability for operators",
+          "Verified the redesign through the completed admin screen"
+        ]
+      }
+    };
+
+    const tabs = document.getElementById("caseTabs");
+    const indexEl = document.getElementById("caseIndex");
+    const titleEl = document.getElementById("caseTitle");
+    const metaEl = document.getElementById("caseMeta");
+    const statementEl = document.getElementById("caseStatement");
+    const mediaEl = document.getElementById("caseMedia");
+    const metricsEl = document.getElementById("caseMetrics");
+    const ownedEl = document.getElementById("caseOwned");
+    const matterEl = document.getElementById("caseMatter");
+    let currentLang = "ko";
+    let selectedCaseId = cases[0].id;
+
+    function renderCase(selected) {
+      selectedCaseId = selected.id;
+      const text = currentLang === "en" ? caseEnglish[selected.id] : selected;
+      indexEl.textContent = text.index;
+      titleEl.textContent = text.title;
+      metaEl.textContent = text.meta;
+      statementEl.textContent = text.statement;
+
+      mediaEl.className = selected.media ? "stage-media" : "stage-media is-diagram";
+      if (selected.media) {
+        const alt = currentLang === "en" ? `${text.title} representative screen` : `${text.title} 대표 화면`;
+        mediaEl.innerHTML = `<img src="${selected.media}" alt="${alt}"><div class="caption-chip">${text.caption}</div>`;
+      } else {
+        const diagramLabels = currentLang === "en"
+          ? ["Requirements", "Operating policy", "Screen flow", "Validation criteria"]
+          : ["요구사항", "운영 정책", "화면 흐름", "검증 기준"];
+        mediaEl.innerHTML = `
+          <div class="diagram" aria-hidden="true">
+            ${diagramLabels.map((label, index) => `<div class="diagram-item"><b>${String(index + 1).padStart(2, "0")}</b><span>${label}</span></div>`).join("")}
+          </div>
+          <div class="caption-chip">${text.caption}</div>
+        `;
+      }
+
+      metricsEl.innerHTML = text.metrics.map(([value, label]) => `
+        <div class="case-metric">
+          <b>${value}</b>
+          <span>${label}</span>
+        </div>
+      `).join("");
+
+      ownedEl.innerHTML = text.owned.map((item) => `<li>${item}</li>`).join("");
+      matterEl.innerHTML = text.matter.map((item) => `<li>${item}</li>`).join("");
+
+      document.querySelectorAll(".case-tab").forEach((tab) => {
+        tab.classList.toggle("is-active", tab.dataset.caseId === selected.id);
+      });
+    }
+
+    function renderTabs() {
+      tabs.innerHTML = "";
+      cases.forEach((item, idx) => {
+        const text = currentLang === "en" ? caseEnglish[item.id] : item;
+        const tab = document.createElement("button");
+        tab.type = "button";
+        tab.className = "case-tab";
+        tab.dataset.caseId = item.id;
+        tab.innerHTML = `<small>${String(idx + 1).padStart(2, "0")} / 05</small><span>${text.tab}</span>`;
+        tab.addEventListener("click", () => renderCase(item));
+        tabs.appendChild(tab);
+      });
+    }
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.title = lang === "en"
+        ? "Seoha Lim | Service Planner & PM Portfolio"
+        : "임서하 | 서비스 기획자·PM 포트폴리오";
+
+      document.querySelectorAll("[data-ko][data-en]").forEach((element) => {
+        element.textContent = element.dataset[lang];
+      });
+
+      document.querySelectorAll(".lang-button").forEach((button) => {
+        const active = button.dataset.lang === lang;
+        button.classList.toggle("is-active", active);
+        button.setAttribute("aria-pressed", String(active));
+      });
+
+      document.querySelector(".brand").setAttribute("aria-label", lang === "en" ? "Back to the start of Seoha Lim's portfolio" : "임서하 포트폴리오 처음으로");
+      document.querySelector(".nav").setAttribute("aria-label", lang === "en" ? "Main sections" : "주요 섹션");
+      document.querySelector(".lang-switch").setAttribute("aria-label", lang === "en" ? "Language selection" : "언어 선택");
+
+      document.querySelectorAll(".archive-shot").forEach((button) => {
+        const image = button.querySelector("img");
+        button.dataset.title = lang === "en" ? button.dataset.titleEn : button.dataset.titleKo;
+        image.alt = lang === "en" ? image.dataset.altEn : image.dataset.altKo;
+      });
+
+      renderTabs();
+      renderCase(cases.find((item) => item.id === selectedCaseId) || cases[0]);
+    }
+
+    document.querySelectorAll(".lang-button").forEach((button) => {
+      button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+    });
+
+    applyLanguage("ko");
+
+    const progressBar = document.getElementById("progressBar");
+    const navLinks = [...document.querySelectorAll(".nav a")];
+    const sections = navLinks.map((link) => document.querySelector(link.getAttribute("href"))).filter(Boolean);
+
+    function updateScrollState() {
+      const scrollTop = window.scrollY;
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = `${height > 0 ? (scrollTop / height) * 100 : 0}%`;
+
+      let activeId = "top";
+      for (const section of sections) {
+        if (section.offsetTop <= scrollTop + 160) {
+          activeId = section.id;
+        }
+      }
+      navLinks.forEach((link) => {
+        link.classList.toggle("is-active", link.getAttribute("href") === `#${activeId}`);
+      });
+    }
+
+    window.addEventListener("scroll", updateScrollState, { passive: true });
+    updateScrollState();
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxClose = document.getElementById("lightboxClose");
+
+    document.querySelectorAll(".archive-shot").forEach((button) => {
+      button.addEventListener("click", () => {
+        lightboxImage.src = button.dataset.full;
+        lightboxImage.alt = button.querySelector("img").alt;
+        lightboxTitle.textContent = button.dataset.title;
+        lightbox.classList.add("is-open");
+        lightboxClose.focus();
+      });
+    });
+
+    function closeLightbox() {
+      lightbox.classList.remove("is-open");
+      lightboxImage.src = "";
+    }
+
+    lightboxClose.addEventListener("click", closeLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-open")) closeLightbox();
+    });
+  </script>
 </body>
 </html>
-
