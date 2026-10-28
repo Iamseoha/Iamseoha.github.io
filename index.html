@@ -154,7 +154,7 @@ footer{padding:36px 0 110px;text-align:center;font-family:var(--mono);font-size:
 
 /* ---------- LEGO 프로필 (B안: 섹션마다 손에 든 물건이 바뀌는 나) ---------- */
 .hero-top{display:grid;grid-template-columns:minmax(0,1fr) 215px;gap:28px;align-items:end}
-.lego-slot{position:relative;width:183px;height:320px;justify-self:end}
+.lego-slot{position:relative;width:183px;height:320px;justify-self:end;margin-right:44px}
 .lego{position:absolute;left:0;top:0;width:183px;height:320px;transform-origin:0 0;--hd:0deg;--ds:1;cursor:pointer;user-select:none}
 .lego.docked{position:fixed;z-index:55}
 .lego.flip{transition:transform .72s var(--pop)}
@@ -189,7 +189,8 @@ footer{padding:36px 0 110px;text-align:center;font-family:var(--mono);font-size:
 
 @media(max-width:900px){
 .hero-top{grid-template-columns:1fr}
-.lego-slot{justify-self:start;margin-top:4px}
+.lego-slot{justify-self:start;margin-top:4px;margin-right:0}
+.lg-bubble{left:118px}
 .hero-top{gap:10px}
 .nums{grid-template-columns:1fr 1fr}
 .pcard,.pcard:nth-child(1),.pcard:nth-child(2),.pcard:nth-child(3),.pcard:nth-child(4),.pcard:nth-child(5){padding:26px;border-radius:22px;position:static;transform:none}
