@@ -172,7 +172,6 @@ footer{padding:36px 0 110px;text-align:center;font-family:var(--mono);font-size:
 @keyframes lg-idle{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .lego.build .lg-p{animation:lg-drop .5s var(--pop) both;animation-delay:calc(.15s + var(--i) * .26s)}
 @keyframes lg-drop{0%{opacity:0;transform:translateY(-120px) rotate(-4deg)}25%{opacity:1}60%{transform:translateY(0) rotate(0)}74%{transform:translateY(0) scaleY(.95) scaleX(1.03)}100%{opacity:1;transform:none}}
-.lego.build .lg-bubble{transition-delay:1.35s}
 @keyframes lg-blink{0%,91%,100%{transform:scaleY(0)}94%{transform:scaleY(1)}}
 .lg-item{opacity:0;transform:scale(0) rotate(-40deg);transform-box:fill-box;transform-origin:center;transition:transform .5s var(--pop),opacity .18s var(--ez)}
 [data-state=work] .lg-it-work,[data-state=way] .lg-it-way,[data-state=contact] .lg-it-contact{opacity:1;transform:none}
@@ -700,7 +699,7 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
     slot.style.height = Math.round(H * hs()) + 'px';
     slot.style.width = Math.round(W * hs()) + 'px';
     if(!RM){ lego.classList.add('build'); setTimeout(function(){ lego.classList.remove('build'); }, 2400); }
-    setTimeout(function(){ showBubble(true); }, RM ? 300 : 1500);
+    setTimeout(function(){ showBubble(true); }, RM ? 300 : 1150);
     window.addEventListener('scroll', onScroll, {passive:true});
     window.addEventListener('resize', function(){
       slot.style.height = Math.round(H * hs()) + 'px'; slot.style.width = Math.round(W * hs()) + 'px';
