@@ -233,7 +233,7 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
     </div>
     <div class="lego-slot" aria-hidden="true">
       <div class="lego" id="lego" data-state="hero" title="임서하">
-        <div class="lg-bubble" id="lgBubble">안녕하세요 👋<br>임서하 입니다.</div>
+        <div class="lg-bubble" id="lgBubble">안녕하세요 👋<br>임서하입니다.</div>
         <div class="lg-fig"><div class="lg-tilt">
           <div class="lg-p lg-legs" style="--i:0;position:absolute;inset:0;z-index:1">
             <img class="lg-part" style="left:23.9%;top:55.31%;width:75.49%" src="assets/lego_studs.webp" alt="" draggable="false">
@@ -643,7 +643,7 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
     var lego = document.getElementById('lego'), slot = document.querySelector('.lego-slot'), bub = document.getElementById('lgBubble');
     if(!lego || !slot) return;
     var W = 183, H = 320;
-    var TXT = {hero:'안녕하세요 👋\n임서하 입니다.', work:'설계도 보는 중', way:'예외 찾는 중', contact:'읽어주셔서 감사합니다.'};
+    var TXT = {hero:'안녕하세요 👋\n임서하입니다.', work:'설계도 보는 중', way:'예외 찾는 중', contact:'읽어주셔서 감사합니다.'};
     var secs = [['work', document.getElementById('work')], ['way', document.getElementById('way')], ['contact', document.getElementById('contact')]];
     var state = 'hero', docked = false, ticking = false, bubT = null;
     function mob(){ return window.innerWidth <= 900; }
