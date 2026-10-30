@@ -267,7 +267,7 @@ html.lock{overflow:hidden}
 .pol::before{content:'';position:absolute;left:50%;top:-11px;width:62px;height:20px;margin-left:-31px;background:var(--ac);opacity:.6;border:1.5px solid rgba(23,23,26,.35);transform:rotate(-4deg);border-radius:2px}
 .pcard:hover .pol{transform:rotate(calc(var(--tilt) * .3)) translateY(-3px);box-shadow:10px 10px 0 var(--ink)}
 .pol .shot{aspect-ratio:4/3;border:1.5px solid var(--ink);border-radius:3px;background:#f6f4ef;overflow:hidden;display:grid;place-items:center}
-.pol img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.pol img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
 .pol figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;padding:12px 2px 14px;display:flex;flex-direction:column;gap:3px}
 .pol figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
 .pol figcaption span{color:var(--gy);font-variant-numeric:tabular-nums}
@@ -598,7 +598,7 @@ function CK(t){return '<span class="ck">확인 필요'+(t?' · '+esc(t):'')+'</s
 /* ================= 데이터 (출처: projects.json verified_numbers / my_role / deliverables) ================= */
 var P = [
 {
- id:'hyer', no:'001', name:'하이어 HYER', tag:'AI / HR Platform', period:'2025.11 – 2026.05', ac:'#2f5bff',
+ id:'hyer', main:{src:'assets/main_hyer.webp',w:375,h:790,cap:'하이어 모바일 홈 — 이력서·자기소개서·AI면접연습·채용공고',date:'2025 · 디자인·퍼블 산출물'}, no:'001', name:'하이어 HYER', tag:'AI / HR Platform', period:'2025.11 – 2026.05', ac:'#2f5bff',
  cv:{role:'공동 → 리드 — 위드마인드 측 기획 담당, 정기회의 14회 중 6회 주관·회의록 작성',scope:'AI 적용 범위 정책 · 서비스 구조 Phase 1~4 · 요구사항정의서 · 기능명세 v1.0~v1.7 · 화면설계서 4종',out:'AI 적용 범위 정책 <mark>3건</mark> 확정 → 장고(서울형 R&amp;D)로 이관',outNote:'정량 성과 지표 없음'}, polCk:'작성 귀속',
  stamp:'공동 → 리드', status:'중단 (사업 구조 변경) · 최종 확인 필요',
  one:'장애인 취업지원 AI 플랫폼(2개사 공동개발). AI 챗봇 기반 이력서·자소서·면접연습에서 AI를 어디까지 쓸지를 2개사 간 정책으로 확정했습니다.',
@@ -637,7 +637,7 @@ var P = [
  missing:['QA시트','매뉴얼','약관']
 },
 {
- id:'literacy', no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
+ id:'literacy', main:{src:'assets/main_literacy.webp',w:1440,h:960,cap:'문해력탐험대 학생 홈 — 어휘의 숲 탐험 지도',date:'ai-literacyplatform.com'}, no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
  cv:{role:'단독 — 서비스 기획 전담 (약관·소개서·학생매뉴얼은 선임 선행본 개정·고도화)',scope:'요구사항 → 데이터정책 V1.1 → QA(11인 분담) → 매뉴얼·약관 → CS 12건, 전 주기',out:'실제 도입 학교 <mark>0 → 10곳</mark> · 실사용 학생 <mark>533명</mark>'},
  stamp:'단독', status:'오픈 · 운영 중',
  one:'초·중등 대상 AI 문해력 진단·트레이닝. 요구사항부터 운영·CS까지 한 서비스의 전 주기를 맡아, 실제 도입 학교 2025년 0곳 → 2026년 10곳으로 이어졌습니다.',
@@ -675,7 +675,7 @@ var P = [
  missing:['IA','스토리보드','회의록']
 },
 {
- id:'interviewking', no:'003', name:'면접왕 · 면접코치', tag:'B2C + B2G · B2B', period:'2025.01 – 재직 중', ac:'#17c08a',
+ id:'interviewking', main:{src:'assets/main_ik.webp',w:1269,h:520,cap:'면접왕 랜딩 — 계열·학과별 기출 질문',date:'interviewking.kr'}, no:'003', name:'면접왕 · 면접코치', tag:'B2C + B2G · B2B', period:'2025.01 – 재직 중', ac:'#17c08a',
  cv:{role:'인계 후 개정 — 면접왕 2.0 IA·화면기획은 본인 작성',scope:'2.0 IA·화면기획 · 입력필드/시간표기/알림 정책 · 생기부 PDF 판정 7유형 · 매뉴얼·약관 · CS',out:'2.0 기획 <mark>28화면</mark> · 기획서 HTML 110개 · 입력필드 정책 <mark>26개</mark>'},
  stamp:'인계 후 개정', status:'오픈 · 운영 중 · 2.0 고도화 단계 확인 필요',
  one:'운영 중인 대입 AI 모의면접. 2.0 고도화를 28화면·입력필드 정책 26개의 정책 체계로 기획하고, 매뉴얼·약관·CS를 맡았습니다.',
@@ -711,7 +711,7 @@ var P = [
  missing:['요구사항정의서','기능명세서','WBS']
 },
 {
- id:'jobkok', no:'004', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
+ id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1568,h:744,cap:'잡콕 메인 — 통합 검색 + 직무 20분류',date:'실서비스 메인'}, no:'004', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
  cv:{role:'공동 — 고도화 기획 · QA · 데이터 담당',scope:'QA TC 작성 규칙 제정 · QA 체크리스트 설계(7인 분담) · 직무분류표 · 온톨로지 4종 · 약관 3종',out:'QA <mark>397케이스</mark> 설계, N/A <mark>12건 전부</mark> 기획서 미정의로 역추적'}, polFile:'잡콕_QA_체크리스트_임서하.xlsx',
  stamp:'공동', status:'개발중 · 고도화 진행 중',
  one:'AI 면접 분석 + 채용공고 통합 플랫폼. QA 397케이스를 설계해 N/A 12건 전부가 기획서 미정의였음을 역추적하고, 직무분류·온톨로지 등 AI 데이터 파트까지 맡았습니다.',
@@ -747,7 +747,7 @@ var P = [
  missing:['기능명세서','IA','WBS']
 },
 {
- id:'janggo', no:'005', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
+ id:'janggo', main:{src:'assets/main_janggo.webp',w:750,h:1560,cap:'장고 구직자 앱 홈 — 검색·채용공고 카드',date:'서울형 R&D 시제품'}, no:'005', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
  cv:{role:'단독 — 기획 전담 + 인증·검증 문서 총괄',scope:'하이어 정책 이관 · 요구사항 v2.0 · 기능명세 v2.0 · IA 3도메인 · ISO/IEC 25023 사용성 검증 · TTA 증빙',out:'사용성 검증 <mark>176건</mark>으로 기획-구현 불일치(60초 vs 15초) 적발·수정'},
  stamp:'단독', status:'과제 완료 (2026-09-16 최종보고) · 서비스 단계 확인 필요',
  one:'장애인 취업지원 AI 플랫폼 R&D 시제품. 중단된 하이어의 확정 정책을 국가과제 요건(정량지표·ISO 검증·AI 신뢰성 증빙)에 맞춰 재설계·이관하고, 인증 대응 문서를 총괄했습니다.',
@@ -786,7 +786,7 @@ var P = [
  missing:['WBS','매뉴얼','운영정책서']
 },
 {
- id:'schoolkiosk', no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:520,h:900,cap:'인터박스 메인 — 캐릭터 안내 + 길찾기·급식·학교소식',date:'V3 기획서 목업 렌더'}, no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
  cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
  stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
  one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
@@ -848,10 +848,10 @@ function vizHTML(p){
 
 /* 폴라로이드 증거 썸네일 (요약 카드 전용) */
 function polHTML(p){
-  var e=p.ev;
+  var e=p.main||p.ev;
   if(e){
-    var ck=p.polCk||e.ck;
-    return '<figure class="pol"><div class="shot"><img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt)+'" loading="lazy" decoding="async"></div>'+
+    var ck=p.main?'':(p.polCk||e.ck);
+    return '<figure class="pol"><div class="shot"><img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt||e.cap)+'" loading="lazy" decoding="async"></div>'+
       '<figcaption><b>'+esc(e.cap)+'</b><span>'+esc(e.date)+'</span>'+(ck?CK(ck):'')+'</figcaption></figure>';
   }
   var f=p.polFile||'파일명 확인 필요';
