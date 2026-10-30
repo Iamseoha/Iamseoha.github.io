@@ -193,7 +193,7 @@ footer{padding:36px 0 110px;text-align:center;font-family:var(--mono);font-size:
 .lg-bubble{left:118px}
 .hero-top{gap:10px}
 .nums{grid-template-columns:1fr 1fr}
-.pcard,.pcard:nth-child(1),.pcard:nth-child(2),.pcard:nth-child(3),.pcard:nth-child(4),.pcard:nth-child(5){padding:26px;border-radius:22px;position:static;transform:none}
+.pcard,.pcard:nth-child(1),.pcard:nth-child(2),.pcard:nth-child(3),.pcard:nth-child(4),.pcard:nth-child(5),.pcard:nth-child(6){padding:26px;border-radius:22px;position:static;transform:none}
 .pcard::after{display:none}
 .pcard .bd{grid-template-columns:1fr;gap:20px}
 .pcard ul{grid-row:auto}
@@ -217,10 +217,284 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
 }
 
 /* Independent transparent 3D-rendered modules */
+/* ===== 프로젝트 카드 — 요약(한줄요약+캡처) + 풀스크린 개화 상세 ===== */
+.pcard:nth-child(6){background:#ffe9f3;top:160px}
+/* ===== 시안 가 · 풀스크린 개화 — 신규 ===== */
+html{scrollbar-gutter:stable}
+html.lock{overflow:hidden}
+.nt b,.tnum{font-variant-numeric:tabular-nums}
+.ck{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:10px;letter-spacing:.04em;font-weight:500;background:#fff6c9;color:#5b4a00;border:1.5px dashed #8a7300;padding:2px 7px;border-radius:6px;vertical-align:middle;white-space:normal;font-style:normal;line-height:1.4}
+.ck::before{content:'?';font-weight:700}
+
+/* 메모 바 */
+.memo{background:var(--ink);color:#e8e8ee;font-family:var(--mono);font-size:11.5px;letter-spacing:.03em;line-height:1.7}
+.memo summary{cursor:pointer;padding:10px 24px;list-style:none;display:flex;gap:10px;align-items:center}
+.memo summary::-webkit-details-marker{display:none}
+.memo summary::before{content:'\25B8';transition:transform .2s var(--ez)}
+.memo[open] summary::before{transform:rotate(90deg)}
+.memo summary b{color:var(--p4);font-weight:500}
+.memo dl{display:grid;grid-template-columns:110px 1fr;gap:4px 16px;padding:0 24px 14px 44px;max-width:1100px}
+.memo dt{color:#9a9aa6}
+
+/* 히어로 축약 */
+.hero-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.mini{width:118px;height:auto;filter:drop-shadow(0 10px 14px rgba(23,23,26,.22));transform:rotate(4deg);margin-right:20px}
+
+/* 바깥(요약) 카드 */
+.pcard{--ac:var(--p1)}
+.pc-sw{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s var(--ez),opacity .28s var(--ez)}
+.pc-sw>.in{min-height:0}
+/* --- 시안 4 · 한 줄 요약 + 증거 썸네일 --- */
+.sum{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:44px;align-items:center}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.one{margin-top:12px;max-width:38em}
+.cv{margin-top:20px;background:#fff;border:2px solid var(--ink);border-radius:16px;box-shadow:4px 4px 0 var(--ink);overflow:hidden}
+.cv>div{display:grid;grid-template-columns:80px minmax(0,1fr);gap:14px;padding:11px 18px;align-items:baseline}
+.cv>div+div{border-top:1.5px dashed rgba(23,23,26,.28)}
+.cv dt{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--gy);white-space:nowrap}
+.cv dd{font-size:14.5px;line-height:1.55;color:#2a2a30;font-variant-numeric:tabular-nums;text-wrap:pretty}
+.cv dd .ck{margin-left:6px}
+.cv .out dt{color:var(--ink)}
+.cv .out dd{font-weight:700;color:var(--ink)}
+.cv .out dd mark{background:none;box-shadow:inset 0 -.42em 0 color-mix(in srgb,var(--ac) 45%,transparent);color:inherit;padding:0 1px}
+.cv .out.none dd{font-weight:500;color:var(--gy)}
+.cv .out dd small{font-size:12.5px;font-weight:500;color:var(--gy);white-space:nowrap}
+.sl .ft{margin-top:18px}
+/* 폴라로이드 */
+.sr{display:flex;justify-content:center}
+.pol{--tilt:2.5deg;position:relative;width:100%;max-width:360px;background:#fff;border:2px solid var(--ink);border-radius:6px;padding:12px 12px 0;box-shadow:7px 7px 0 var(--ink);transform:rotate(var(--tilt));transition:transform .4s var(--pop),box-shadow .25s var(--ez)}
+.pcard:nth-child(even) .pol{--tilt:-2.5deg}
+.pol::before{content:'';position:absolute;left:50%;top:-11px;width:62px;height:20px;margin-left:-31px;background:var(--ac);opacity:.6;border:1.5px solid rgba(23,23,26,.35);transform:rotate(-4deg);border-radius:2px}
+.pcard:hover .pol{transform:rotate(calc(var(--tilt) * .3)) translateY(-3px);box-shadow:10px 10px 0 var(--ink)}
+.pol .shot{aspect-ratio:4/3;border:1.5px solid var(--ink);border-radius:3px;background:#f6f4ef;overflow:hidden;display:grid;place-items:center}
+.pol img{display:block;width:100%;height:100%;object-fit:contain;object-position:center}
+.pol figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;padding:12px 2px 14px;display:flex;flex-direction:column;gap:3px}
+.pol figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink)}
+.pol figcaption span{color:var(--gy);font-variant-numeric:tabular-nums}
+.pol figcaption .ck{align-self:flex-start;margin-top:4px}
+.pol.empty{border-style:dashed;box-shadow:7px 7px 0 rgba(23,23,26,.22);background:rgba(255,255,255,.7)}
+.pcard:hover .pol.empty{box-shadow:10px 10px 0 rgba(23,23,26,.22)}
+.pol.empty .shot{border-style:dashed;background:repeating-linear-gradient(-45deg,#fff 0 12px,#f1eee7 12px 24px);text-align:center;padding:16px;font-family:var(--mono);font-size:11px;letter-spacing:0;color:var(--gy);line-height:1.6}
+.pol.empty .shot strong{display:block;font-size:12.5px;letter-spacing:.02em;color:var(--ink);margin-bottom:6px}
+.pol.empty figcaption b{word-break:keep-all;overflow-wrap:anywhere}
+.gorow{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:26px;flex-wrap:wrap}
+.st{font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;color:var(--gy);display:flex;align-items:center;gap:8px}
+.st::before{content:'';flex:none;width:8px;height:8px;border-radius:50%;background:var(--ac);border:1.5px solid var(--ink)}
+.go{display:inline-flex;align-items:center;gap:12px;border:2.5px solid var(--ink);background:var(--ink);color:#fff;border-radius:100px;padding:10px 10px 10px 22px;font:700 15px var(--sans);cursor:pointer;box-shadow:4px 4px 0 var(--ac);transition:transform .2s var(--ez),box-shadow .2s var(--ez)}
+.go i{width:32px;height:32px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;font-style:normal;font-size:15px;transition:transform .35s var(--pop)}
+.go:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ac)}
+.go:hover i{transform:rotate(45deg) scale(1.08)}
+.go:active{transform:scale(.97)}
+.sum{cursor:pointer}
+
+/* 상단 슬림 바 (열린 상태) */
+.pc-tb{display:grid;grid-template-rows:0fr;visibility:hidden;transition:grid-template-rows .42s var(--ez),visibility 0s .42s}
+.pc-tb>.in{min-height:0;overflow:hidden}
+.tbi{position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px 12px 22px;border-bottom:2.5px solid var(--ink)}
+.tbi .nm{font-size:18px;font-weight:800;letter-spacing:-.025em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.tbi .ms{font-size:12px;font-weight:700;background:#fff;border:1.5px solid var(--ink);border-radius:8px;padding:2px 9px;transform:rotate(-3deg);white-space:nowrap;box-shadow:2px 2px 0 var(--ink)}
+.tbi .cur{margin-left:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;color:var(--gy);white-space:nowrap}
+.ib{flex:none;width:40px;height:40px;border-radius:50%;border:2px solid var(--ink);background:#fff;color:var(--ink);display:grid;place-items:center;font:700 16px var(--sans);cursor:pointer;box-shadow:2px 2px 0 var(--ink);transition:transform .18s var(--ez),box-shadow .18s var(--ez)}
+.ib:hover{transform:translate(-1px,-1px);box-shadow:3px 3px 0 var(--ink)}
+.ib:disabled{opacity:.35;cursor:default;transform:none;box-shadow:none}
+.ib.x{background:var(--ink);color:#fff}
+.ib.x:hover{transform:rotate(90deg)}
+.prog{position:absolute;left:0;bottom:-2.5px;height:3px;width:100%;background:var(--ink);transform-origin:left;transform:scaleX(0)}
+
+/* 상세 영역 */
+.pc-det{display:none;position:relative}
+.rail{position:sticky;top:0;align-self:start}
+.rail .rh{font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--gy);margin-bottom:10px}
+.rail ol{list-style:none;position:relative}
+.rail ol::before{content:'';position:absolute;left:9px;top:16px;bottom:16px;width:2px;background:rgba(23,23,26,.16)}
+.rail .fill{position:absolute;left:9px;top:16px;width:2px;height:0;background:var(--ink);transition:height .3s var(--ez)}
+.rail li{position:relative}
+.rail button{display:flex;gap:12px;align-items:center;width:100%;background:none;border:0;padding:6px 0;font:500 13.5px var(--sans);color:var(--gy);cursor:pointer;text-align:left}
+.rail .dot{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid var(--ink);background:#fff;position:relative;z-index:1;transition:background .25s var(--ez),transform .35s var(--pop)}
+.rail li.done .dot{background:var(--ink)}
+.rail li.cur .dot{background:var(--ac);transform:scale(1.2)}
+.rail li.cur button{color:var(--ink);font-weight:700}
+.rail button:hover{color:var(--ink)}
+.dc{min-width:0;max-width:900px}
+.ds{padding:6px 0 58px;scroll-margin-top:16px}
+.dh{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.dh span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;background:var(--ink);color:#fff;padding:4px 10px;border-radius:100px}
+.dh h4{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.03em;outline:none}
+.box{background:#fff;border:2px solid var(--ink);border-radius:18px}
+.ov{display:grid;gap:10px}
+.ovr{display:grid;grid-template-columns:64px minmax(0,1fr);gap:16px;padding:15px 20px;align-items:baseline}
+.ovr dt{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--gy)}
+.ovr dd{font-size:16px;line-height:1.6}
+.ovr dd .ck{margin-left:6px}
+.prb{padding:26px 28px;font-size:18px;line-height:1.75;box-shadow:5px 5px 0 var(--ink);position:relative}
+.prb::before{content:'!?';position:absolute;right:18px;top:-16px;background:var(--ac);color:var(--ink);border:2px solid var(--ink);border-radius:12px;padding:1px 10px;font:800 15px var(--sans);transform:rotate(6deg)}
+.prb .ck{margin-left:6px}
+.dec h5{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-bottom:12px}
+.dec+.dec{margin-top:30px}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.opt{position:relative;padding:20px 20px 18px;border-radius:18px;border:2px solid var(--ink)}
+.opt .ol{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;padding:3px 9px;border-radius:100px;border:1.5px solid var(--ink);margin-bottom:10px}
+.opt p{font-size:15px;color:var(--ink)}
+.opt.no{border-style:dashed;background:transparent}
+.opt.no p{color:var(--gy);text-decoration:line-through;text-decoration-color:rgba(23,23,26,.35)}
+.opt.no .ol{background:#fff;color:var(--gy)}
+.opt.yes{background:#fff;box-shadow:5px 5px 0 var(--ink)}
+.opt.yes .ol{background:var(--ink);color:#fff}
+.opt.yes::after{content:'선택';position:absolute;right:14px;top:-13px;background:var(--p4);border:2px solid var(--ink);border-radius:9px;padding:0 10px;font:800 13px/1.7 var(--sans);transform:rotate(5deg)}
+.why{margin-top:12px;font-size:14.5px;color:#3d3d44;display:flex;gap:10px;align-items:flex-start}
+.why b{flex:none;font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;background:var(--ink);color:#fff;border-radius:100px;padding:2px 9px;margin-top:2px}
+.lgd{display:flex;gap:10px 14px;flex-wrap:wrap;font-size:12.5px;color:var(--gy);margin-bottom:14px;align-items:center}
+.did{display:grid;gap:12px}
+.it{padding:18px 20px}
+.ih{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ih h5{font-size:16.5px;font-weight:800;letter-spacing:-.02em}
+.lb{flex:none;font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:100px;border:1.5px solid var(--ink);background:#fff;color:var(--ink)}
+.lb.l1{background:var(--ink);color:#fff}
+.lb.l2{background:#fff;box-shadow:inset 0 -7px 0 var(--ac)}
+.lb.l3{border-style:dashed}
+.ab2{display:grid;grid-template-columns:minmax(0,1fr) 26px minmax(0,1.25fr);gap:8px;margin-top:12px;align-items:stretch}
+.ab2>div{border-radius:12px;padding:10px 14px;font-size:14px;line-height:1.55}
+.ab2 small{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;color:var(--gy);margin-bottom:3px}
+.ab2 .as{background:#f3f0e9;border:1.5px dashed rgba(23,23,26,.4);color:#3d3d44}
+.ab2 .as.none{color:var(--gy)}
+.ab2 .ar{display:grid;place-items:center;font-weight:800;color:var(--ink);padding:0}
+.ab2 .tb2{background:#fff;border:1.5px solid var(--ink)}
+.fig{margin-top:18px;overflow:hidden;box-shadow:5px 5px 0 var(--ink)}
+.fig img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;background:#f6f4ef}
+.fig figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;padding:10px 14px;border-top:2px solid var(--ink);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.fig figcaption b{background:var(--ink);color:#fff;padding:1px 8px;border-radius:100px;font-weight:500}
+.ph{min-height:180px;display:grid;place-items:center;text-align:center;padding:20px;background:repeating-linear-gradient(-45deg,#fff 0 12px,#f1eee7 12px 24px);font-family:var(--mono);font-size:11.5px;color:var(--gy);line-height:1.7}
+.cl{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px}
+.cl .box{padding:16px 18px}
+.cl b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em}
+.cl span{display:block;margin-top:4px;font-size:13.5px;color:#3d3d44}
+.ng{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:12px}
+.nt{padding:16px 18px 14px}
+.nt b{display:block;font-size:24px;font-weight:800;letter-spacing:-.03em;line-height:1.15}
+.nt span{display:block;margin-top:6px;font-size:13px;color:#3d3d44;line-height:1.45}
+.nt small{display:block;margin-top:8px;font-family:var(--mono);font-size:9.5px;letter-spacing:.03em;color:var(--gy)}
+.nt .ck{margin-top:8px}
+.nnote{margin-top:12px;font-size:13px;color:var(--gy)}
+.vz{padding:18px 20px 14px;margin-bottom:14px;box-shadow:4px 4px 0 var(--ink)}
+.vz .vt{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--gy);margin-bottom:10px}
+.vz svg{display:block;width:100%;height:auto;overflow:visible}
+.vz text{font-family:var(--sans);font-size:12px;fill:var(--ink)}
+.vz .m{font-family:var(--mono);font-size:10.5px;fill:var(--gy)}
+.vz .bar{transform-box:fill-box;transform-origin:left center;transform:scaleX(0);transition:transform .9s var(--ez)}
+.vz.in .bar{transform:scaleX(1)}
+.rt{border:2px dashed var(--ink);border-radius:18px;padding:22px 24px;background:rgba(255,255,255,.6);font-size:17px;line-height:1.75}
+.rt .ck{display:inline-flex;margin-bottom:10px}
+
+/* 산출물 책장 */
+.shelfwrap{position:relative}
+.shelf{display:flex;align-items:flex-end;gap:7px;padding:34px 16px 0;min-height:260px;overflow-x:auto;overflow-y:hidden;border-bottom:12px solid var(--ink);border-radius:0 0 6px 6px;scrollbar-width:thin}
+.shelfwrap::after{content:'';display:block;height:10px;margin:0 22px;background:rgba(23,23,26,.14);border-radius:0 0 12px 12px}
+.sp{--h:180px;--w:52px;--c:#fff;--t:var(--ink);flex:none;height:var(--h);width:var(--w);border:2px solid var(--ink);border-bottom:0;border-radius:7px 7px 2px 2px;background-color:var(--c);color:var(--t);
+  background-image:linear-gradient(to bottom,transparent 14px,rgba(23,23,26,.5) 14px 16px,transparent 16px 21px,rgba(23,23,26,.5) 21px 23px,transparent 23px),linear-gradient(to top,transparent 12px,rgba(23,23,26,.5) 12px 14px,transparent 14px);
+  writing-mode:vertical-rl;display:flex;align-items:center;justify-content:center;gap:8px;padding:30px 0 22px;font:700 13.5px var(--sans);letter-spacing:.02em;cursor:pointer;
+  transform-origin:50% 100%;transition:transform .35s var(--pop),box-shadow .2s var(--ez)}
+.sp small{font-family:var(--mono);font-size:9.5px;font-weight:500;letter-spacing:.02em;opacity:.9}
+.sp:hover{transform:translateY(-8px)}
+.sp[aria-pressed="true"]{transform:translateY(-24px);box-shadow:0 8px 0 -3px var(--ac)}
+.sp.lean{transform:rotate(-7deg)}
+.sp.lean:hover{transform:rotate(-3deg) translateY(-6px)}
+.sp.lean[aria-pressed="true"]{transform:translateY(-24px)}
+.sp.gh{cursor:default;background:transparent;border-style:dashed;color:var(--gy);font-weight:500;font-size:12px}
+.sp.gh:hover{transform:none}
+.shint{margin-top:16px;font-size:12.5px;color:var(--gy);display:flex;gap:6px 14px;flex-wrap:wrap}
+.flat{margin-top:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:22px;padding:22px;box-shadow:6px 6px 0 var(--ink);transform-origin:50% 0;animation:lay .55s var(--pop) both}
+[hidden]{display:none!important}
+@keyframes lay{from{opacity:0;transform:perspective(900px) rotateX(-55deg) translateY(-26px)}}
+.flat .ft2{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.flat .ft2 .tag{font-family:var(--mono);font-size:10px;letter-spacing:.08em;border:1.5px solid var(--ink);background:var(--ac);padding:3px 10px;border-radius:100px}
+.flat h5{font-size:17px;font-weight:800;letter-spacing:-.02em;margin-top:12px;word-break:keep-all;overflow-wrap:anywhere}
+.flat dl{margin-top:14px;display:grid;grid-template-columns:52px 1fr;gap:6px 12px;font-size:13.5px}
+.flat dt{font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--gy);padding-top:3px}
+.flat dd{overflow-wrap:anywhere}
+.flat .fig{margin-top:0;box-shadow:none;border-radius:12px}
+.flat .fig img{max-height:320px}
+
+/* 열림 상태 */
+#scrim{position:fixed;inset:0;z-index:75;background:rgba(23,23,26,.38);opacity:0;pointer-events:none;transition:opacity .4s var(--ez)}
+#scrim.on{opacity:1;pointer-events:auto}
+.pcard.flying{position:fixed;z-index:80;margin:0;transform:none!important;
+  transition:top .56s var(--ez),left .56s var(--ez),width .56s var(--ez),height .56s var(--ez),padding .56s var(--ez),border-radius .56s var(--ez),box-shadow .3s var(--ez)}
+.pcard.flying,.pcard.flying:hover{box-shadow:0 30px 80px -30px rgba(0,0,0,.55),8px 8px 0 var(--ink)}
+.pcard.flying .pc-sw>.in{overflow:hidden}
+.pcard.flying::after{display:none}
+.pcard.flying .sum{cursor:default}
+.pcard.is-open{display:flex;flex-direction:column;overflow:hidden;padding:0}
+.pcard.is-open .pc-sw{grid-template-rows:0fr;opacity:0;pointer-events:none}
+.pcard.is-open .pc-tb{grid-template-rows:1fr;visibility:visible;transition:grid-template-rows .42s var(--ez) .14s,visibility 0s}
+.pcard.is-open .pc-det{display:grid;grid-template-columns:176px minmax(0,1fr);gap:52px;flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding:40px 52px 110px;transition:opacity .14s var(--ez)}
+.pcard.is-open .pc-det>*{animation:rise .6s var(--ez) .26s both}
+.pcard.is-open .pc-det>.rail{animation-delay:.36s}
+@keyframes rise{from{opacity:0;transform:translateY(28px)}}
+.pcard.closing .pc-det{opacity:0}
+.pcard.swR .pc-det>*,.pcard.swR .tbi{animation:swR .45s var(--ez) both}
+.pcard.swL .pc-det>*,.pcard.swL .tbi{animation:swL .45s var(--ez) both}
+@keyframes swR{from{opacity:0;transform:translateX(46px)}}
+@keyframes swL{from{opacity:0;transform:translateX(-46px)}}
+.noanim,.noanim *{transition:none!important;animation:none!important}
+.pcard.ph{visibility:hidden}
+
+@media(max-width:900px){
+  .hero-row{grid-template-columns:1fr}
+  .mini{width:84px;margin:0}
+  .sum{grid-template-columns:1fr;gap:26px}
+  .sr{order:-1;justify-content:flex-start;padding:8px 0 0 6px}
+  .pol{max-width:230px;padding:9px 9px 0;box-shadow:5px 5px 0 var(--ink)}
+  .pol.empty{box-shadow:5px 5px 0 rgba(23,23,26,.22)}
+  .pol figcaption{padding:9px 2px 11px;font-size:10px}
+  .pol figcaption b{font-size:12.5px}
+  .cv>div{grid-template-columns:1fr;gap:2px;padding:10px 14px}
+  .cv dd{font-size:14px}
+  .go{padding:9px 9px 9px 18px;font-size:14px}
+  .pcard.flying,.pcard.flying:hover{box-shadow:none}
+  .pcard.is-open .pc-det{display:block;padding:24px 18px 100px}
+  .rail{display:none}
+  .tbi{padding:10px 10px 10px 16px;gap:8px}
+  .tbi .tag,.tbi .cur{display:none}
+  .tbi .nm{font-size:16px;flex:1}
+  .ib{width:38px;height:38px}
+  .ab{grid-template-columns:1fr}
+  .ab2{grid-template-columns:1fr}
+  .ab2 .ar{transform:rotate(90deg);height:20px}
+  .ovr{grid-template-columns:1fr;gap:2px}
+  .flat{grid-template-columns:1fr}
+  .prb{font-size:16.5px;padding:22px}
+  .memo dl{grid-template-columns:1fr;padding-left:24px}
+  .memo dt{margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition-duration:.001ms!important;animation-duration:.001ms!important;animation-delay:0s!important;transition-delay:0s!important}
+  .ch,.hero h1 .box,.sticker{opacity:1!important;transform:none!important}
+  .sticker{transform:rotate(var(--rot))!important}
+  .hero h1 .box{transform:rotate(-2deg)!important}
+  .pcard{transform:none!important}
+  .pcard::after{display:none}
+  .vz .bar{transform:none!important}
+}
+@media print{
+  .memo,nav,#scrim,.pc-tb,.rail,.gorow .go,.shelfwrap,.shint{display:none!important}
+  .pol{transform:none!important;box-shadow:none!important}
+  html.lock{overflow:visible}
+  body{background:#fff}
+  .pcard,.pcard:nth-child(n){position:static!important;transform:none!important;box-shadow:none!important;padding:24px!important;margin-bottom:24px}
+  .pcard::after{display:none}
+  .pc-det{display:block!important;margin-top:24px;border-top:2px solid var(--ink);padding-top:20px}
+  .pc-det *{animation:none!important}
+  .flat,.flat[hidden],[hidden].flat{display:grid!important;animation:none!important;box-shadow:none;break-inside:avoid}
+  .vz .bar{transform:none!important}
+  .ds{padding-bottom:28px}
+  .cta{display:none}
+}
 </style>
 </head>
 <body>
 
+<div id="page">
 <nav aria-label="섹션 바로가기"><span class="nind" aria-hidden="true"></span><a href="#work">WORK</a><a href="#way">METHOD</a><a href="#contact">CONTACT</a></nav>
 
 <div class="w">
@@ -288,149 +562,7 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
   </header>
 
   <div class="sh" id="work"><span>01</span><h2>이런 걸 만들었어요</h2></div>
-  <div class="stack">
-
-    <article class="pcard">
-      <div class="hd"><div class="tag">001 · AI / HR Platform</div><div class="tag">2025 – 2026</div></div>
-      <h3>하이어 HYER</h3>
-      <div class="bd">
-        <p>장애인 대상 AI 기반 취업지원 통합 플랫폼. 구직자·기업·복지기관 3자가 같은 서비스를 다르게 써야 하는 구조를 정리했습니다.</p>
-        <ul>
-          <li><i>1</i><span>역할 3분기 IA를 공통 레이아웃 + 권한 토큰 구조로 재설계</span></li>
-          <li><i>2</i><span>AI 직무 매칭 정책과 역량 진단 리포트 지표 정의</span></li>
-          <li><i>3</i><span>상태값·예외 케이스 전수 정의 후 요구사항정의서 작성</span></li>
-        </ul>
-        <div class="chart">
-          <div class="ct">담당 범위</div>
-          <svg viewBox="0 0 300 76" role="img" aria-label="담당 범위 — IA 설계 92, 정책 정의 78, QA 검수 60">
-            <clipPath id="cl1"><rect x="66" y="4" width="186" height="13" rx="6.5"/><rect x="66" y="31" width="186" height="13" rx="6.5"/><rect x="66" y="58" width="186" height="13" rx="6.5"/></clipPath>
-            <text class="lb" x="0" y="14">IA 설계</text><rect class="tr" x="66" y="4" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="14">92</text>
-            <text class="lb" x="0" y="41">정책 정의</text><rect class="tr" x="66" y="31" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="41">78</text>
-            <text class="lb" x="0" y="68">QA·검수</text><rect class="tr" x="66" y="58" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="68">60</text>
-            <g clip-path="url(#cl1)">
-              <rect class="bar" style="--v:.92" x="66" y="4" width="186" height="13" fill="#2f5bff"/>
-              <rect class="bar" style="--v:.78" x="66" y="31" width="186" height="13" fill="#2f5bff"/>
-              <rect class="bar" style="--v:.60" x="66" y="58" width="186" height="13" fill="#2f5bff"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="ft"><em>IA</em><em>요구사항정의서</em><em>운영정책</em><em>접근성</em><em>Figma</em></div>
-    </article>
-
-    <article class="pcard">
-      <div class="hd"><div class="tag">002 · Education</div><div class="tag">2025 – 2026</div></div>
-      <h3>문해력탐험대</h3>
-      <div class="bd">
-        <p>초등학생 대상 AI 문해력 진단·트레이닝. 아이가 다음 회차를 스스로 열게 만드는 탐험형 학습 구조를 설계했습니다.</p>
-        <ul>
-          <li><i>1</i><span>진단 → 레벨 산정 → 회차 트레이닝 → 리포트 흐름 설계</span></li>
-          <li><i>2</i><span>학생 / 교사 / 기관 3단 관리자 권한 구조 기획</span></li>
-          <li><i>3</i><span>교육 운영 정책서 · 관리자 매뉴얼 · QA 시트 작성</span></li>
-        </ul>
-        <div class="chart">
-          <div class="ct">담당 범위</div>
-          <svg viewBox="0 0 300 76" role="img" aria-label="담당 범위 — 학습구조 88, 관리자 설계 82, 운영정책 70">
-            <clipPath id="cl2"><rect x="66" y="4" width="186" height="13" rx="6.5"/><rect x="66" y="31" width="186" height="13" rx="6.5"/><rect x="66" y="58" width="186" height="13" rx="6.5"/></clipPath>
-            <text class="lb" x="0" y="14">학습구조</text><rect class="tr" x="66" y="4" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="14">88</text>
-            <text class="lb" x="0" y="41">관리자 설계</text><rect class="tr" x="66" y="31" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="41">82</text>
-            <text class="lb" x="0" y="68">운영정책</text><rect class="tr" x="66" y="58" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="68">70</text>
-            <g clip-path="url(#cl2)">
-              <rect class="bar" style="--v:.88" x="66" y="4" width="186" height="13" fill="#ff5d3b"/>
-              <rect class="bar" style="--v:.82" x="66" y="31" width="186" height="13" fill="#ff5d3b"/>
-              <rect class="bar" style="--v:.70" x="66" y="58" width="186" height="13" fill="#ff5d3b"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="ft"><em>학습구조</em><em>회차관리</em><em>AI 리포트</em><em>관리자</em><em>매뉴얼</em></div>
-    </article>
-
-    <article class="pcard">
-      <div class="hd"><div class="tag">003 · B2C + B2G</div><div class="tag">2024 – 2026</div></div>
-      <h3>면접왕 · 면접코치</h3>
-      <div class="bd">
-        <p>대입 AI 모의면접. 같은 엔진 위에 개인용과 기관용을 분리해 두 개의 비즈니스를 동시에 돌렸습니다.</p>
-        <ul>
-          <li><i>1</i><span>B2C 단건 결제형 / B2G 기관 이용권형 이중 상품 구조 설계</span></li>
-          <li><i>2</i><span>건당 소진형 vs 기간 무제한형 2종 과금 정책 정의</span></li>
-          <li><i>3</i><span>고교·학원·기업 채널별 기관 관리자 기능 분기</span></li>
-        </ul>
-        <div class="chart">
-          <div class="ct">담당 범위</div>
-          <svg viewBox="0 0 300 76" role="img" aria-label="담당 범위 — 상품구조 85, 과금정책 90, 기관관리 64">
-            <clipPath id="cl3"><rect x="66" y="4" width="186" height="13" rx="6.5"/><rect x="66" y="31" width="186" height="13" rx="6.5"/><rect x="66" y="58" width="186" height="13" rx="6.5"/></clipPath>
-            <text class="lb" x="0" y="14">상품구조</text><rect class="tr" x="66" y="4" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="14">85</text>
-            <text class="lb" x="0" y="41">과금정책</text><rect class="tr" x="66" y="31" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="41">90</text>
-            <text class="lb" x="0" y="68">기관관리</text><rect class="tr" x="66" y="58" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="68">64</text>
-            <g clip-path="url(#cl3)">
-              <rect class="bar" style="--v:.85" x="66" y="4" width="186" height="13" fill="#17c08a"/>
-              <rect class="bar" style="--v:.90" x="66" y="31" width="186" height="13" fill="#17c08a"/>
-              <rect class="bar" style="--v:.64" x="66" y="58" width="186" height="13" fill="#17c08a"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="ft"><em>상품구조</em><em>과금정책</em><em>기관관리자</em><em>통계</em></div>
-    </article>
-
-    <article class="pcard">
-      <div class="hd"><div class="tag">004 · Platform / Data</div><div class="tag">2025</div></div>
-      <h3>잡콕 JOBKOK</h3>
-      <div class="bd">
-        <p>AI 면접 분석 + 채용공고 통합 플랫폼. 서비스 전체의 뼈대가 되는 직무 분류 체계를 직접 만들었습니다.</p>
-        <ul>
-          <li><i>1</i><span>직무 20개 대분류 체계 설계 → 실서비스 IA로 반영</span></li>
-          <li><i>2</i><span>AI 면접 분석 리포트 지표 구성 및 결과 화면 흐름 기획</span></li>
-          <li><i>3</i><span>직군·직무별 면접 질문 DB 직접 제작</span></li>
-        </ul>
-        <div class="chart">
-          <div class="ct">담당 범위</div>
-          <svg viewBox="0 0 300 76" role="img" aria-label="담당 범위 — 직무체계 95, AI 리포트 72, 질문 DB 80">
-            <clipPath id="cl4"><rect x="66" y="4" width="186" height="13" rx="6.5"/><rect x="66" y="31" width="186" height="13" rx="6.5"/><rect x="66" y="58" width="186" height="13" rx="6.5"/></clipPath>
-            <text class="lb" x="0" y="14">직무체계</text><rect class="tr" x="66" y="4" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="14">95</text>
-            <text class="lb" x="0" y="41">AI 리포트</text><rect class="tr" x="66" y="31" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="41">72</text>
-            <text class="lb" x="0" y="68">질문 DB</text><rect class="tr" x="66" y="58" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="68">80</text>
-            <g clip-path="url(#cl4)">
-              <rect class="bar" style="--v:.95" x="66" y="4" width="186" height="13" fill="#ffc83d"/>
-              <rect class="bar" style="--v:.72" x="66" y="31" width="186" height="13" fill="#ffc83d"/>
-              <rect class="bar" style="--v:.80" x="66" y="58" width="186" height="13" fill="#ffc83d"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="ft"><em>직무 20분류</em><em>AI 리포트</em><em>질문 DB</em><em>IA</em></div>
-    </article>
-
-    <article class="pcard">
-      <div class="hd"><div class="tag">005 · Admin / Kiosk</div><div class="tag">2026</div></div>
-      <h3>학교 안내 키오스크</h3>
-      <div class="bd">
-        <p>학교 안내형 키오스크. 관리자 시스템 9종을 처음부터 끝까지 기획했습니다.</p>
-        <ul>
-          <li><i>1</i><span>관리 화면 9종 + 로그인/비밀번호 찾기 전체 설계</span></li>
-          <li><i>2</i><span>키보드 포커스 이동·대체 텍스트 등 접근성 요건 반영</span></li>
-          <li><i>3</i><span>디자이너 피드백 2회 반영해 V3까지 개정</span></li>
-        </ul>
-        <div class="chart">
-          <div class="ct">담당 범위</div>
-          <svg viewBox="0 0 300 76" role="img" aria-label="담당 범위 — 화면설계 90, 접근성 75, 매뉴얼 68">
-            <clipPath id="cl5"><rect x="66" y="4" width="186" height="13" rx="6.5"/><rect x="66" y="31" width="186" height="13" rx="6.5"/><rect x="66" y="58" width="186" height="13" rx="6.5"/></clipPath>
-            <text class="lb" x="0" y="14">화면설계</text><rect class="tr" x="66" y="4" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="14">90</text>
-            <text class="lb" x="0" y="41">접근성</text><rect class="tr" x="66" y="31" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="41">75</text>
-            <text class="lb" x="0" y="68">매뉴얼</text><rect class="tr" x="66" y="58" width="186" height="13" rx="6.5"/><text class="vl" x="262" y="68">68</text>
-            <g clip-path="url(#cl5)">
-              <rect class="bar" style="--v:.90" x="66" y="4" width="186" height="13" fill="#9a63ff"/>
-              <rect class="bar" style="--v:.75" x="66" y="31" width="186" height="13" fill="#9a63ff"/>
-              <rect class="bar" style="--v:.68" x="66" y="58" width="186" height="13" fill="#9a63ff"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="ft"><em>관리자 9종</em><em>접근성</em><em>스토리보드</em><em>매뉴얼</em></div>
-    </article>
-
-  </div>
+  <div class="stack" id="stack"></div>
 
   <div class="sh" id="way"><span>02</span><h2>이렇게 일해요</h2></div>
   <div class="ways">
@@ -449,6 +581,9 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
   <footer>임서하 · Service Planner / PM · (주)위드마인드 서비스기획팀 · © 2026</footer>
 
 </div>
+</div>
+<div id="scrim" aria-hidden="true"></div>
+<div id="portal"></div>
 
 <script>
 (function(){
@@ -456,6 +591,370 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
   var RM = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var FINE = window.matchMedia('(pointer: fine)').matches;
   var $ = function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s));};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+function CK(t){return '<span class="ck">확인 필요'+(t?' · '+esc(t):'')+'</span>';}
+
+  /* ---------- 프로젝트 데이터 + 카드 렌더 ---------- */
+/* ================= 데이터 (출처: projects.json verified_numbers / my_role / deliverables) ================= */
+var P = [
+{
+ id:'hyer', no:'001', name:'하이어 HYER', tag:'AI / HR Platform', period:'2025.11 – 2026.05', ac:'#2f5bff',
+ cv:{role:'공동 → 리드 — 위드마인드 측 기획 담당, 정기회의 14회 중 6회 주관·회의록 작성',scope:'AI 적용 범위 정책 · 서비스 구조 Phase 1~4 · 요구사항정의서 · 기능명세 v1.0~v1.7 · 화면설계서 4종',out:'AI 적용 범위 정책 <mark>3건</mark> 확정 → 장고(서울형 R&amp;D)로 이관',outNote:'정량 성과 지표 없음'}, polCk:'작성 귀속',
+ stamp:'공동 → 리드', status:'중단 (사업 구조 변경) · 최종 확인 필요',
+ one:'장애인 취업지원 AI 플랫폼(2개사 공동개발). AI 챗봇 기반 이력서·자소서·면접연습에서 AI를 어디까지 쓸지를 2개사 간 정책으로 확정했습니다.',
+ keys:[{v:'6/14',l:'정기회의 회의록 작성·주관 (회)'},{v:'v1.7',l:'기능명세 v1.0 → v1.7'}],
+ chips:['요구사항정의서','기능명세','IA','화면설계서 4종','정책정의서','데이터정의서','WBS'],
+ ov:{role:'공동 → 리드 (위드마인드 측 기획 담당 → 2026.03.25~05.12 정기회의 주관자·회의록 작성자 6회 연속). drawio 원본은 ‘작성 및 선임 검토 반영’',
+     period:'2025.11 ~ 2026.05 — 사업 구조 변경으로 중단 → 장고로 전환', periodCk:'사업중지 최종 확인',
+     result:'자소서·이력서·면접 결과 표현 3건의 AI 적용 범위를 정책으로 확정. 확정 정책은 장고(서울형 R&D)로 이관. 정량 성과 지표는 없음.'},
+ problem:'2개사 공동개발 구조에서 AI로 무엇을 어디까지 처리할지 합의되지 않음. 자소서 LLM 자유생성은 품질 통제 불가, 장애인 사용자에게 면접 점수 직접 노출은 심리적 부담.',
+ dec:[
+  {t:'자소서 생성 방식',a:'LLM 자유생성',b:'질문+선택지 기반 통제형 — 에피소드당 3~5문(상황·과제·행동·결과·적용), 기준 미달 시 동일 질문 반복, 엉뚱한 답변 미저장',why:'LLM 자유생성은 품질 통제 불가'},
+  {t:'이력서 처리',a:'AI 처리',b:'알고리즘 처리 — 단계별 DB 저장, 이탈 후 마지막 단계 재개',why:'AI가 필요 없는 영역은 알고리즘으로 한정'},
+  {t:'면접연습 결과 표현',a:'점수 수치 노출',b:'비수치 — 엄지척 1~3개',why:'장애인 대상 서비스의 심리적 부담 고려'}],
+ did:[
+  {lb:1,t:'정기회의 운영',as:null,to:'정기회의 14회 중 6회 회의록 작성·주관(2026.03.25~05.12 연속), 위드마인드 측 창구'},
+  {lb:2,t:'서비스 구조 확정',as:'AI 적용 범위·기능 범위 미합의 (2개사)',to:'Phase 1~4 확정 — 인재 → 복지기관 → 기업매칭'},
+  {lb:1,t:'입력 항목 단계화',as:null,to:'데이터 입력 항목 must / should / can 3단계 구분 + 순차 해금 유저플로우 설계'},
+  {lb:1,t:'기획 문서 세트',as:null,to:'요구사항정의서, 기능명세 v1.0~v1.7, 화면설계서 4종, IA, 유저플로우 정의서, 데이터 스키마·거버넌스 설계서, WBS (drawio는 선임 검토 반영)'},
+  {lb:1,t:'대화 이탈 엣지 케이스',as:null,to:'자소서·면접연습 대화 이탈 엣지 케이스 정의 (회의록 액션아이템 담당자 기재)'},
+  {lb:2,t:'범위 제거·축소',as:'직무분야 직접입력 필드 · 복지사 전화번호 수집 · 희망조건 · 다중 이력서 · 푸시알림',to:'입력 필드 2종 제거, 기능 3종 범위 제외 — 결정 주도'}],
+ ev:{src:'assets/hyer_04.webp',w:1400,h:478,cap:'직군-직무-스킬 온톨로지 관계도',date:'2025.12.09 캡처',ck:'작성 귀속',alt:'직군·직무·스킬 세 개념을 중심 노드로 두고 아이디·명칭·상위/연관 스킬 등 속성을 연결한 관계도'},
+ collab:[['공동개발 파트너사 기획자','기능 범위·AI 적용 범위 합의, 정기회의'],['선임 기획자','drawio 원본 검토'],['개발팀','기능명세 상세화']],
+ nums:[{v:'6 / 14회',l:'정기회의 회의록 작성·주관 (2026.03.25~05.12 연속)',s:'신규발견업무 §3 / 경력기술서 3-3'},{v:'v1.0~v1.7',l:'기능명세 버전',s:'산출물 매트릭스'},{v:'4종',l:'화면설계서 (인재·기업·복지관복지사)',s:'경력기술서 3-3'},{v:'Phase 1~4',l:'서비스 구조',s:'신규발견업무 §3'},{v:'88건',l:'캡처 아카이브 (선별 8건)',s:'캡처아카이브대장 V2'}],
+ numNote:'사용자·전환 등 정량 성과 없음 — 중단 프로젝트. 현재 단계(오픈/개발중/PoC) 확인 필요.',
+ retro:'AI를 ‘어디에 쓰지 않을지’부터 정하자 2개사 논의에 기준이 생겼다. 프로젝트는 중단됐지만, 확정한 정책은 장고로 넘어가 다시 쓰였다.',
+ shelf:[
+  {ty:'요구사항정의서',ti:'하이어_요구사항정의서_ver1.xlsx',n:'1',h:'2_하이어 (260402)'},
+  {ty:'기능명세서',ti:'하이어_구직자 기능명세_v1.7.xlsx / 하이어_기능명세_v1.7_20260204.xlsx',n:'v1.0~v1.7',h:'2_하이어'},
+  {ty:'IA',ti:'hyer_IA.pdf, hyer_복지관 관리자_IA.png, hyer-welfare-org-ia.html',n:'3',h:'2_하이어'},
+  {ty:'유저플로우',ti:'이력서/자기소개서 UX 플로우 정의서.pdf, 온보딩 플로우.png, 인재(구직자)모바일웹.drawio',n:'4',h:'2_하이어'},
+  {ty:'화면설계서',ti:'인재_화면설계서.pptx, 하이어_인재_v2.pptx, 하이어_기업_v1.pptx, 하이어_복지관복지사_V1.pptx',n:'4',h:'2_하이어 (SB 콘택트시트 34장)'},
+  {ty:'정책정의서',ti:'사용자 중심 Identity & 권한 정의서.pdf, 면접 연습 - 답변 품질 판정 로직 상세 정의서.pdf',n:'2',h:'2_하이어'},
+  {ty:'데이터정의서',ti:'이력서 - 데이터 스키마 정의서.pdf, 인재 데이터 - 거버넌스 및 AI 동기화 설계서.pdf',n:'2',h:'2_하이어',img:'assets/hyer_06.webp',iw:1400,ih:727,cap:'채용 도메인 온톨로지 다이어그램 · 2026.01.26 캡처 (관련 작업 화면, 문서 원본 아님) · 작성 귀속 확인 필요'},
+  {ty:'WBS',ti:'하이어_프로젝트일정_260519.xlsx',n:'1',h:'2_하이어'},
+  {ty:'회의록',ti:'HYER 정기회의록 (Google Drive ‘회의록 (HYER 구축 기획)’)',n:'6회 작성 / 14회 중',h:'Google Drive'}],
+ missing:['QA시트','매뉴얼','약관']
+},
+{
+ id:'literacy', no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
+ cv:{role:'단독 — 서비스 기획 전담 (약관·소개서·학생매뉴얼은 선임 선행본 개정·고도화)',scope:'요구사항 → 데이터정책 V1.1 → QA(11인 분담) → 매뉴얼·약관 → CS 12건, 전 주기',out:'실제 도입 학교 <mark>0 → 10곳</mark> · 실사용 학생 <mark>533명</mark>'},
+ stamp:'단독', status:'오픈 · 운영 중',
+ one:'초·중등 대상 AI 문해력 진단·트레이닝. 요구사항부터 운영·CS까지 한 서비스의 전 주기를 맡아, 실제 도입 학교 2025년 0곳 → 2026년 10곳으로 이어졌습니다.',
+ keys:[{v:'0→10',l:'실제 도입 학교 (2025 → 2026, 곳)'},{v:'533',l:'실사용 학생 (명)'}],
+ chips:['요구사항정의서','기능명세 v3.0','운영정책서','데이터정책서 V1.1','QA시트','매뉴얼','약관'],
+ ov:{role:'단독 (서비스 기획 전담: 요구사항·정책·데이터정책·QA·매뉴얼·약관·CS). 단, 이용약관·서비스소개서·학생매뉴얼은 선임 기획자 선행본을 ‘개정·고도화 담당’ (학생매뉴얼 v2 → 선임 수정 → v3 = 공동)',
+     period:'2024.11 ~ 재직 중 — 요구사항·WBS(2024.11) → 출시 → 2026 고도화 → 운영',
+     result:'실제 도입 학교 2025년 0곳 → 2026년 10곳, 실사용 학생 533명 · 교사 14명 · 학급 47개. 운영 중.'},
+ problem:'AI가 생성하는 진단·트레이닝 콘텐츠의 생성 규칙과 품질 기준이 문서화돼 있지 않아, 학교 도입 시 교사가 결과를 신뢰할 근거를 설명할 수 없었음. 2025년 실제 도입 학교 0곳.',
+ dec:[{t:'진단 문항 수 10 vs 25 충돌',a:'충돌로 보고 개발 확인 대기',b:'QA 시트 교차 확인으로 버전 차이(2025: 25문항 / 2026 고도화: 10문항) 규명 → 운영정책 v1을 구버전으로 판정, 개정 대상 지정',why:'트레이닝 25문항은 진단과 별개 대상이라 충돌이 아님 — 문서 정합성 작업으로 전환'}],
+ did:[
+  {lb:1,t:'콘텐츠 생성 규칙 문서화',as:'AI 진단·트레이닝 콘텐츠의 생성 규칙·품질 기준 미문서화',to:'진단·트레이닝 데이터정책서 V1.1 — 진단글 분류(JINDAN_BASIC / JINDAN_SELF), 14단계 레벨, 트레이닝 생성 알고리즘(5회차 × 5문제 = 25문항)'},
+  {lb:1,t:'요구사항 · 기능명세 · WBS',as:null,to:'요구사항정의서(문탐수정요구사항정의), 기능명세 v3.0, WBS(2024.11), 운영정책서 v1'},
+  {lb:1,t:'문서 정합성 정리',as:'진단 문항 수 문서 불일치 (운영정책 v1: 25문항 / 2026 고도화: 10문항)',to:'버전 차이 규명 → 구버전 개정 대상 확정, 개선과제 10건 도출'},
+  {lb:1,t:'2026 고도화 QA',as:null,to:'QA 설계 + 11인 분담 QA 시트 운영'},
+  {lb:2,t:'매뉴얼 · 약관',as:'선임 기획자 선행본 (이용약관 · 서비스소개서 · 학생매뉴얼)',to:'학생용·관리자용 매뉴얼 2026년판 제작 (학생 v2 → 선임 수정 → v3 공동), 이용약관 개정'},
+  {lb:1,t:'운영 · CS',as:null,to:'CS 12건 대응(구글 시트 단일 체계), 운영 검수 큐 관리 — 미검수 진단 124 / 학습 47 (2026-09-18)'}],
+ ev:{src:'assets/literacy_07.webp',w:1400,h:1233,cap:'진단 결과 레이더 리포트',date:'2024.12.09 캡처',alt:'총점과 어휘·추론·정보파악 능력 점수를 레이더 차트로 보여주고 학년 대비 수준을 문장으로 안내하는 진단 결과 화면'},
+ collab:[['선임 기획자','약관·소개서·학생매뉴얼 선행본, 유저플로우 원본 제공'],['QA 분담 11인','2026 고도화 QA 수행'],['개발팀','Electron secure context 이슈 근본 원인 규명'],['영업 파트너사','CS 요청 · 이슈사항 시트'],['도입 학교 교사','CS 12건']],
+ viz:'lit',
+ nums:[{v:'0 → 10곳',l:'실제 도입 학교 (2025 → 2026, 전북권 집중)',s:'경력기술서 3-1 (원장 기반)'},{v:'533 / 14 / 47',l:'실사용 학생(명) / 교사(명) / 학급(개)',s:'경력기술서 3-1'},{v:'10건',l:'B2G 계약 3년 이용권 (활성 9 / 해지 1)',s:'경력기술서 3-1'},{v:'623개',l:'진단글 (위드마인드 603 + 교사·기관 20), 14단계 레벨',s:'증거원장 B-2'},{v:'719세트',l:'AI 트레이닝 누적 생성',s:'증거원장 B-2'},{v:'5 × 5',l:'트레이닝 구조 — 5회차 × 5문제 = 25문항',s:'증거원장 B-2'},{v:'10건',l:'개선과제 도출 (데이터정책서 V1.1 5장)',s:'증거원장 B-2'},{v:'11인',l:'QA 분담 인원',s:'증거원장 B-2/B-9'},{v:'12건',l:'CS 대응 (전체 19건 중)',s:'증거원장 B-8'},{v:'124 / 47',l:'운영 검수 큐 — 미검수 진단 / 학습 (2026-09-18)',s:'관리자 지표 수집'}],
+ retro:'교사가 결과를 믿게 하려면 화면보다 문서(생성 규칙·버전)가 먼저였다. 정책 문서의 버전 관리를 초기부터 잡았다면 25 vs 10문항 혼선과 데이터정책 파일명 역전을 줄일 수 있었다.',
+ shelf:[
+  {ty:'서비스개요서',ti:'문해력탐험대 서비스 개요서_250312.pptx',n:'1',h:'2_문해력'},
+  {ty:'요구사항정의서',ti:'문탐수정요구사항정의_1121.xlsx / 문해력 진단 트레이닝 AI학습 요구사항 정의 v2.0.xlsx',n:'2',h:'2_문해력',img:'assets/literacy_02.webp',iw:1400,ih:1018,cap:'지문·핵심어휘 등록 관리자 화면 · 2024.11.14 캡처 (관련 화면, 문서 원본 아님)'},
+  {ty:'기능명세서',ti:'문해력_기능명세_v3.0.xlsx',n:'1',h:'2_문해력 (251201)',img:'assets/literacy_03.webp',iw:1400,ih:699,cap:'학습 만들기 제작 화면 · 2024.11.21 캡처 (관련 화면, 문서 원본 아님)'},
+  {ty:'유저플로우',ti:'전체서비스플로우.drawio.png',n:'1',h:'2_문해력 (250213)',img:'assets/literacy_04.webp',iw:1080,ih:388,cap:'선생님용 플로우차트 · 2024.11.21 캡처'},
+  {ty:'운영정책서',ti:'문해력탐험대_운영 정책_v1_임서하수정_250512.docx',n:'1',h:'2_문해력',note:'진단 25문항 기재는 구버전 — 현행 10문항, 개정 대상'},
+  {ty:'데이터정책서',ti:'문해력탐험대_진단트레이닝_데이터정책_V1(실제 V1.1 최신)_임서하_20260916.docx',n:'1',h:'2_문해력',note:'파일명 V2가 구버전(V1.0)인 버전 역전 — 정리 필요'},
+  {ty:'WBS',ti:'문해력 진단 트레이닝 AI학습 시스템 개발 WBS_20241125.xlsx',n:'1',h:'2_문해력'},
+  {ty:'QA시트',ti:'2026 문해력탐험대 고도화 QA (4)_선생님,기관리스트.xlsx / 문해력탐험대QA_임서하(2025)',n:'11인 분담',h:'2_문해력 / Google Drive'},
+  {ty:'매뉴얼',ti:'문해력 탐험대 매뉴얼_2026년_학생용.pdf / _관리자용.pdf',n:'2',h:'2_문해력 (260615), 매뉴얼 콘택트시트 37장'},
+  {ty:'서비스소개서',ti:'문해력 탐험대_서비스 소개서_260121.pdf',n:'1',h:'2_문해력',note:'선임 기획자 선행본 개정·고도화'},
+  {ty:'약관',ti:'문해력_이용약관_v1_임서하수정_250417.docx',n:'1',h:'2_문해력',note:'개인정보처리방침은 선임 기획자 v1만 확인 — 수정본 확인 필요'}],
+ missing:['IA','스토리보드','회의록']
+},
+{
+ id:'interviewking', no:'003', name:'면접왕 · 면접코치', tag:'B2C + B2G · B2B', period:'2025.01 – 재직 중', ac:'#17c08a',
+ cv:{role:'인계 후 개정 — 면접왕 2.0 IA·화면기획은 본인 작성',scope:'2.0 IA·화면기획 · 입력필드/시간표기/알림 정책 · 생기부 PDF 판정 7유형 · 매뉴얼·약관 · CS',out:'2.0 기획 <mark>28화면</mark> · 기획서 HTML 110개 · 입력필드 정책 <mark>26개</mark>'},
+ stamp:'인계 후 개정', status:'오픈 · 운영 중 · 2.0 고도화 단계 확인 필요',
+ one:'운영 중인 대입 AI 모의면접. 2.0 고도화를 28화면·입력필드 정책 26개의 정책 체계로 기획하고, 매뉴얼·약관·CS를 맡았습니다.',
+ keys:[{v:'28',l:'면접왕 2.0 화면 (HTML 110개)'},{v:'26',l:'입력필드 정책 (개)'}],
+ chips:['화면기획서 HTML','IA','정책 3종','매뉴얼','약관','체크리스트'],
+ ov:{role:'인계 후 개정 (관리자SB 2023.09·고도화SB 250317은 선임 기획자 선행/공동 → 면접왕 2.0 IA·화면기획은 본인 작성, 매뉴얼·약관·CS 본인)',
+     period:'2025.01 ~ 재직 중 — 고도화 SB 2025.03, 면접왕 2.0 IA·정책 2026.06, 리포트 코멘트 2026.09',
+     result:'면접왕 2.0 — 28화면 · 문서ID 30개 · 기획서 HTML 110개, 입력필드 정책 26개. 서비스 운영 중.', resultCk:'2.0 고도화 현재 단계'},
+ problem:'리포트 전환율 46.4%와 중도이탈 구간을 세션 분석으로 확인 → 개선 과제로 정의 (2.0 고도화 배경).', problemCk:'46.4%는 원장 미등재',
+ dec:[], decNote:'문서에 A안 / B안 판단 기록이 없음 — 어떤 대안을 포기했는지는 본인 확인 후 작성.',
+ did:[
+  {lb:1,t:'면접왕 2.0 IA · 화면기획',as:'고도화 SB(2025.03) — 선임 기획자 선행 / 공동',to:'28화면 / 문서ID 30개 / 기획서 HTML 110개 — 화면ID 1:1 폴더 + PC·태블릿·모바일 3종 + §01~§04 섹션 체계'},
+  {lb:1,t:'입력 · 표기 정책',as:null,to:'입력필드 정책 26개(검증 타이밍·전처리·마스킹), 시간표기 8기준, 알림 상대표기 6구간'},
+  {lb:1,t:'생기부 PDF 판정',as:null,to:'판정 7유형 정의 — 통과 3 / 차단 4'},
+  {lb:1,t:'매뉴얼 · 약관',as:null,to:'학생·학교관리자 사용 설명서, 이용약관(대입면접)'},
+  {lb:1,t:'CS',as:null,to:'면접코치 CS 6건 대응 (구글 시트 단일 체계)'},
+  {lb:1,t:'개선 과제 정의',as:null,to:'리포트 전환율·중도이탈 세션 분석 → 개선 과제 정의, 리포트 코멘트 작성(2026.09)'}],
+ ev:{src:'assets/ik_04.webp',w:1269,h:985,cap:'면접왕 실서비스 메인 화면',date:'2025.01.24 캡처',ck:'2.0 이전 화면 · 설계 귀속',alt:'계열·학과별 면접 경향과 기출 질문을 안내하는 면접왕 메인 배너와 입시자료 목록 화면'},
+ collab:[['선임 기획자','고도화 SB 공동 / 인계'],['영업 파트너사','시스템 체크리스트, CS 요청 시트'],['기관 고객','고교·학원·기업 등 — 46곳은 원장 등재 확인 필요']],
+ nums:[{v:'28 / 30 / 110',l:'면접왕 2.0 화면 / 문서ID / 기획서 HTML',s:'증거원장 B-6'},{v:'26개',l:'입력필드 정책',s:'증거원장 B-6'},{v:'8 / 6',l:'시간표기 기준 / 알림 상대표기 구간',s:'증거원장 B-6'},{v:'7유형',l:'생기부 PDF 판정 (통과 3 / 차단 4)',s:'증거원장 B-6'},{v:'6건',l:'면접코치 CS 대응',s:'증거원장 B-8'},{v:'214건',l:'캡처 아카이브 (선별 14건)',s:'캡처아카이브대장 V2'},
+       {v:'46곳',l:'기관 계약 (고교 28 · 학원 5 · 기업 7 등)',s:'경력기술서 4',ck:'원장 미등재'},{v:'2,120 / 983',l:'누적 면접 / 리포트, 전환율 46.4%',s:'경력기술서 4',ck:'원장 미등재'}],
+ retro:'정책을 숫자(입력필드 26개 · 시간표기 8기준 · 알림 6구간)로 고정해 두니, 화면이 28개로 늘어도 판단 기준이 흔들리지 않았다.',
+ shelf:[
+  {ty:'화면기획서',ti:'면접왕_2_0_기획서_전체보기.html (IK-001~IK-CMN-03)',n:'28화면 / 110 HTML',h:'2_면접왕 (260619)'},
+  {ty:'IA',ti:'면접왕_2_0_IA_사이트맵',n:'1',h:'2_면접왕'},
+  {ty:'정책',ti:'정책정리_입력필드_시간표기 / 면접왕_2_0_정책정리 시트 (기획서 섹션 교차참조)',n:'입력필드 26 + 시간 8 + 알림 6',h:'2_면접왕 (2026.06)'},
+  {ty:'스토리보드(선행)',ti:'대입면접 고도화SB_250317 (선임 기획자 작성본 · 공동 / 인계)',n:'1',h:'2_면접왕',note:'2023.09 관리자SB는 입사 이전 산출물이라 제외'},
+  {ty:'매뉴얼',ti:'AI 대입 모의면접_학생 사용 설명서.pdf, _학교 관리자 사용 설명서.pdf, 학교관리자 사용설명서.pdf',n:'3',h:'2_면접코치 (251013~14)'},
+  {ty:'서비스소개서',ti:'대입AI모의면접소개서.pdf, 대입 AI모의면접 서비스 소개.pdf',n:'2',h:'2_면접왕 (250618)',ck:'작성 귀속'},
+  {ty:'약관',ti:'이용약관_대입면접.hwp',n:'1',h:'2_면접왕 (260203)'},
+  {ty:'체크리스트',ti:'체크리스트(인공지능대입면접시스템 · 영업 파트너사)_20260331.hwp',n:'1',h:'2_면접코치',note:'TS/TC 형식 아님'},
+  {ty:'샘플',ti:'생기부 PDF 판정 7유형 샘플',n:'7',h:'1_작업 참고자료 / 샘플 문서'}],
+ missing:['요구사항정의서','기능명세서','WBS']
+},
+{
+ id:'jobkok', no:'004', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
+ cv:{role:'공동 — 고도화 기획 · QA · 데이터 담당',scope:'QA TC 작성 규칙 제정 · QA 체크리스트 설계(7인 분담) · 직무분류표 · 온톨로지 4종 · 약관 3종',out:'QA <mark>397케이스</mark> 설계, N/A <mark>12건 전부</mark> 기획서 미정의로 역추적'}, polFile:'잡콕_QA_체크리스트_임서하.xlsx',
+ stamp:'공동', status:'개발중 · 고도화 진행 중',
+ one:'AI 면접 분석 + 채용공고 통합 플랫폼. QA 397케이스를 설계해 N/A 12건 전부가 기획서 미정의였음을 역추적하고, 직무분류·온톨로지 등 AI 데이터 파트까지 맡았습니다.',
+ keys:[{v:'397',l:'QA 케이스 설계 (건)'},{v:'12/12',l:'N/A 중 기획서 미정의 (건)'}],
+ chips:['QA 체크리스트','QA TC 규칙','직무분류표','온톨로지 4종','약관 3종','구직자 매뉴얼','기관 실증 기획서'],
+ ov:{role:'공동 (고도화 기획·QA·데이터 담당; 온톨로지 회의 참여자 명시, 크롤링은 동료 기획자와 공동 / 인재매칭 R&D 자료·연구개발계획서는 선임 기획자 등과 공동 집필)',
+     period:'2025.10 ~ 재직 중 — QA 통계 2026-05-18, 온톨로지 2026-08, 기관실증 기획서 2026-09',
+     result:'QA 397케이스 — Pass 84.6% / Fail 12.1%, N/A 12건 전부를 기획서 미정의로 역추적. 고도화 진행 중.'},
+ problem:'문서상 문제 정의가 기재돼 있지 않음. 근거로 말할 수 있는 범위: QA 케이스 품질이 개인 역량에 좌우되고, 기획서 미정의 항목이 QA에서 드러나지 않던 상태.', problemCk:'문제 정의 원문 없음',
+ dec:[{t:'QA N/A 처리',a:'N/A를 단순 ‘미해당’으로 종결',b:'N/A 12건 전부 ‘기획서상 미정의로 코드 확인 필요’로 판정 → 기획 공백으로 역추적',why:'QA 규칙 5조(화면기반)가 기획 공백 검출 장치로 작동함을 실증'}],
+ did:[
+  {lb:1,t:'형상관리',as:null,to:'JK- 화면ID + 시맨틱 버전 파일명(예: JK-MY-01 마이페이지 v2.4.0) 적용, 검수'},
+  {lb:1,t:'QA 규칙 + 397케이스',as:null,to:'QA TC 작성 규칙 제정(2026.05.21) → 체크리스트 397케이스 설계, Test Level 4단계 · 7인 분담 운영'},
+  {lb:2,t:'직무 · 스킬 데이터',as:null,to:'직무분류표 최종본(20개 대분류 → 실서비스 IA 구현), 온톨로지 4종, 하드스킬 DB, AI 생성용 프롬프트',ck:'본인 범위'},
+  {lb:1,t:'약관 · 매뉴얼',as:null,to:'약관 3종(이용약관 · 유료서비스 이용약관 · 개인정보처리방침), 구직자 매뉴얼'},
+  {lb:1,t:'기관 실증 기획서',as:null,to:'기관 실증 기획서 9종 작성 (2026.09)',ck:'파일명'},
+  {lb:2,t:'QA 자동화 · 경쟁사 크롤링',as:null,to:'Playwright 기반 QA 자동화, 경쟁사 크롤링 스크린샷 111장 (동료 기획자와 공동)'}],
+ ev:null, evNote:'캡처 자리 — QA 체크리스트(397케이스) 또는 QA TC 작성 규칙 화면 캡처 필요 (보유 캡처는 외부 서비스 화면이라 사용하지 않음)',
+ collab:[['동료 기획자','경쟁사 크롤링 공동'],['선임 기획자 등','인재매칭 R&D 자료 · 연구개발계획서 공동 집필'],['QA 분담 7인','Test Level 4단계 QA 수행'],['온톨로지 회의체','2026-05-26 회의'],['기관 실증 대상 기관','기관 실증 기획서 9종']],
+ viz:'qa',
+ nums:[{v:'397건',l:'QA 총 케이스 (2026-05-18)',s:'증거원장 B-2-b'},{v:'84.6% / 12.1%',l:'Pass 336건 / Fail 48건 (Block 1 · N/A 12)',s:'증거원장 B-2-b'},{v:'12 / 12',l:'N/A 전부 ‘기획서상 미정의’',s:'증거원장 B-2-b'},{v:'18건',l:'최다 결함 — 이력서 (실패율 21.4%) > 회원가입 10건',s:'증거원장 B-2-b'},{v:'4단계 / 7인',l:'Test Level / QA 분담',s:'증거원장 B-2-b'},{v:'20개',l:'직무 대분류 → 실서비스 IA 구현',s:'경력기술서 4'},{v:'111장',l:'경쟁사 크롤링 스크린샷',s:'신규발견업무 1-2'}],
+ retro:'N/A는 ‘해당 없음’이 아니라 ‘기획이 비어 있음’일 수 있다. QA 규칙을 화면 기준으로 세우자, QA가 기획서의 빈칸을 거꾸로 찾아냈다.',
+ shelf:[
+  {ty:'QA시트',ti:'잡콕_QA_체크리스트_임서하.xlsx',n:'397케이스',h:'2_잡콕 (260520)'},
+  {ty:'QA 규칙',ti:'QA_TC_작성_규칙.md',n:'1',h:'클로드 폴더 (2026-05-21)'},
+  {ty:'데이터',ti:'20260518 직무분류표 최종 전송본.xlsx, 직무직군260519.csv, 하드스킬260519.csv, 온톨로지 4종, AI 생성용 프롬프트',n:'4+',h:'2_잡콕'},
+  {ty:'약관',ti:'이용약관_0916.docx, 유료서비스 이용약관_0916.docx, 개인정보 처리방침_0919.docx',n:'3',h:'2_잡콕'},
+  {ty:'사용자매뉴얼',ti:'잡콕 구직자 메뉴얼_임서하_251105.pptx',n:'1',h:'2_잡콕'},
+  {ty:'기관 실증 기획서',ti:'기관 실증 기획서 9종',n:'9',h:'2_잡콕 (2026-09)',ck:'파일명'},
+  {ty:'정책 회신',ti:'잡콕 ai기능 개발 회신안.docx',n:'1',h:'2_잡콕 (260420)'},
+  {ty:'크롤링 · QA 자동화',ti:'qa/crawl_*.js, 스크린샷 111장',n:'111장',h:'2_잡콕/qa'},
+  {ty:'회의록',ti:'20250410 장애인 취업지원 솔루션 관련 회의.txt',n:'1',h:'2_잡콕'}],
+ missing:['기능명세서','IA','WBS']
+},
+{
+ id:'janggo', no:'005', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
+ cv:{role:'단독 — 기획 전담 + 인증·검증 문서 총괄',scope:'하이어 정책 이관 · 요구사항 v2.0 · 기능명세 v2.0 · IA 3도메인 · ISO/IEC 25023 사용성 검증 · TTA 증빙',out:'사용성 검증 <mark>176건</mark>으로 기획-구현 불일치(60초 vs 15초) 적발·수정'},
+ stamp:'단독', status:'과제 완료 (2026-09-16 최종보고) · 서비스 단계 확인 필요',
+ one:'장애인 취업지원 AI 플랫폼 R&D 시제품. 중단된 하이어의 확정 정책을 국가과제 요건(정량지표·ISO 검증·AI 신뢰성 증빙)에 맞춰 재설계·이관하고, 인증 대응 문서를 총괄했습니다.',
+ keys:[{v:'65→80',l:'요구사항 → 기능명세 (건)'},{v:'176',l:'ISO/IEC 25023 사용성 검증 (건)'}],
+ chips:['요구사항 v2.0','기능명세 v2.0','IA 3도메인','화면기획서 3종','사용성 검증','TTA 증빙 28종','약관 11종'],
+ ov:{role:'단독 (기획 전담 + 인증·검증 문서 총괄)',
+     period:'2026.04 ~ 2026.09 — 최종보고 2026-09-16 완료',
+     result:'요구사항 65건 → 기능명세 80건. 사용성 검증 176건으로 기획-구현 불일치(60초 vs 15초) 적발·수정. TTA AI 신뢰성 증빙 28종. 최종보고 완료, AI 관련 심사 수검.', resultCk:'서비스 단계(오픈/개발중/PoC)'},
+ problem:'동일 도메인 공동개발(하이어)이 사업 구조 변경으로 중단되며 확정 정책·구조 자산이 사장될 상황. 동시에 국가과제 R&D는 정량 성능지표와 국제표준 검증·AI 신뢰성 증빙을 요구.',
+ dec:[
+  {t:'추천 결과 노출 기준',a:'전 건 점수·사유 노출',b:'적합도 50% 이상만 점수·사유 표시 (기업 추천인재도 50% 이상만 목록 노출)',why:'산식(40/30/20/10)과 노출 임계값을 수치로 고정해 정책화'},
+  {t:'하이어 중단 자산 처리',a:'R&D 요건에 맞춰 신규 기획',b:'확정 정책을 장고 요구사항정의서·기능명세서로 전량 이관 후 R&D 요건 보강',why:'확정 정책 사장 방지'}],
+ did:[
+  {lb:1,t:'하이어 자산 이관',as:'하이어 중단 — 확정 정책·구조 자산 사장 위기',to:'Phase 구조, must/should/can 3단계, 순차 해금, 자소서 통제형, 면접 결과 비수치를 R&D 요건에 맞춰 재설계·이관'},
+  {lb:1,t:'요구사항 · 기능명세 · IA',as:'요구사항정의서 v1.0',to:'3도메인 요구사항 v2.0 65건(구직자 39 / 복지기관 12 / 기업 14), 기능명세 v2.0 80건(38 / 19 / 23), IA 3도메인, 화면기획서 3종'},
+  {lb:1,t:'AI 추천 산식 · 노출 정책',as:null,to:'적합도 = 직무 40 + 지역 30 + 경력 20 + 복지시설 10, 50% 이상만 점수·사유 표시. 고용24 직종코드 1,215건 기반 직무 체계'},
+  {lb:1,t:'접근성 · 약관',as:null,to:'장애유형 15종(장애인복지법 시행령) 기반 접근성 정책, 약관 11종(구직자 5 · 기업 3 · 복지기관 3)'},
+  {lb:1,t:'ISO/IEC 25023 사용성 검증',as:'생각시간 — 기획 60초 vs 구현 15초 (불일치)',to:'시나리오 176건(PC 107 + 모바일 69) 설계·수행 → 불일치 적발, 개발팀 수정 완료'},
+  {lb:1,t:'TTA AI 신뢰성 증빙',as:null,to:'증빙문서 28종 — 거부권·설명요구권 절차, 학습데이터 출처 대장, 레드팀 운영계획, 기능 중단·제한 운영 기준표 등'}],
+ ev:{src:'assets/jango_03_crop.webp',w:528,h:544,cap:'이력서 완성 화면 FLOW · 항목별 정책 정의',date:'2026.04.25 캡처',alt:'챗봇 이력서 작성 완료 후 이동하는 이력서 완성 화면의 흐름과 이력서 제목·기본 정보 항목별 정책을 표로 정의한 기획 문서'},
+ collab:[['개발팀','사용성 검증 불일치 수정, API 문서(redoc)'],['서울형 R&D 과제 회의체','기안문 5건 결재'],['TTA','AI 신뢰성 인증 대응 — 인증 취득 여부 확인 필요']],
+ viz:'formula',
+ nums:[{v:'65건',l:'요구사항 (구직자 39 / 복지기관 12 / 기업 14)',s:'증거원장 B-5'},{v:'80건',l:'기능명세 (38 / 19 / 23)',s:'증거원장 B-5'},{v:'176건',l:'사용성 검증 시나리오 (PC 107 + 모바일 69), ISO/IEC 25023',s:'증거원장 B-5'},{v:'28종',l:'TTA AI 신뢰성 증빙문서',s:'증거원장 B-5'},{v:'1,215건',l:'고용24 직종코드',s:'증거원장 B-5'},{v:'15종',l:'장애유형 (장애인복지법 시행령)',s:'증거원장 B-5'},{v:'11종',l:'약관 (구직자 5 · 기업 3 · 복지기관 3)',s:'증거원장 B-5'},{v:'60초 → 15초',l:'기획-구현 불일치 적발 → 개발팀 수정 완료',s:'증거원장 B-5 (시나리오 v1.1 비고)'},{v:'09-16',l:'2026 최종보고 완료, AI 관련 심사 수검',s:'경력기술서 3-2'}],
+ retro:'사용성 검증은 체크리스트가 아니라 기획과 구현의 차이를 찾는 도구였다. 60초가 15초로 구현된 걸 시나리오가 잡아냈다.',
+ shelf:[
+  {ty:'요구사항정의서',ti:'장고_요구사항정의서_v2.0.xlsx',n:'65건 (v1.0→v2.0)',h:'2_서울형RND_장고 (260617)'},
+  {ty:'기능명세서',ti:'장고_기능명세서_v2.0.xlsx',n:'80건',h:'2_서울형RND_장고 (260617)'},
+  {ty:'IA',ti:'장고_IA_3도메인.html, janggo_IA_welfare.html',n:'2',h:'2_서울형RND_장고'},
+  {ty:'화면기획서',ti:'장고_장애인_유저_ver1.5_260615.pptx, 장고_고도화_기획서_통합.html + 도메인별 PPT 3종',n:'3',h:'2_서울형RND_장고 (260722)',img:'assets/jango_03_crop.webp',iw:528,ih:544,cap:'이력서 완성 화면 FLOW · 항목별 정책 정의 · 2026.04.25 캡처'},
+  {ty:'사용성 검증',ti:'장고_구직자_사용성검증_시나리오_v1.1.xlsx (ISO/IEC 25023)',n:'176건',h:'2_서울형RND_장고'},
+  {ty:'QA시트',ti:'장고_고도화_통합_QA_테스트시나리오.xlsx',n:'1',h:'2_서울형RND_장고 (260729)'},
+  {ty:'AI 신뢰성 증빙',ti:'신뢰성 인증 폴더 (A-8_허용_이용방침.docx, DOC-16_기능_중단_제한_운영_기준표.docx 등)',n:'28종',h:'2_서울형RND_장고/신뢰성 인증'},
+  {ty:'약관',ti:'02_서비스_이용약관.html, 개인정보_처리방침.html, A-1_개인정보_처리방침_장애인용.docx 등',n:'11종',h:'2_서울형RND_장고/약관 (260623)'},
+  {ty:'DB 데이터',ti:'유사직무_추천DB_세분류기준_v1.1.xlsx, 면접Q2_장애맞춤형질문DB.xlsx, work24_jobs.csv(1,215건)',n:'3',h:'2_서울형RND_장고'},
+  {ty:'회의록',ti:'장고_기능고도화_회의록_20260720.html, 서울형회의록_0722.pdf, 서울형 R&D 기안문 5건',n:'기안문 5건',h:'3_회의록'}],
+ missing:['WBS','매뉴얼','운영정책서']
+},
+{
+ id:'schoolkiosk', no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
+ stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
+ one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
+ keys:[{v:'09.16',l:'2026 킥오프'},{v:'8',l:'Notion 기획 문서 (종)',ck:'실체'}],
+ chips:['킥오프 회의록','자산 매핑표','법규 리서치','Notion 기획 01~08'],
+ ov:{role:'단독 (신규 착수 기획 담당 — 확인필요)',
+     period:'2026.09 ~ 진행 중 — 킥오프 2026-09-16, 서비스명 ‘인터박스’ 2026-10-14 확정',
+     result:'진행 중 과제 — 성과·도입 실적 없음 (착수 / 요구사항 수집 단계).'},
+ problem:'홀로오더(주문·결제형) 자산을 학교 안내형으로 전환하며 주문·결제·장바구니 전량 제거, 안내 기능 중심 재정의 필요. 병설유치원 예외 등 초등학교 환경 제약.',
+ dec:[{t:'서비스명',a:'기존 가칭',b:'인터박스 (2026-10-14 대표 결정)',why:'대표 결정 사항 — 본인 판단 아님. 로고는 상시 정보 띠 오른쪽 끝, 교표는 띠에 넣지 않음'}],
+ did:[
+  {lb:1,t:'킥오프 정리',as:null,to:'킥오프 회의(2026-09-16) 참여 및 회의록 정리'},
+  {lb:1,t:'자산 매핑',as:'홀로오더(주문·결제형) 자산 — 주문·결제·장바구니 제거 필요',to:'재사용 / 신규 / 삭제 매핑표 작성'},
+  {lb:1,t:'배리어프리 법규 리서치',as:null,to:'배리어프리 무인정보단말기 법규(2026.01.28 시행) 선행 리서치'},
+  {lb:1,t:'Notion 학교 기획 문서',as:null,to:'학교 기획 01~08 (8종) 작성',ck:'문서 실체'}],
+ ev:null, evNote:'캡처 없음 — 캡처 대장 범위(~2026-08) 밖, 포트폴리오 v3 미포함',
+ collab:[['영업 파트너사','영업 주체 — 기기 구매 · 영업'],['대표','서비스명 결정']],
+ nums:[{v:'2026-09-16',l:'킥오프',s:'신규발견업무 1-1 E'},{v:'8종',l:'Notion 기획 문서',s:'신규발견업무 1-1 E',ck:'문서 실체'},{v:'2026.01.28',l:'배리어프리 무인정보단말기 법규 시행 (외부 기준일)',s:'경력기술서 3-4'}],
+ numNote:'진행 중 과제라 성과·도입 실적은 기재하지 않음.',
+ retro:null,
+ shelf:[
+  {ty:'회의록',ti:'킥오프 회의.txt',n:'1',h:'2_학교키오스크 (260917)'},
+  {ty:'매핑표',ti:'홀로오더 자산 재사용 / 신규 / 삭제 매핑표',n:'1',h:'2_학교키오스크 / Notion 학교 기획',ck:'파일명'},
+  {ty:'리서치',ti:'배리어프리 무인정보단말기 법규 선행 리서치',n:'1',h:'—',ck:'파일명'},
+  {ty:'Notion 문서',ti:'학교 기획 01~08',n:'8',h:'Notion',ck:'문서 실체'}],
+ missing:['요구사항정의서','IA','화면기획서']
+}];
+
+var SECS = [['ov','개요'],['prb','문제'],['dec','판단'],['did','내가 한 일'],['col','협업'],['num','검증 · 숫자'],['rt','회고'],['sh','산출물 부록']];
+var LB = {1:['l1','직접'],2:['l2','공동'],3:['l3','기여']};
+var SPC = [['#2f5bff','#fff'],['#ffc83d','#17171a'],['#fff','#17171a'],['#ff5d3b','#17171a'],['#17c08a','#17171a'],['#17171a','#fff'],['#9a63ff','#fff'],['#eaf0ff','#17171a'],['#ff6fae','#17171a']];
+var SPH = [196,170,214,182,158,206,176,192,164,210,174,188];
+
+/* ================= 렌더 ================= */
+function vizHTML(p){
+  if(p.viz==='lit'){
+    return '<div class="vz box"><div class="vt">실제 도입 학교 — 2025 → 2026</div>'+
+    '<svg viewBox="0 0 520 86" role="img" aria-label="실제 도입 학교: 2025년 0곳, 2026년 10곳">'+
+    '<text x="0" y="24">2025</text><rect x="52" y="10" width="420" height="20" rx="10" fill="#fbf7f0" stroke="#17171a" stroke-width="1.6"/><rect class="bar" x="52" y="10" width="6" height="20" rx="3" fill="#17171a"/><text class="m" x="480" y="25">0곳</text>'+
+    '<text x="0" y="66">2026</text><rect x="52" y="52" width="420" height="20" rx="10" fill="#fbf7f0" stroke="#17171a" stroke-width="1.6"/><rect class="bar" x="52" y="52" width="420" height="20" rx="10" fill="'+p.ac+'" stroke="#17171a" stroke-width="1.6"/><text class="m" x="480" y="67">10곳</text></svg></div>';
+  }
+  if(p.viz==='formula'){
+    var seg=[['직무',40,'#9a63ff'],['지역',30,'#c9b1ff'],['경력',20,'#eaf0ff'],['복지시설',10,'#ffc83d']], x=0, s='';
+    seg.forEach(function(g){ var w=g[1]*5; s+='<rect class="bar" x="'+x+'" y="26" width="'+w+'" height="34" fill="'+g[2]+'" stroke="#17171a" stroke-width="1.6"/><text x="'+(x+8)+'" y="48">'+g[0]+' '+g[1]+'</text>'; x+=w; });
+    return '<div class="vz box"><div class="vt">AI 추천 적합도 산식 — 50% 이상만 노출</div>'+
+    '<svg viewBox="0 0 500 92" role="img" aria-label="적합도 산식: 직무 40, 지역 30, 경력 20, 복지시설 10. 합계 50 이상일 때만 점수와 사유 노출">'+s+
+    '<line x1="250" y1="12" x2="250" y2="74" stroke="#17171a" stroke-width="2.5" stroke-dasharray="5 4"/><text class="m" x="256" y="14">노출 기준 50%</text>'+
+    '<text class="m" x="0" y="88">0</text><text class="m" x="474" y="88">100</text></svg></div>';
+  }
+  if(p.viz==='qa'){
+    var d=[['Pass',336,'#17c08a'],['Fail',48,'#ff5d3b'],['Block',1,'#17171a'],['N/A',12,'#ffc83d']], tot=397, x2=0, s2='', lg='';
+    d.forEach(function(g,i){ var w=g[1]/tot*500; s2+='<rect class="bar" x="'+x2.toFixed(1)+'" y="10" width="'+Math.max(w,1.5).toFixed(1)+'" height="30" fill="'+g[2]+'" stroke="#17171a" stroke-width="1.4"/>'; x2+=w;
+      lg+='<rect x="'+(i*122)+'" y="56" width="12" height="12" fill="'+g[2]+'" stroke="#17171a" stroke-width="1.4"/><text x="'+(i*122+18)+'" y="67">'+g[0]+' '+g[1]+'</text>'; });
+    return '<div class="vz box"><div class="vt">QA 397케이스 결과 (2026-05-18)</div>'+
+    '<svg viewBox="0 0 500 76" role="img" aria-label="QA 397건 중 Pass 336, Fail 48, Block 1, N/A 12">'+s2+lg+'</svg></div>';
+  }
+  return '';
+}
+
+/* 폴라로이드 증거 썸네일 (요약 카드 전용) */
+function polHTML(p){
+  var e=p.ev;
+  if(e){
+    var ck=p.polCk||e.ck;
+    return '<figure class="pol"><div class="shot"><img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt)+'" loading="lazy" decoding="async"></div>'+
+      '<figcaption><b>'+esc(e.cap)+'</b><span>'+esc(e.date)+'</span>'+(ck?CK(ck):'')+'</figcaption></figure>';
+  }
+  var f=p.polFile||'파일명 확인 필요';
+  return '<figure class="pol empty"><div class="shot" role="img" aria-label="캡처 자리 — 아직 확보한 캡처 없음"><div><strong>캡처 자리</strong>화면 캡처 확보 후 교체</div></div>'+
+    '<figcaption><b>'+esc(f)+'</b><span>캡처 미확보</span>'+CK(p.polFileCk||'캡처')+'</figcaption></figure>';
+}
+
+function figHTML(src,w,h,alt,cap,date,ck){
+  return '<figure class="fig box"><img src="'+src+'" width="'+w+'" height="'+h+'" alt="'+esc(alt)+'" loading="lazy" decoding="async">'+
+    '<figcaption><b>증거</b>'+esc(cap)+(date?' · '+esc(date):'')+(ck?' '+CK(ck):'')+'</figcaption></figure>';
+}
+
+function buildCard(p,i){
+  var a = document.createElement('article');
+  a.className='pcard'; a.id='p-'+p.id; a.setAttribute('data-id',p.id); a.style.setProperty('--ac',p.ac);
+  var prev=P[i-1], next=P[i+1];
+  var h='';
+  /* 상단 슬림 바 */
+  h+='<div class="pc-tb"><div class="in"><div class="tbi">'+
+     '<span class="tag">'+p.no+'</span><b class="nm" id="t-'+p.id+'">'+esc(p.name)+'</b><span class="ms">'+esc(p.stamp)+'</span>'+
+     '<span class="cur" aria-hidden="true"></span>'+
+     '<button type="button" class="ib pv"'+(prev?' aria-label="이전 프로젝트: '+esc(prev.name)+'"':' disabled aria-label="이전 프로젝트 없음"')+'>&larr;</button>'+
+     '<button type="button" class="ib nx"'+(next?' aria-label="다음 프로젝트: '+esc(next.name)+'"':' disabled aria-label="다음 프로젝트 없음"')+'>&rarr;</button>'+
+     '<button type="button" class="ib x" aria-label="닫고 목록으로">&#10005;</button>'+
+     '<i class="prog" aria-hidden="true"></i></div></div></div>';
+  /* 요약 — 시안 4 · 한 줄 요약 + 증거 썸네일 */
+  var cv=p.cv, outDD = cv.out ? cv.out+(cv.outNote?' <small>· '+esc(cv.outNote)+'</small>':'') : esc(cv.outNote||'');
+  h+='<div class="pc-sw"><div class="in"><div class="sum"><div class="sl">'+
+     '<div class="tags"><span class="tag">'+p.no+' · '+esc(p.tag)+'</span><span class="tag">'+esc(p.period)+'</span></div>'+
+     '<h3>'+esc(p.name)+'</h3><p class="one">'+esc(p.one)+'</p>'+
+     '<dl class="cv" aria-label="'+esc(p.name)+' 요약 경력기술서">'+
+       '<div><dt>역할</dt><dd>'+esc(cv.role)+(cv.roleCk?CK(cv.roleCk):'')+'</dd></div>'+
+       '<div><dt>담당 범위</dt><dd>'+esc(cv.scope)+'</dd></div>'+
+       '<div class="out'+(cv.out?'':' none')+'"><dt>핵심 성과</dt><dd>'+outDD+'</dd></div>'+
+     '</dl>'+
+     '<div class="ft">'+p.chips.map(function(c){return '<em>'+esc(c)+'</em>';}).join('')+'</div></div>'+
+     '<div class="sr">'+polHTML(p)+'</div></div>'+
+     '<div class="gorow"><span class="st">'+esc(p.status)+'</span>'+
+     '<button type="button" class="go" aria-expanded="false" aria-controls="d-'+p.id+'">자세히 보기 <i aria-hidden="true">&#8599;</i></button></div>'+
+     '</div></div>';
+  /* 상세 */
+  h+='<div class="pc-det" id="d-'+p.id+'">';
+  h+='<div class="rail" role="navigation" aria-label="'+esc(p.name)+' 상세 목차"><div class="rh">INDEX</div><ol><i class="fill" aria-hidden="true"></i>'+
+     SECS.map(function(s,k){return '<li data-k="'+k+'"><button type="button" data-go="'+s[0]+'"><span class="dot" aria-hidden="true"></span>'+s[1]+'</button></li>';}).join('')+'</ol></div>';
+  h+='<div class="dc">';
+  function sec(k,inner){ var s=SECS[k]; return '<section class="ds" data-s="'+s[0]+'" id="'+p.id+'-'+s[0]+'" aria-labelledby="'+p.id+'-'+s[0]+'-h"><div class="dh"><span>'+String(k+1).padStart(2,'0')+'</span><h4 id="'+p.id+'-'+s[0]+'-h" tabindex="-1">'+s[1]+'</h4></div>'+inner+'</section>'; }
+  /* 1 개요 */
+  h+=sec(0,'<dl class="ov">'+
+     '<div class="ovr box"><dt>역할</dt><dd>'+esc(p.ov.role)+'</dd></div>'+
+     '<div class="ovr box"><dt>기간</dt><dd>'+esc(p.ov.period)+(p.ov.periodCk?CK(p.ov.periodCk):'')+'</dd></div>'+
+     '<div class="ovr box"><dt>결과</dt><dd>'+esc(p.ov.result)+(p.ov.resultCk?CK(p.ov.resultCk):'')+'</dd></div></dl>');
+  /* 2 문제 */
+  h+=sec(1,'<p class="prb box">'+esc(p.problem)+(p.problemCk?CK(p.problemCk):'')+'</p>');
+  /* 3 판단 */
+  var dh = p.dec.length ? p.dec.map(function(d){
+      return '<div class="dec"><h5>'+esc(d.t)+'</h5><div class="ab">'+
+        '<div class="opt no"><span class="ol">A안 · 포기</span><p>'+esc(d.a)+'</p></div>'+
+        '<div class="opt yes"><span class="ol">B안 · 선택</span><p>'+esc(d.b)+'</p></div></div>'+
+        '<p class="why"><b>WHY</b><span>'+esc(d.why)+'</span></p></div>'; }).join('')
+    : '<div class="rt">'+CK('판단 기록')+'<br>'+esc(p.decNote)+'</div>';
+  h+=sec(2,dh);
+  /* 4 내가 한 일 */
+  var lg='<div class="lgd"><span class="lb l1">직접</span>본인 작성 <span class="lb l2">공동</span>함께 작성·합의 <span class="lb l3">기여</span>선행본 개정·일부 참여 '+CK('라벨은 my_role·산출물 기록 기준 분류, 본인 최종 확인')+'</div>';
+  var items='<div class="did">'+p.did.map(function(d){
+     var l=LB[d.lb];
+     return '<div class="it box"><div class="ih"><span class="lb '+l[0]+'">'+l[1]+'</span><h5>'+esc(d.t)+'</h5>'+(d.ck?CK(d.ck):'')+'</div>'+
+       '<div class="ab2"><div class="as'+(d.as?'':' none')+'"><small>AS-IS</small>'+(d.as?esc(d.as):'기록 없음 '+CK())+'</div>'+
+       '<div class="ar" aria-hidden="true">&rarr;</div><div class="tb2"><small>TO-BE</small>'+esc(d.to)+'</div></div></div>'; }).join('')+'</div>';
+  var ev = p.ev ? figHTML(p.ev.src,p.ev.w,p.ev.h,p.ev.alt,p.ev.cap,p.ev.date,p.ev.ck)
+                : '<figure class="fig box"><div class="ph">'+esc(p.evNote)+'</div><figcaption><b>증거</b>캡처 확보 전 '+CK()+'</figcaption></figure>';
+  h+=sec(3,lg+items+ev);
+  /* 5 협업 */
+  h+=sec(4,'<div class="cl">'+p.collab.map(function(c){return '<div class="box"><b>'+esc(c[0])+'</b><span>'+esc(c[1])+'</span></div>';}).join('')+'</div>');
+  /* 6 검증·숫자 */
+  h+=sec(5,vizHTML(p)+'<div class="ng">'+p.nums.map(function(n){return '<div class="nt box"><b>'+esc(n.v)+'</b><span>'+esc(n.l)+'</span>'+(n.ck?CK(n.ck):'')+'<small>출처 · '+esc(n.s)+'</small></div>';}).join('')+'</div>'+
+     (p.numNote?'<p class="nnote">'+esc(p.numNote)+'</p>':''));
+  /* 7 회고 */
+  h+=sec(6, p.retro ? '<div class="rt">'+CK('초안 · 본인 확인 필요')+'<p>'+esc(p.retro)+'</p></div>'
+                    : '<div class="rt">'+CK('회고 미작성')+'<p>진행 중 과제 — 착수 단계라 회고는 아직 쓰지 않았습니다.</p></div>');
+  /* 8 산출물 책장 */
+  var sp='', fl='';
+  p.shelf.forEach(function(s,k){
+    var c=SPC[k%SPC.length], fid='f-'+p.id+'-'+k;
+    sp+='<button type="button" class="sp'+(k===p.shelf.length-1?' lean':'')+'" style="--h:'+SPH[k%SPH.length]+'px;--w:'+(48+(k*7)%14)+'px;--c:'+c[0]+';--t:'+c[1]+'" aria-pressed="'+(k===0)+'" aria-controls="'+fid+'" tabindex="'+(k===0?0:-1)+'" data-k="'+k+'">'+esc(s.ty)+'<small>'+esc(s.n)+'</small></button>';
+    var fig = s.img ? '<figure class="fig box"><img src="'+s.img+'" width="'+s.iw+'" height="'+s.ih+'" alt="'+esc(s.cap)+'" loading="lazy" decoding="async"><figcaption>'+esc(s.cap)+'</figcaption></figure>'
+                    : '<div class="fig box"><div class="ph">캡처 없음<br>원본 파일 위치: '+esc(s.h)+'</div></div>';
+    fl+='<div class="flat box" id="'+fid+'"'+(k===0?'':' hidden')+' role="region" aria-label="'+esc(s.ty)+' 상세">'+
+        '<div><div class="ft2"><span class="tag">'+esc(s.ty)+'</span>'+(s.ck?CK(s.ck):'')+'</div><h5>'+esc(s.ti)+'</h5>'+
+        '<dl><dt>분량</dt><dd class="tnum">'+esc(s.n)+'</dd><dt>위치</dt><dd>'+esc(s.h)+'</dd>'+(s.note?'<dt>비고</dt><dd>'+esc(s.note)+'</dd>':'')+'</dl></div>'+fig+'</div>';
+  });
+  (p.missing||[]).forEach(function(m,k){
+    sp+='<span class="sp gh" style="--h:'+(150+k*12)+'px;--w:46px" aria-hidden="true">'+esc(m)+'<small>없음</small></span>';
+  });
+  h+=sec(7,'<div class="shelfwrap"><div class="shelf" role="group" aria-label="산출물 책장 — 좌우 화살표로 이동, Enter로 펼치기">'+sp+'</div></div>'+
+     '<p class="shint"><span>책등을 누르면 아래에 펼쳐집니다 · 총 '+p.shelf.length+'종</span>'+((p.missing&&p.missing.length)?'<span>점선 = 보유하지 않은 산출물 ('+esc(p.missing.join(' · '))+')</span>':'')+'</p>'+fl);
+  h+='</div></div>';
+  a.innerHTML=h;
+  return a;
+}
+
+var stack=document.getElementById('stack');
+P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
+
 
   /* ---------- E4 : 히어로 제목 글자 stagger ---------- */
   (function(){
@@ -543,37 +1042,39 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
     nums.forEach(function(b){io.observe(b);});
   })();
 
-  /* ---------- E12 : 스티키 스택 — 뒤 카드 축소 + 디밍 ---------- */
-  (function(){
-    var cards = $('.pcard');
-    if(cards.length < 2) return;
-    var tops = [90,104,118,132,146];
-    var ticking = false;
-    function update(){
-      ticking = false;
-      if(RM || window.innerWidth <= 900){
-        cards.forEach(function(c){ c.style.removeProperty('--sc'); c.style.removeProperty('--dim'); });
-        return;
-      }
-      for(var i=0;i<cards.length;i++){
-        var p = 0;
-        if(i < cards.length - 1){
-          var nxt = cards[i+1];
-          var nTop = nxt.getBoundingClientRect().top;
-          var pin = tops[i+1] || 146;
-          var travel = 420;
-          p = 1 - (nTop - pin) / travel;
-          p = p < 0 ? 0 : (p > 1 ? 1 : p);
-        }
-        cards[i].style.setProperty('--sc', (1 - 0.02 * p).toFixed(4));
-        cards[i].style.setProperty('--dim', (0.085 * p).toFixed(4));
-      }
+  var OPEN = null;  /* 열린 카드 — E12 일시정지에 사용 */
+  var e12Update;
+  /* ---------- E12 : 스티키 스택 — 뒤 카드 축소 + 디밍 (열림 상태 고려) ---------- */
+(function(){
+  var cards = $('.pcard');
+  if(cards.length < 2) return;
+  var tops = [90,104,118,132,146,160];
+  var ticking = false;
+  function update(){
+    ticking = false;
+    if(OPEN) return;
+    if(RM || window.innerWidth <= 900){
+      cards.forEach(function(c){ c.style.removeProperty('--sc'); c.style.removeProperty('--dim'); });
+      return;
     }
-    function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll);
-    update();
-  })();
+    for(var i=0;i<cards.length;i++){
+      var p = 0;
+      if(i < cards.length - 1){
+        var nTop = cards[i+1].getBoundingClientRect().top;
+        var pin = tops[i+1] || 160;
+        p = 1 - (nTop - pin) / 420;
+        p = p < 0 ? 0 : (p > 1 ? 1 : p);
+      }
+      cards[i].style.setProperty('--sc', (1 - 0.02 * p).toFixed(4));
+      cards[i].style.setProperty('--dim', (0.085 * p).toFixed(4));
+    }
+  }
+  function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  e12Update = update;
+  update();
+})();
 
   /* ---------- E10 : 자기장 호버 (최대 5px) ---------- */
   (function(){
@@ -720,6 +1221,188 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
     }
     update();
   })();
+  /* ---------- 풀스크린 개화 (FLIP) ---------- */
+/* ================= 풀스크린 개화 (FLIP) ================= */
+var page=document.getElementById('page'), portal=document.getElementById('portal'), scrim=document.getElementById('scrim'), root=document.documentElement;
+var PH=null, BUSY=false, DUR=RM?0:560;
+function mob(){ return window.innerWidth<=900; }
+function gap(){ return mob()?0:16; }
+function setRect(c,r){ c.style.left=r.left+'px'; c.style.top=r.top+'px'; c.style.width=r.width+'px'; c.style.height=r.height+'px'; c.style.right='auto'; c.style.bottom='auto'; }
+function fullRect(){ var g=gap(); return {left:g,top:g,width:root.clientWidth-2*g,height:window.innerHeight-2*g}; }
+function toInset(c){ var g=gap()+'px'; c.style.left=g; c.style.top=g; c.style.right=g; c.style.bottom=g; c.style.width='auto'; c.style.height='auto'; c.style.borderRadius=mob()?'0':''; }
+function noanim(c,fn){ c.classList.add('noanim'); fn(); void c.offsetWidth; c.classList.remove('noanim'); }
+function card(id){ return document.getElementById('p-'+id); }
+function idxOf(c){ for(var i=0;i<P.length;i++){ if(P[i].id===c.getAttribute('data-id')) return i; } return -1; }
+
+function scrollToSlot(c){
+  var old=c.style.position; c.style.position='static';
+  var y=c.getBoundingClientRect().top+window.scrollY;
+  c.style.position=old;
+  var t = mob()? 16 : (parseFloat(getComputedStyle(c).top)||90);
+  window.scrollTo({top:Math.max(0,y-t),behavior:'instant'});
+}
+
+function lockPage(on){
+  root.classList.toggle('lock',on);
+  page.inert=on;
+  scrim.classList.toggle('on',on);
+}
+
+function openCard(c,opt){
+  if(BUSY||OPEN===c||!c) return;
+  opt=opt||{};
+  var r0=c.getBoundingClientRect(), bg=getComputedStyle(c).backgroundColor;
+  PH=document.createElement('div'); PH.className='pcard ph'; PH.setAttribute('aria-hidden','true');
+  PH.style.height=c.offsetHeight+'px';
+  c.parentNode.replaceChild(PH,c); portal.appendChild(c);
+  OPEN=c; BUSY=true;
+  $('.pcard',stack).forEach(function(x){ x.style.removeProperty('--sc'); x.style.removeProperty('--dim'); });
+  c.style.removeProperty('--sc'); c.style.removeProperty('--dim');
+  c.style.background=bg;
+  c.setAttribute('role','dialog'); c.setAttribute('aria-modal','true'); c.setAttribute('aria-labelledby','t-'+c.getAttribute('data-id'));
+  c.querySelector('.go').setAttribute('aria-expanded','true');
+  lockPage(true);
+  var det=c.querySelector('.pc-det');
+  if(opt.swap){
+    noanim(c,function(){ c.classList.add('flying','is-open'); toInset(c); });
+    det.scrollTop=0;
+    if(!RM){ c.classList.add(opt.swap); setTimeout(function(){ c.classList.remove(opt.swap); },480); }
+    done();
+  } else {
+    noanim(c,function(){ c.classList.add('flying'); setRect(c,r0); });
+    c.classList.add('is-open');
+    det.scrollTop=0;
+    if(mob()) c.style.borderRadius='0';
+    setRect(c,fullRect());
+    setTimeout(function(){ noanim(c,function(){ toInset(c); }); done(); }, DUR+40);
+  }
+  function done(){
+    BUSY=false;
+    var f = opt.focus ? c.querySelector(opt.focus) : null;
+    if(!f || f.disabled) f=c.querySelector('.ib.x');
+    f.focus({preventScroll:true});
+    history.replaceState(null,'','#p/'+c.getAttribute('data-id'));
+    railUpdate(c);
+  }
+}
+
+function restore(c){
+  noanim(c,function(){
+    c.classList.remove('flying','is-open','closing','swR','swL');
+    ['left','top','right','bottom','width','height','background','border-radius'].forEach(function(k){ c.style.removeProperty(k); });
+    if(PH&&PH.parentNode) PH.parentNode.replaceChild(c,PH);
+  });
+  c.removeAttribute('role'); c.removeAttribute('aria-modal'); c.removeAttribute('aria-labelledby');
+  c.querySelector('.go').setAttribute('aria-expanded','false');
+  PH=null; OPEN=null;
+}
+
+function closeCard(instant){
+  if(!OPEN||BUSY) return;
+  var c=OPEN; BUSY=true;
+  function finish(){
+    restore(c); lockPage(false); BUSY=false;
+    history.replaceState(null,'',location.pathname+location.search);
+    c.querySelector('.go').focus({preventScroll:true});
+    if(e12Update) e12Update();
+  }
+  if(instant||RM){ finish(); return; }
+  c.classList.add('closing');
+  setTimeout(function(){
+    var r=c.getBoundingClientRect(), t=PH.getBoundingClientRect();
+    noanim(c,function(){ setRect(c,r); });
+    c.classList.remove('is-open','closing');
+    c.style.borderRadius='';
+    setRect(c,{left:t.left,top:t.top,width:t.width,height:t.height});
+    scrim.classList.remove('on');
+    setTimeout(finish, DUR+40);
+  },140);
+}
+
+function swap(dir){
+  if(!OPEN||BUSY) return;
+  var i=idxOf(OPEN)+dir; if(i<0||i>=P.length) return;
+  var nc=card(P[i].id);
+  restore(OPEN);
+  scrollToSlot(nc);
+  openCard(nc,{swap:dir>0?'swR':'swL',focus:dir>0?'.ib.nx':'.ib.pv'});
+}
+
+/* 레일 · 진행 */
+function railUpdate(c){
+  var det=c.querySelector('.pc-det'); if(!det) return;
+  var secs=$('.ds',det), lis=$('.rail li',det), st=det.scrollTop, max=det.scrollHeight-det.clientHeight;
+  var line=st+det.clientHeight*0.32, k=0;
+  secs.forEach(function(s,i){ if(s.offsetTop<=line) k=i; });
+  if(max>0 && st>=max-4) k=secs.length-1;
+  lis.forEach(function(li,i){ li.classList.toggle('done',i<k); li.classList.toggle('cur',i===k); var b=li.querySelector('button'); if(i===k) b.setAttribute('aria-current','step'); else b.removeAttribute('aria-current'); });
+  var fill=det.querySelector('.rail .fill'); if(fill) fill.style.height='calc((100% - 32px) * '+(k/(secs.length-1)).toFixed(3)+')';
+  c.querySelector('.prog').style.transform='scaleX('+(max>0?Math.min(1,st/max):0).toFixed(3)+')';
+  c.querySelector('.tbi .cur').textContent=String(k+1).padStart(2,'0')+' / '+SECS[k][1];
+  var dr=det.getBoundingClientRect();
+  $('.vz',det).forEach(function(v){ if(v.getBoundingClientRect().top < dr.bottom-40) v.classList.add('in'); });
+}
+
+/* 이벤트 위임 */
+document.addEventListener('click',function(e){
+  var t=e.target;
+  var go=t.closest('.go'); if(go){ var c=go.closest('.pcard'); if(OPEN!==c) openCard(c); return; }
+  var sum=t.closest('.sum'); if(sum && !OPEN){ openCard(sum.closest('.pcard')); return; }
+  if(t.closest('.ib.x')){ closeCard(); return; }
+  if(t.closest('.ib.nx')){ swap(1); return; }
+  if(t.closest('.ib.pv')){ swap(-1); return; }
+  if(t===scrim){ closeCard(); return; }
+  var rg=t.closest('.rail button');
+  if(rg){ var cc=rg.closest('.pcard'), det=cc.querySelector('.pc-det'), s=det.querySelector('[data-s="'+rg.getAttribute('data-go')+'"]');
+    det.scrollTo({top:s.offsetTop-12,behavior:RM?'auto':'smooth'}); s.querySelector('h4').focus({preventScroll:true}); return; }
+  var sp=t.closest('.sp:not(.gh)');
+  if(sp){ pickSpine(sp); }
+});
+function pickSpine(sp){
+  var shelf=sp.parentNode, sec=shelf.closest('.ds');
+  $('.sp:not(.gh)',shelf).forEach(function(b){ var on=b===sp; b.setAttribute('aria-pressed',String(on)); b.tabIndex=on?0:-1; });
+  $('.flat',sec).forEach(function(f){ f.hidden = f.id!==sp.getAttribute('aria-controls'); });
+  var f=document.getElementById(sp.getAttribute('aria-controls'));
+  f.style.animation='none'; void f.offsetWidth; f.style.animation='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape' && OPEN){ e.preventDefault(); closeCard(); return; }
+  var sp=e.target.closest && e.target.closest('.sp:not(.gh)');
+  if(sp && /^(ArrowLeft|ArrowRight|Home|End)$/.test(e.key)){
+    e.preventDefault();
+    var all=$('.sp:not(.gh)',sp.parentNode), i=all.indexOf(sp);
+    i = e.key==='Home'?0 : e.key==='End'?all.length-1 : (i+(e.key==='ArrowRight'?1:-1)+all.length)%all.length;
+    all.forEach(function(b,k){ b.tabIndex=k===i?0:-1; });
+    all[i].focus(); all[i].scrollIntoView({block:'nearest',inline:'nearest'});
+    return;
+  }
+  if(e.key==='Tab' && OPEN){
+    var fs=$('button:not([disabled]),a[href],[tabindex="0"]',OPEN).filter(function(x){ return x.offsetParent!==null && !x.closest('.pc-sw'); });
+    if(!fs.length) return;
+    var first=fs[0], last=fs[fs.length-1];
+    if(e.shiftKey && document.activeElement===first){ e.preventDefault(); last.focus(); }
+    else if(!e.shiftKey && document.activeElement===last){ e.preventDefault(); first.focus(); }
+  }
+});
+$('.pc-det').forEach(function(det){
+  var tk=false;
+  det.addEventListener('scroll',function(){ if(tk) return; tk=true; requestAnimationFrame(function(){ tk=false; if(OPEN) railUpdate(OPEN); }); },{passive:true});
+});
+window.addEventListener('resize',function(){ if(OPEN&&!BUSY){ toInset(OPEN); railUpdate(OPEN); } });
+window.addEventListener('beforeprint',function(){ if(OPEN){ BUSY=false; closeCard(true); } });
+
+/* 해시 진입 #p/{id} */
+function fromHash(){
+  var m=/^#p\/([\w-]+)$/.exec(location.hash); if(!m) return;
+  var c=card(m[1]); if(!c||OPEN===c) return;
+  if(OPEN){ restore(OPEN); lockPage(false); }
+  scrollToSlot(c);
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ openCard(c); }); });
+}
+window.addEventListener('hashchange',fromHash);
+if(location.hash) fromHash();
+
+window.__ga={open:function(id){openCard(card(id));},close:function(){closeCard();},swap:swap,state:function(){return {open:OPEN&&OPEN.getAttribute('data-id'),busy:BUSY};}};
 })();
 </script>
 </body>
