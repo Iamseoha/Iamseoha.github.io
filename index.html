@@ -193,7 +193,7 @@ footer{padding:36px 0 110px;text-align:center;font-family:var(--mono);font-size:
 .lg-bubble{left:118px}
 .hero-top{gap:10px}
 .nums{grid-template-columns:1fr 1fr}
-.pcard,.pcard:nth-child(1),.pcard:nth-child(2),.pcard:nth-child(3),.pcard:nth-child(4),.pcard:nth-child(5),.pcard:nth-child(6),.pcard:nth-child(7){padding:26px;border-radius:22px;position:static;transform:none}
+.pcard,.pcard:nth-child(1),.pcard:nth-child(2),.pcard:nth-child(3),.pcard:nth-child(4),.pcard:nth-child(5),.pcard:nth-child(6),.pcard:nth-child(7),.pcard:nth-child(8){padding:26px;border-radius:22px;position:static;transform:none}
 .pcard::after{display:none}
 .pcard .bd{grid-template-columns:1fr;gap:20px}
 .pcard ul{grid-row:auto}
@@ -220,6 +220,7 @@ nav{gap:0;padding:5px}nav a{padding:8px 11px;font-size:10px}
 /* ===== 프로젝트 카드 — 요약(한줄요약+캡처) + 풀스크린 개화 상세 ===== */
 .pcard:nth-child(6){background:#ffe9f3;top:160px}
 .pcard:nth-child(7){background:#fff3e6;top:174px}
+.pcard:nth-child(8){background:#e6f7fb;top:188px}
 /* ===== 시안 가 · 풀스크린 개화 — 신규 ===== */
 html{scrollbar-gutter:stable}
 html.lock{overflow:hidden}
@@ -287,35 +288,34 @@ html.lock{overflow:hidden}
 .scr.pt .sc{width:auto;height:380px;border-radius:30px}
 .scr.pt .sc img{width:auto;height:100%}
 .pcard:hover .scr .sc{transform:rotate(calc(var(--tilt) * .3)) translateY(-4px);box-shadow:11px 11px 0 var(--ink)}
-/* 키오스크 기기 틀 — 인터박스(스탠드형) · 홀로오더(꺾인 투명 OLED) */
+/* 키오스크 기기 틀 — 인터박스(대형 스탠드형) · 홀로오더(소형 꺾인 투명 OLED) */
 .scr.dev{--tilt:0deg}
 .scr.dev .kio{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transition:transform .4s var(--pop)}
 .pcard:hover .scr.dev .kio{transform:translateY(-4px)}
-.scr.dev .kb{position:relative;border:2px solid var(--ink);background:#fff;box-shadow:8px 8px 0 var(--ink)}
 .scr.dev .ks{overflow:hidden;background:#111}
 .scr.dev .ks img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
-.scr.dev .kp{width:38px;height:34px;background:#e9e5dc;border:2px solid var(--ink);border-top:0}
-.scr.dev .kf{width:150px;height:14px;border:2px solid var(--ink);border-radius:3px;background:#fff;box-shadow:5px 5px 0 var(--ink)}
-/* 스탠드형: 두꺼운 하단 베젤 + 로고 띠 + 기둥·받침 */
-.scr.stand .kb{border-radius:14px;padding:12px 12px 0}
-.scr.stand .ks{width:200px;aspect-ratio:9/16;border:1.5px solid var(--ink);border-radius:5px}
-.scr.stand .kl{height:30px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--gy);text-transform:uppercase}
-.scr.stand .kp{height:56px}
-/* 꺾인 OLED: 위 1/3이 뒤로 접힌 투명 패널. 두 조각이 한 화면을 나눠 보여준다 */
-.scr.bent .kb{border:0;background:none;box-shadow:none;perspective:900px;perspective-origin:50% 70%;width:230px}
-.scr.bent .ks{width:230px;border:2px solid var(--ink);background:rgba(255,255,255,.92)}
+/* 스탠드형: 흰 외함, 하단 베젤에 스피커 홈 + 라벨, 바닥 받침 */
+.scr.stand .kb{border:2.5px solid var(--ink);border-radius:16px 16px 8px 8px;background:#fff;padding:14px 14px 0;box-shadow:9px 9px 0 var(--ink)}
+.scr.stand .ks{width:210px;aspect-ratio:9/16;border:2px solid var(--ink);border-radius:4px}
+.scr.stand .kl{height:58px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--gy);text-transform:uppercase}
+.scr.stand .kl i{flex:1;height:10px;background:radial-gradient(circle,rgba(23,23,26,.35) 1.2px,transparent 1.6px) 0 0/5px 5px}
+.scr.stand .kf{width:262px;height:16px;margin-top:-2px;border:2.5px solid var(--ink);border-radius:0 0 8px 8px;background:#e9e5dc;box-shadow:9px 9px 0 var(--ink)}
+/* 꺾인 OLED: 3/4 시점. 패널 한 장을 위/아래로 나누고 위쪽만 뒤로 꺾는다. 유리 느낌의 반투명 + 얇은 잉크 테두리 */
+.scr.bent .k3{perspective:1100px;perspective-origin:50% 60%}
+.scr.bent .k3>*{transform-style:preserve-3d}
+.scr.bent .ks{width:236px;border:2px solid var(--ink);background:#fff}
 .scr.bent .ks-in{width:100%;height:100%;overflow:hidden}
-.scr.bent .ks-top{height:150px;border-radius:12px 12px 0 0;border-bottom:0;transform-origin:50% 100%;transform:rotateX(-26deg);box-shadow:6px -2px 0 rgba(23,23,26,.55)}
-.scr.bent .ks-top .ks-in{height:150px}
+.scr.bent .ks-top{height:132px;border-bottom:0;border-radius:10px 10px 0 0;transform-origin:50% 100%;transform:rotateX(-32deg);box-shadow:inset 0 -24px 30px -20px rgba(23,23,26,.25)}
+.scr.bent .ks-top .ks-in{height:132px}
 .scr.bent .ks-top img{height:auto}
-.scr.bent .ks-bot{height:250px;border-radius:0 0 10px 10px;box-shadow:8px 8px 0 var(--ink);background:#fff}
-.scr.bent .ks-bot .ks-in{height:250px}
-.scr.bent .ks-bot img{height:auto;transform:translateY(-150px)}
-.scr.bent .ks-bot::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.9),rgba(255,255,255,.0));z-index:2;pointer-events:none}
-.scr.bent .ks-bot{position:relative}
-.scr.bent .kp{width:26px;height:40px}
-.scr.bent .kf{width:120px}
-@media(max-width:760px){.scr.stand .ks{width:170px}.scr.bent .kb,.scr.bent .ks{width:200px}.scr.bent .ks-top{height:130px}.scr.bent .ks-top .ks-in{height:130px}.scr.bent .ks-bot,.scr.bent .ks-bot .ks-in{height:220px}.scr.bent .ks-bot img{transform:translateY(-130px)}}
+.scr.bent .ks-bot{position:relative;height:268px;border-radius:0 0 8px 8px;box-shadow:10px 10px 0 var(--ink)}
+.scr.bent .ks-bot .ks-in{height:268px}
+.scr.bent .ks-bot img{height:auto;transform:translateY(-132px)}
+.scr.bent .ks-bot .kg{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 18%),linear-gradient(100deg,rgba(255,255,255,0) 55%,rgba(255,255,255,.22) 62%,rgba(255,255,255,0) 70%)}
+.scr.bent .ks-top::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.05));pointer-events:none}
+.scr.bent .kp{width:16px;height:54px;background:#17171a;border-radius:0 0 3px 3px}
+.scr.bent .kf{width:190px;height:16px;margin-top:-2px;border:2.5px solid var(--ink);border-radius:50%;background:#e9e5dc;box-shadow:6px 6px 0 var(--ink)}
+@media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.bent .ks{width:200px}.scr.bent .ks-top,.scr.bent .ks-top .ks-in{height:112px}.scr.bent .ks-bot,.scr.bent .ks-bot .ks-in{height:228px}.scr.bent .ks-bot img{transform:translateY(-112px)}}
 .scr figcaption{position:relative;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .scr figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
 .scr figcaption span{color:var(--gy)}
@@ -754,7 +754,50 @@ var P = [
  missing:['요구사항정의서','기능명세서','WBS']
 },
 {
- id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:900,cap:'잡콕 메인 — 통합 검색 + 직무 분류',date:'jobkok.kr 실서비스'}, no:'004', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
+ id:'crew', main:{src:'assets/main_crew.webp',w:1440,h:735,cap:'승무원 모의면접 응답 화면 — 학교·학과 맞춤 질문, 생각 90초 · 최소 30초 후 종료',date:'Figma 디자인 · PC'}, no:'004', name:'승무원 면접코치', tag:'AI 면접 · B2B 학원', period:'2025.06 – 2026.06', ac:'#2fb8d6',
+ cv:{role:'인계 후 개정 — 선임 기획자 초기 SB를 인계받아 요구사항·스토리보드 V1~V3·면접 구성 정책 작성',scope:'고객 요청 20건 판정 · 요구사항정의서 · 스토리보드 46p(학생 33 · 학원 관리자 13) · 면접 구성·평가 비율 정책 · 질문 DB V01→V04 총괄 · 매뉴얼 2종 · 2차 고객사 납품',out:'학원 3곳 운영 · 누적 모의면접 <mark>877건</mark> · 리포트 449건 (2026-09-18 실측)',outNote:'위드마인드 통합 대시보드 직접 조회값. 계약 금액·인원은 기재하지 않음'},
+ stamp:'인계 후 개정', status:'운영 중 (학원 3곳) — 2차 개발 3건 반영 여부 확인 필요',
+ one:'면접코치(학원 관리자)와 면접왕(리포트)을 승무원 학원용으로 고도화한 AI 모의면접입니다. 고객 요청 20건을 가능/2차/불가로 판정해 요구사항을 정의하고, 대입·취업 11문항 구성과 4축 평가 비율, 학원별 질문 DB 분기까지 정책으로 묶어 학원 3곳에 납품했습니다.',
+ keys:[{v:'877',l:'누적 AI 모의면접 (학원 3곳, 2026-09-18)'},{v:'20 → 14/3/2',l:'고객 요청 → 1차 가능 / 2차 / 불가 (건)'}],
+ chips:['요청 20건 판정','요구사항정의서','스토리보드 46p','면접 구성 정책','4축 평가 비율','질문 DB V01→V04','매뉴얼 2종'],
+ ov:{role:'담당 기획자 — 요구사항정의서·스토리보드 V1~V3·면접 구성 최종정책 작성자. 초기 SB(2025-05-20)는 선임 기획자 작성본을 인계받아 개정. 질문 데이터 정제는 데이터 담당자와 분담.',
+     period:'2025.06 ~ 2026.06 — 고객 요청 수령(06-18) → SB V1(06-19) → 기획 검토 회의(07-14) → SB V3(07-25) → 1차 고객사 계정·매뉴얼 전달(09) → 2차 고객사 계약(2026-01) → 질문 DB 6개교 교체·정책 확정(2026-05-26) → 모바일 TC(06-30)',
+     result:'학원 3곳 누적 면접 877건 · 리포트 449건(전환율 51.2%, 2026-09-18 실측). 질문 DB 1,335행 → 3,596행. 학생·학원 관리자 2개 도메인 46p 기획.'},
+ problem:'면접코치·면접왕은 고등학생 대입용이라 승무원 학원에 그대로 쓸 수 없었다. 질문이 기출이 아닌 AI 생성이고, 생각·답변 시간이 짧고 답변 중 종료가 안 됐으며, 취업(항공사)·대입(항공과) 분기도, 영어 면접도, 강사가 리포트에 코멘트를 남길 관리자 기능도 없었다. 고객사 요청 20건에는 역량검사 앱·Zoom 연동처럼 서비스 범위 밖의 것도 섞여 있었다.',
+ dec:[
+  {t:'고객 요청 20건의 수용 범위',a:'요청을 그대로 개발 목록으로',b:'1차 가능 14 / 2차 3 / 불가 2 / 개선 중 1로 판정해 사유와 함께 요구사항정의서에 기재',why:'외부 앱·화상 연동은 서비스 성격 밖. 전신 분석은 AI 고도화가 먼저라 1차에서 분리'},
+  {t:'면접 진입 구조',a:'대입 단일 흐름 + 생기부 등록 팝업',b:'첫 화면에서 대입/취업 선택 → 대입은 학교·학과, 취업은 국내/해외 항공사 (해외는 전체 영어)',why:'항공과 입시와 항공사 취업은 질문 유형·언어가 달라 한 흐름에 넣을 수 없음'},
+  {t:'질문 소스',a:'AI 생성 질문',b:'고객사 기출 질문 DB + 4·6·10번만 직전 답변 기반 GPT 꼬리질문, 1번은 선택 학교/항공사 맞춤',why:'AI스럽고 오타 있는 질문이라는 지적을 데이터로 해결하고, 맥락이 필요한 꼬리질문만 생성에 맡김'},
+  {t:'시간 정책',a:'기존 시간, 답변 중 종료 불가',b:'생각 90초 / 답변 최대 90초, 30초 경과 후 종료 가능',why:'고객 요청은 말 끝나면 바로 넘기기였지만 AI 분석 정확도를 위해 최소 30초 유지'},
+  {t:'종합 점수 산식',a:'면접왕 리포트 비율 그대로',b:'역량 55 / 태도 20 / 음성 20 / 긴장도 5 (태도 = 미소 50 · 자세 20 · 시선 15 · 제스처 15)',why:'승무원 면접은 미소·태도 비중이 커 고객사와 100점 산식을 합의'},
+  {t:'학원별 질문 DB',a:'고객사별 하드코딩',b:'통합 데이터 스키마(한글→코드 정규화)에 학교·항공사 분기를 담아 학원별 DB 교체로 처리',why:'2차 고객사부터 데이터만 바꿔 납품하기 위해'}],
+ did:[
+  {lb:1,t:'고객 요청 판정·요구사항정의서',as:'고객사 요청 20건 원문',to:'요약·상세·가능 여부·개발 시점·고려사항 7열 정리 (1차 14 / 2차 3 / 불가 2 / 개선 중 1)'},
+  {lb:1,t:'스토리보드 V1→V3 (46p)',as:'선임 기획자 초기 SB 23p (면접코치 기반)',to:'학생 PC 33p(준비·환경체크 / 진행 / 리포트 / 생기부 / 기출질문) + 학원 관리자 13p(메인 / 면접관리 / 통계), 화면별 FLOW·번호 설명·예외'},
+  {lb:1,t:'면접 구성 최종정책',as:'11문항 구성이 버전마다 달랐음',to:'대입/취업 11문항 표, 꼬리질문 규칙, 평가 비율, 특수 전형(생기부·영문 낭독·해외 항공사), 학원별 적용 현황을 1개 문서로 확정 (2026-05-26)'},
+  {lb:2,t:'질문 DB 구축·정제 총괄',as:'고객사 기출·모범답안·학교/항공사 리스트',to:'V01 1,335행 → V02 스키마 전환 → V04 코드 정규화 → 6개교 재분류 교체 3,596행. 데이터 담당자와 분담'},
+  {lb:1,t:'학생·학원용 사용설명서',as:null,to:'학생용 24p(2025.09) · 학원용 25p(2025.12)'},
+  {lb:2,t:'2차 고객사 납품',as:'1차 고객사 기준 서비스',to:'테스트 계정·요금제 안내 → 로고·질문 DB 교체 → 매뉴얼·계약 → 연장 요금제. 견적·계약 발송은 영업 담당과 공동'},
+  {lb:3,t:'QA·모바일 TC',as:'퍼블리싱 결과물',to:'학생·학원 페이지 QA 체크리스트 분담, 모바일 TC 144건(Pass 143)',ck:'작성 주체'}],
+ ev:null, evNote:'',
+ collab:[['선임 기획자','초기 스토리보드(면접코치 기반) 인계'],['고객사 담당자','요청 20건, 기출 질문·모범답안, 평가 기준표, 기획 검토 회의(2025-07-14)'],['데이터 담당자','통합 데이터 V01~V04 정제'],['개발자','질문 DB·6개교 데이터 교체 반영'],['영업 담당','2차 고객사 견적·계약 발송']],
+ nums:[{v:'877 / 449',l:'누적 면접 / 리포트 (학원 3곳, 2026-09-18)',s:'관리자 지표 수집 xlsx · 통합 대시보드'},{v:'51.2%',l:'리포트 전환율 (449/877)',s:'계산값'},{v:'20 → 14/3/2',l:'고객 요청 → 1차 가능/2차/불가',s:'요구사항정의서'},{v:'46p',l:'스토리보드 V3 (학생 33 · 관리자 13)',s:'승무원ai면접 훈련_V3_250725'},{v:'1,335 → 3,596행',l:'질문 DB V01 → V04+6개교 교체 (중복 제거 전)',s:'증거원장 B-4 · 작업이력'},{v:'55/20/20/5',l:'역량/태도/음성/긴장도 비율',s:'면접구성 최종정책'},{v:'144 (Pass 143)',l:'모바일 TC (2026-06-30)',s:'크루쉽_모바일_TC_260630',ck:'작성 주체'}],
+ numNote:'질문 수는 행수(헤더 포함)이며 중복 제거는 하지 않음. 계약 금액·인원·고객사명은 쓰지 않음.',
+ retro:null,
+ shelf:[
+  {ty:'고객 요청',ti:'승무원 AI 모의면접 프로그램 개발 관련 요청사항.pdf (4p)',n:'1',h:'2_승무원면접/01_요청사항_고객'},
+  {ty:'요구사항정의서',ti:'승무원 AI면접훈련 서비스 요구사항_임서하.xlsx (20건 판정)',n:'1',h:'2_승무원면접/01_요구사항정의서'},
+  {ty:'스토리보드',ti:'승무원ai면접 훈련_V3_250725_임서하.pptx (46p) · V1 250619',n:'2',h:'2_승무원면접/02_스토리보드'},
+  {ty:'정책정의서',ti:'승무원AI면접_면접구성_최종정책.md (2026-05-26) · 승무원_작업이력.md',n:'2',h:'2_승무원면접/03_정책_면접구성'},
+  {ty:'평가체계',ti:'리포트.xlsx(반영비율) · 키워드 24개.xlsx',n:'2',h:'2_승무원면접/04_리포트·평가체계'},
+  {ty:'질문 DB',ti:'승무원 통합 데이터(항공과,항공사)_V01~V04 · 학교별 정제본',n:'V01~V04',h:'2_승무원면접/04_질문데이터'},
+  {ty:'매뉴얼',ti:'학생용 사용설명서 24p · 학원용 사용설명서 25p',n:'2',h:'2_승무원면접/06_매뉴얼'},
+  {ty:'요금제·FAQ',ti:'요금제_안내.pdf · 승무원 FAQ.xlsx',n:'2',h:'2_승무원면접/07_요금제'},
+  {ty:'QA시트',ti:'승무원 QA.xlsx · 크루쉽_모바일_TC_260630.xlsx (144건)',n:'2',h:'2_승무원크루쉽',ck:'TC 작성 주체'}],
+ missing:['IA','유저플로우','WBS','회의록']
+},
+{
+ id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:900,cap:'잡콕 메인 — 통합 검색 + 직무 분류',date:'jobkok.kr 실서비스'}, no:'005', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
  cv:{role:'공동 — 고도화 기획 · QA · 데이터 담당',scope:'QA TC 작성 규칙 제정 · QA 체크리스트 설계(7인 분담) · 직무분류표 · 온톨로지 4종 · 약관 3종',out:'QA <mark>397케이스</mark> 설계, N/A <mark>12건 전부</mark> 기획서 미정의로 역추적'}, polFile:'잡콕_QA_체크리스트_임서하.xlsx',
  stamp:'공동', status:'개발중 · 고도화 진행 중',
  one:'AI 면접 분석 + 채용공고 통합 플랫폼. QA 397케이스를 설계해 N/A 12건 전부가 기획서 미정의였음을 역추적하고, 직무분류·온톨로지 등 AI 데이터 파트까지 맡았습니다.',
@@ -790,7 +833,7 @@ var P = [
  missing:['기능명세서','IA','WBS']
 },
 {
- id:'janggo', main:{src:'assets/main_janggo.webp',w:780,h:1688,cap:'장고 구직자 홈 — 공고 검색·채용공고·AI 면접',date:'jango.kr 실서비스 · 모바일'}, no:'005', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
+ id:'janggo', main:{src:'assets/main_janggo.webp',w:780,h:1688,cap:'장고 구직자 홈 — 공고 검색·채용공고·AI 면접',date:'jango.kr 실서비스 · 모바일'}, no:'006', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
  cv:{role:'단독 — 기획 전담 + 인증·검증 문서 총괄',scope:'하이어 정책 이관 · 요구사항 v2.0 · 기능명세 v2.0 · IA 3도메인 · ISO/IEC 25023 사용성 검증 · TTA 증빙',out:'사용성 검증 <mark>176건</mark>으로 기획-구현 불일치(60초 vs 15초) 적발·수정'},
  stamp:'단독', status:'과제 완료 (2026-09-16 최종보고) · 서비스 단계 확인 필요',
  one:'장애인 취업지원 AI 플랫폼 R&D 시제품. 중단된 하이어의 확정 정책을 국가과제 요건(정량지표·ISO 검증·AI 신뢰성 증빙)에 맞춰 재설계·이관하고, 인증 대응 문서를 총괄했습니다.',
@@ -829,7 +872,7 @@ var P = [
  missing:['WBS','매뉴얼','운영정책서']
 },
 {
- id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX · 안내형 스탠드',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX · 안내형 스탠드',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'007', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
  cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
  stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
  one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
@@ -858,7 +901,7 @@ var P = [
  missing:['요구사항정의서','IA','화면기획서']
 },
 {
- id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'bent',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'007', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
+ id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'bent',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
  cv:{role:'서비스기획 담당 — 착수(킥오프)부터 참여 · 총괄 기획은 대표',scope:'점주·최고관리자 관리자 기능 정의 · 화면기획서 31종 · 운영 정책 · QA 시트 · 개발 테스트 플로우 · 사용안내서/서비스소개서',out:null,outNote:'실증 운영 성과(매출·주문·설문)는 PoC 데모 데이터라 기재하지 않음'},
  stamp:'착수 참여', status:'개발 서버 구동 · QA 단계 확인 — 실증 매장 정식 운영 여부 확인 필요',
  one:'무인 카페에서 홀로그램 AI 매니저와 음성·터치로 주문하는 키오스크와 점주 관리자 웹입니다. 착수 회의부터 참여해 관리자 기능 정의, 화면기획서 31종, 운영 정책, QA 시트를 맡았습니다.',
@@ -937,11 +980,12 @@ function polHTML(p){
     var pt=e.h>e.w;
     var img='<img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt||e.cap)+'" loading="lazy" decoding="async">';
     var cap='<figcaption><b>'+esc(e.cap)+'</b><span>'+esc(e.date)+'</span></figcaption>';
-    if(e.dev==='stand'){ /* 대형 스탠드형 안내 키오스크 */
-      return '<figure class="scr dev stand"><div class="kio"><div class="kb"><div class="ks">'+img+'</div><div class="kl">'+esc(e.devLabel||'')+'</div></div><div class="kp"></div><div class="kf"></div></div>'+cap+'</figure>';
+    if(e.dev==='stand'){ /* 대형 스탠드형 안내 키오스크 — 흰 외함 + 두꺼운 하단 베젤 + 바닥 받침 */
+      return '<figure class="scr dev stand"><div class="kio"><div class="kb"><div class="ks">'+img+'</div><div class="kl"><i></i><span>'+esc(e.devLabel||'')+'</span><i></i></div></div><div class="kf"></div></div>'+cap+'</figure>';
     }
-    if(e.dev==='bent'){ /* 소형 꺾인 투명 OLED 주문형 키오스크 */
-      return '<figure class="scr dev bent"><div class="kio"><div class="kb"><div class="ks ks-top"><div class="ks-in">'+img+'</div></div><div class="ks ks-bot"><div class="ks-in">'+img.replace('loading="lazy"','loading="lazy" aria-hidden="true" alt=""')+'</div></div></div><div class="kp"></div><div class="kf"></div></div>'+cap+'</figure>';
+    if(e.dev==='bent'){ /* 소형 꺾인 투명 OLED — 한 장의 패널, 위쪽이 뒤로 접힘. 3/4 각도로 두어 꺾임이 보이게 */
+      var im2=img.replace('loading="lazy"','loading="lazy" aria-hidden="true"').replace(/alt="[^"]*"/,'alt=""');
+      return '<figure class="scr dev bent"><div class="kio"><div class="k3"><div class="ks ks-top"><div class="ks-in">'+img+'</div></div><div class="ks ks-bot"><div class="ks-in">'+im2+'</div><div class="kg"></div></div><div class="kp"></div><div class="kf"></div></div></div>'+cap+'</figure>';
     }
     return '<figure class="scr'+(pt?' pt':'')+'"><div class="sc">'+img+'</div>'+cap+'</figure>';
   }
@@ -1144,7 +1188,7 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
 (function(){
   var cards = $('.pcard');
   if(cards.length < 2) return;
-  var tops = [90,104,118,132,146,160,174];
+  var tops = [90,104,118,132,146,160,174,188];
   var ticking = false;
   function update(){
     ticking = false;
