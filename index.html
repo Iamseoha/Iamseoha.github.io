@@ -295,13 +295,6 @@ html.lock{overflow:hidden}
 .scr.dev{--tilt:0deg}
 .scr.dev .kio{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transition:transform .4s var(--pop)}
 .pcard:hover .scr.dev .kio{transform:translateY(-4px)}
-/* 키오스크 3D — 스크롤에 따라 살짝 회전(--ry/--rx는 JS가 갱신), 오른쪽 옆면이 보인다 */
-.scr.stand,.scr.cab{perspective:1100px}
-.scr.stand .kio,.scr.cab .kio{transform-style:preserve-3d;transform:translateY(var(--ty,0)) rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg));transition:transform .5s var(--ez)}
-.pcard:hover .scr.stand .kio,.pcard:hover .scr.cab .kio{--ty:-4px;transform:translateY(var(--ty,0)) rotateY(var(--ry,0deg)) rotateX(var(--rx,0deg))}
-.scr.stand .kb,.scr.cab .kb{transform-style:preserve-3d}
-.scr.stand .kb::after,.scr.cab .kb::after{content:'';position:absolute;top:-2.5px;bottom:-2.5px;right:-2.5px;width:46px;border:2.5px solid var(--ink);border-radius:0 8px 8px 0;background:linear-gradient(90deg,#e9e5dc,#cfc9bc);transform-origin:100% 50%;transform:rotateY(90deg)}
-@media(prefers-reduced-motion:reduce){.scr.stand .kio,.scr.cab .kio{transform:none;transition:none}}
 .scr.dev .ks{overflow:hidden;background:#111}
 .scr.dev .ks img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
 /* 스탠드형: 흰 외함, 하단 베젤에 스피커 홈 + 라벨, 바닥 받침 */
@@ -1233,25 +1226,6 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
   fitPins();
   window.addEventListener('resize', fitPins);
   window.addEventListener('load', fitPins);
-  /* 키오스크 카드: 화면 위→아래로 지나가는 동안 좌우로 살짝 회전 */
-  var kios = $('.scr.stand .kio, .scr.cab .kio');
-  var kTick = false;
-  function turnKiosks(){
-    kTick = false;
-    if(OPEN || RM) return;
-    var vh = window.innerHeight;
-    kios.forEach(function(k){
-      var r = k.getBoundingClientRect();
-      if(r.bottom < -100 || r.top > vh + 100) return;
-      var t = ((r.top + r.height/2) - vh/2) / (vh/2);
-      t = t < -1 ? -1 : (t > 1 ? 1 : t);
-      k.style.setProperty('--ry', (8 + 12*t).toFixed(2) + 'deg');
-      k.style.setProperty('--rx', (3*t).toFixed(2) + 'deg');
-    });
-  }
-  turnKiosks();
-  window.addEventListener('scroll', function(){ if(!kTick){ kTick = true; requestAnimationFrame(turnKiosks); } }, {passive:true});
-  window.addEventListener('resize', turnKiosks);
   e12Update = update;
   update();
 })();
