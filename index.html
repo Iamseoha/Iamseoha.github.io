@@ -287,6 +287,35 @@ html.lock{overflow:hidden}
 .scr.pt .sc{width:auto;height:380px;border-radius:30px}
 .scr.pt .sc img{width:auto;height:100%}
 .pcard:hover .scr .sc{transform:rotate(calc(var(--tilt) * .3)) translateY(-4px);box-shadow:11px 11px 0 var(--ink)}
+/* 키오스크 기기 틀 — 인터박스(스탠드형) · 홀로오더(꺾인 투명 OLED) */
+.scr.dev{--tilt:0deg}
+.scr.dev .kio{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;transition:transform .4s var(--pop)}
+.pcard:hover .scr.dev .kio{transform:translateY(-4px)}
+.scr.dev .kb{position:relative;border:2px solid var(--ink);background:#fff;box-shadow:8px 8px 0 var(--ink)}
+.scr.dev .ks{overflow:hidden;background:#111}
+.scr.dev .ks img{display:block;width:100%;height:100%;object-fit:cover;object-position:top center}
+.scr.dev .kp{width:38px;height:34px;background:#e9e5dc;border:2px solid var(--ink);border-top:0}
+.scr.dev .kf{width:150px;height:14px;border:2px solid var(--ink);border-radius:3px;background:#fff;box-shadow:5px 5px 0 var(--ink)}
+/* 스탠드형: 두꺼운 하단 베젤 + 로고 띠 + 기둥·받침 */
+.scr.stand .kb{border-radius:14px;padding:12px 12px 0}
+.scr.stand .ks{width:200px;aspect-ratio:9/16;border:1.5px solid var(--ink);border-radius:5px}
+.scr.stand .kl{height:30px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--gy);text-transform:uppercase}
+.scr.stand .kp{height:56px}
+/* 꺾인 OLED: 위 1/3이 뒤로 접힌 투명 패널. 두 조각이 한 화면을 나눠 보여준다 */
+.scr.bent .kb{border:0;background:none;box-shadow:none;perspective:900px;perspective-origin:50% 70%;width:230px}
+.scr.bent .ks{width:230px;border:2px solid var(--ink);background:rgba(255,255,255,.92)}
+.scr.bent .ks-in{width:100%;height:100%;overflow:hidden}
+.scr.bent .ks-top{height:150px;border-radius:12px 12px 0 0;border-bottom:0;transform-origin:50% 100%;transform:rotateX(-26deg);box-shadow:6px -2px 0 rgba(23,23,26,.55)}
+.scr.bent .ks-top .ks-in{height:150px}
+.scr.bent .ks-top img{height:auto}
+.scr.bent .ks-bot{height:250px;border-radius:0 0 10px 10px;box-shadow:8px 8px 0 var(--ink);background:#fff}
+.scr.bent .ks-bot .ks-in{height:250px}
+.scr.bent .ks-bot img{height:auto;transform:translateY(-150px)}
+.scr.bent .ks-bot::before{content:'';position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,rgba(255,255,255,.0),rgba(255,255,255,.9),rgba(255,255,255,.0));z-index:2;pointer-events:none}
+.scr.bent .ks-bot{position:relative}
+.scr.bent .kp{width:26px;height:40px}
+.scr.bent .kf{width:120px}
+@media(max-width:760px){.scr.stand .ks{width:170px}.scr.bent .kb,.scr.bent .ks{width:200px}.scr.bent .ks-top{height:130px}.scr.bent .ks-top .ks-in{height:130px}.scr.bent .ks-bot,.scr.bent .ks-bot .ks-in{height:220px}.scr.bent .ks-bot img{transform:translateY(-130px)}}
 .scr figcaption{position:relative;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .scr figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
 .scr figcaption span{color:var(--gy)}
@@ -800,7 +829,7 @@ var P = [
  missing:['WBS','매뉴얼','운영정책서']
 },
 {
- id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX · 안내형 스탠드',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'006', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
  cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
  stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
  one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
@@ -829,7 +858,7 @@ var P = [
  missing:['요구사항정의서','IA','화면기획서']
 },
 {
- id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'007', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
+ id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'bent',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'007', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
  cv:{role:'서비스기획 담당 — 착수(킥오프)부터 참여 · 총괄 기획은 대표',scope:'점주·최고관리자 관리자 기능 정의 · 화면기획서 31종 · 운영 정책 · QA 시트 · 개발 테스트 플로우 · 사용안내서/서비스소개서',out:null,outNote:'실증 운영 성과(매출·주문·설문)는 PoC 데모 데이터라 기재하지 않음'},
  stamp:'착수 참여', status:'개발 서버 구동 · QA 단계 확인 — 실증 매장 정식 운영 여부 확인 필요',
  one:'무인 카페에서 홀로그램 AI 매니저와 음성·터치로 주문하는 키오스크와 점주 관리자 웹입니다. 착수 회의부터 참여해 관리자 기능 정의, 화면기획서 31종, 운영 정책, QA 시트를 맡았습니다.',
@@ -906,8 +935,15 @@ function polHTML(p){
   var e=p.main||p.ev;
   if(p.main){
     var pt=e.h>e.w;
-    return '<figure class="scr'+(pt?' pt':'')+'"><div class="sc"><img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt||e.cap)+'" loading="lazy" decoding="async"></div>'+
-      '<figcaption><b>'+esc(e.cap)+'</b><span>'+esc(e.date)+'</span></figcaption></figure>';
+    var img='<img src="'+e.src+'" width="'+e.w+'" height="'+e.h+'" alt="'+esc(e.alt||e.cap)+'" loading="lazy" decoding="async">';
+    var cap='<figcaption><b>'+esc(e.cap)+'</b><span>'+esc(e.date)+'</span></figcaption>';
+    if(e.dev==='stand'){ /* 대형 스탠드형 안내 키오스크 */
+      return '<figure class="scr dev stand"><div class="kio"><div class="kb"><div class="ks">'+img+'</div><div class="kl">'+esc(e.devLabel||'')+'</div></div><div class="kp"></div><div class="kf"></div></div>'+cap+'</figure>';
+    }
+    if(e.dev==='bent'){ /* 소형 꺾인 투명 OLED 주문형 키오스크 */
+      return '<figure class="scr dev bent"><div class="kio"><div class="kb"><div class="ks ks-top"><div class="ks-in">'+img+'</div></div><div class="ks ks-bot"><div class="ks-in">'+img.replace('loading="lazy"','loading="lazy" aria-hidden="true" alt=""')+'</div></div></div><div class="kp"></div><div class="kf"></div></div>'+cap+'</figure>';
+    }
+    return '<figure class="scr'+(pt?' pt':'')+'"><div class="sc">'+img+'</div>'+cap+'</figure>';
   }
   if(e){
     var ck=p.polCk||e.ck;
