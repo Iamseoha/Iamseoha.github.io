@@ -300,22 +300,14 @@ html.lock{overflow:hidden}
 .scr.stand .kl{height:58px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--gy);text-transform:uppercase}
 .scr.stand .kl i{flex:1;height:10px;background:radial-gradient(circle,rgba(23,23,26,.35) 1.2px,transparent 1.6px) 0 0/5px 5px}
 .scr.stand .kf{width:262px;height:16px;margin-top:-2px;border:2.5px solid var(--ink);border-radius:0 0 8px 8px;background:#e9e5dc;box-shadow:9px 9px 0 var(--ink)}
-/* 꺾인 OLED: 3/4 시점. 패널 한 장을 위/아래로 나누고 위쪽만 뒤로 꺾는다. 유리 느낌의 반투명 + 얇은 잉크 테두리 */
-.scr.bent .k3{perspective:1100px;perspective-origin:50% 60%}
-.scr.bent .k3>*{transform-style:preserve-3d}
-.scr.bent .ks{width:236px;border:2px solid var(--ink);background:#fff}
-.scr.bent .ks-in{width:100%;height:100%;overflow:hidden}
-.scr.bent .ks-top{height:132px;border-bottom:0;border-radius:10px 10px 0 0;transform-origin:50% 100%;transform:rotateX(-32deg);box-shadow:inset 0 -24px 30px -20px rgba(23,23,26,.25)}
-.scr.bent .ks-top .ks-in{height:132px}
-.scr.bent .ks-top img{height:auto}
-.scr.bent .ks-bot{position:relative;height:268px;border-radius:0 0 8px 8px;box-shadow:10px 10px 0 var(--ink)}
-.scr.bent .ks-bot .ks-in{height:268px}
-.scr.bent .ks-bot img{height:auto;transform:translateY(-132px)}
-.scr.bent .ks-bot .kg{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,0) 18%),linear-gradient(100deg,rgba(255,255,255,0) 55%,rgba(255,255,255,.22) 62%,rgba(255,255,255,0) 70%)}
-.scr.bent .ks-top::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,.05));pointer-events:none}
-.scr.bent .kp{width:16px;height:54px;background:#17171a;border-radius:0 0 3px 3px}
-.scr.bent .kf{width:190px;height:16px;margin-top:-2px;border:2.5px solid var(--ink);border-radius:50%;background:#e9e5dc;box-shadow:6px 6px 0 var(--ink)}
-@media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.bent .ks{width:200px}.scr.bent .ks-top,.scr.bent .ks-top .ks-in{height:112px}.scr.bent .ks-bot,.scr.bent .ks-bot .ks-in{height:228px}.scr.bent .ks-bot img{transform:translateY(-112px)}}
+/* 통형: 두꺼운 흰 캐비닛 + 오른쪽 옆면 깊이 + 상단 카메라 + 낮은 받침 */
+.scr.box .kb{position:relative;border:2.5px solid var(--ink);border-radius:14px;background:#fff;padding:26px 18px 0;box-shadow:9px 9px 0 var(--ink)}
+.scr.box .kb::after{content:'';position:absolute;top:10px;right:-16px;bottom:-2px;width:14px;border:2.5px solid var(--ink);border-left:0;border-radius:0 10px 8px 0;background:#e9e5dc}
+.scr.box .cam{position:absolute;top:9px;left:50%;width:34px;height:8px;margin-left:-17px;border-radius:4px;background:var(--ink)}
+.scr.box .ks{width:190px;aspect-ratio:678/1209;border:2px solid var(--ink);border-radius:4px}
+.scr.box .kl{height:44px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--gy)}
+.scr.box .kf{width:200px;height:12px;border:2.5px solid var(--ink);border-top:0;border-radius:0 0 6px 6px;background:#e9e5dc}
+@media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.box .ks{width:160px}.scr.box .kf{width:170px}}
 .scr figcaption{position:relative;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .scr figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
 .scr figcaption span{color:var(--gy)}
@@ -797,7 +789,7 @@ var P = [
  missing:['IA','유저플로우','WBS','회의록']
 },
 {
- id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:900,cap:'잡콕 메인 — 통합 검색 + 직무 분류',date:'jobkok.kr 실서비스'}, no:'005', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
+ id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:806,cap:'잡콕 2.0 홈 — 통합 검색 + 직군 20종 마퀴',date:'Figma 2.0 디자인 · PC'}, no:'005', name:'잡콕 JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
  cv:{role:'공동 — 고도화 기획 · QA · 데이터 담당',scope:'QA TC 작성 규칙 제정 · QA 체크리스트 설계(7인 분담) · 직무분류표 · 온톨로지 4종 · 약관 3종',out:'QA <mark>397케이스</mark> 설계, N/A <mark>12건 전부</mark> 기획서 미정의로 역추적'}, polFile:'잡콕_QA_체크리스트_임서하.xlsx',
  stamp:'공동', status:'개발중 · 고도화 진행 중',
  one:'AI 면접 분석 + 채용공고 통합 플랫폼. QA 397케이스를 설계해 N/A 12건 전부가 기획서 미정의였음을 역추적하고, 직무분류·온톨로지 등 AI 데이터 파트까지 맡았습니다.',
@@ -833,7 +825,7 @@ var P = [
  missing:['기능명세서','IA','WBS']
 },
 {
- id:'janggo', main:{src:'assets/main_janggo.webp',w:780,h:1688,cap:'장고 구직자 홈 — 공고 검색·채용공고·AI 면접',date:'jango.kr 실서비스 · 모바일'}, no:'006', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
+ id:'janggo', main:{src:'assets/main_janggo.webp',w:1440,h:840,cap:'장고 구직자 홈 — 공고 검색·채용공고·이력서·AI 모의면접',date:'Figma 디자인 · PC'}, no:'006', name:'장고 · 서울형 R&D', tag:'R&D · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
  cv:{role:'단독 — 기획 전담 + 인증·검증 문서 총괄',scope:'하이어 정책 이관 · 요구사항 v2.0 · 기능명세 v2.0 · IA 3도메인 · ISO/IEC 25023 사용성 검증 · TTA 증빙',out:'사용성 검증 <mark>176건</mark>으로 기획-구현 불일치(60초 vs 15초) 적발·수정'},
  stamp:'단독', status:'과제 완료 (2026-09-16 최종보고) · 서비스 단계 확인 필요',
  one:'장애인 취업지원 AI 플랫폼 R&D 시제품. 중단된 하이어의 확정 정책을 국가과제 요건(정량지표·ISO 검증·AI 신뢰성 증빙)에 맞춰 재설계·이관하고, 인증 대응 문서를 총괄했습니다.',
@@ -872,7 +864,7 @@ var P = [
  missing:['WBS','매뉴얼','운영정책서']
 },
 {
- id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX · 안내형 스탠드',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'007', name:'학교 안내 키오스크', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'007', name:'인터박스 INTERBOX', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
  cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
  stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
  one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
@@ -901,7 +893,7 @@ var P = [
  missing:['요구사항정의서','IA','화면기획서']
 },
 {
- id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'bent',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
+ id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'box',devLabel:'HOLOORDER',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더 HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
  cv:{role:'서비스기획 담당 — 착수(킥오프)부터 참여 · 총괄 기획은 대표',scope:'점주·최고관리자 관리자 기능 정의 · 화면기획서 31종 · 운영 정책 · QA 시트 · 개발 테스트 플로우 · 사용안내서/서비스소개서',out:null,outNote:'실증 운영 성과(매출·주문·설문)는 PoC 데모 데이터라 기재하지 않음'},
  stamp:'착수 참여', status:'개발 서버 구동 · QA 단계 확인 — 실증 매장 정식 운영 여부 확인 필요',
  one:'무인 카페에서 홀로그램 AI 매니저와 음성·터치로 주문하는 키오스크와 점주 관리자 웹입니다. 착수 회의부터 참여해 관리자 기능 정의, 화면기획서 31종, 운영 정책, QA 시트를 맡았습니다.',
@@ -983,9 +975,8 @@ function polHTML(p){
     if(e.dev==='stand'){ /* 대형 스탠드형 안내 키오스크 — 흰 외함 + 두꺼운 하단 베젤 + 바닥 받침 */
       return '<figure class="scr dev stand"><div class="kio"><div class="kb"><div class="ks">'+img+'</div><div class="kl"><i></i><span>'+esc(e.devLabel||'')+'</span><i></i></div></div><div class="kf"></div></div>'+cap+'</figure>';
     }
-    if(e.dev==='bent'){ /* 소형 꺾인 투명 OLED — 한 장의 패널, 위쪽이 뒤로 접힘. 3/4 각도로 두어 꺾임이 보이게 */
-      var im2=img.replace('loading="lazy"','loading="lazy" aria-hidden="true"').replace(/alt="[^"]*"/,'alt=""');
-      return '<figure class="scr dev bent"><div class="kio"><div class="k3"><div class="ks ks-top"><div class="ks-in">'+img+'</div></div><div class="ks ks-bot"><div class="ks-in">'+im2+'</div><div class="kg"></div></div><div class="kp"></div><div class="kf"></div></div></div>'+cap+'</figure>';
+    if(e.dev==='box'){ /* 소형 통형 주문 키오스크 — 깊이 있는 흰 캐비닛, 상단 카메라, 하단 베젤 */
+      return '<figure class="scr dev box"><div class="kio"><div class="kb"><span class="cam"></span><div class="ks">'+img+'</div><div class="kl"><span>'+esc(e.devLabel||'')+'</span></div></div><div class="kf"></div></div>'+cap+'</figure>';
     }
     return '<figure class="scr'+(pt?' pt':'')+'"><div class="sc">'+img+'</div>'+cap+'</figure>';
   }
