@@ -300,14 +300,18 @@ html.lock{overflow:hidden}
 .scr.stand .kl{height:58px;display:flex;align-items:center;justify-content:center;gap:10px;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--gy);text-transform:uppercase}
 .scr.stand .kl i{flex:1;height:10px;background:radial-gradient(circle,rgba(23,23,26,.35) 1.2px,transparent 1.6px) 0 0/5px 5px}
 .scr.stand .kf{width:262px;height:16px;margin-top:-2px;border:2.5px solid var(--ink);border-radius:0 0 8px 8px;background:#e9e5dc;box-shadow:9px 9px 0 var(--ink)}
-/* 통형: 두꺼운 흰 캐비닛 + 오른쪽 옆면 깊이 + 상단 카메라 + 낮은 받침 */
-.scr.box .kb{position:relative;border:2.5px solid var(--ink);border-radius:14px;background:#fff;padding:26px 18px 0;box-shadow:9px 9px 0 var(--ink)}
-.scr.box .kb::after{content:'';position:absolute;top:10px;right:-16px;bottom:-2px;width:14px;border:2.5px solid var(--ink);border-left:0;border-radius:0 10px 8px 0;background:#e9e5dc}
-.scr.box .cam{position:absolute;top:9px;left:50%;width:34px;height:8px;margin-left:-17px;border-radius:4px;background:var(--ink)}
-.scr.box .ks{width:190px;aspect-ratio:678/1209;border:2px solid var(--ink);border-radius:4px}
-.scr.box .kl{height:44px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--gy)}
-.scr.box .kf{width:200px;height:12px;border:2.5px solid var(--ink);border-top:0;border-radius:0 0 6px 6px;background:#e9e5dc}
-@media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.box .ks{width:160px}.scr.box .kf{width:170px}}
+/* 통형: 두꺼운 흰 캐비닛(측면 두께는 그림자 대신 이중 테두리) + 상단 카메라 + 낮은 받침 */
+.scr.cab .kb{position:relative;border:2.5px solid var(--ink);border-radius:16px;background:#fff;padding:26px 16px 0;box-shadow:6px 6px 0 #e9e5dc,6px 6px 0 2.5px var(--ink)}
+.scr.cab .cam{position:absolute;top:10px;left:50%;width:30px;height:7px;margin-left:-15px;border-radius:4px;background:var(--ink)}
+.scr.cab .ks{width:186px;aspect-ratio:678/1209;border:2px solid var(--ink);border-radius:5px}
+.scr.cab .kl{height:42px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--gy)}
+.scr.cab .kf{width:150px;height:14px;margin-top:6px;border:2.5px solid var(--ink);border-radius:4px;background:#e9e5dc;box-shadow:5px 5px 0 var(--ink)}
+/* 태블릿(가로): 균일한 검정 베젤 + 전면 카메라 점 */
+.scr.tab .kb{position:relative;border:2.5px solid var(--ink);border-radius:22px;background:#1d1d22;padding:16px 20px;box-shadow:9px 9px 0 var(--ink)}
+.scr.tab .kb::before{content:'';position:absolute;left:8px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:#55555c}
+.scr.tab .ks{width:100%;max-width:400px;border-radius:6px}
+.scr.tab .ks img{height:auto}
+@media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.cab .ks{width:156px}.scr.tab .kb{padding:10px 14px;border-radius:16px}}
 .scr figcaption{position:relative;z-index:1;font-family:var(--mono);font-size:10.5px;letter-spacing:.03em;line-height:1.5;display:flex;flex-direction:column;align-items:center;gap:2px;text-align:center}
 .scr figcaption b{font-family:var(--sans);font-size:13.5px;font-weight:700;letter-spacing:-.01em;color:var(--ink);text-wrap:balance}
 .scr figcaption span{color:var(--gy)}
@@ -672,7 +676,7 @@ var P = [
  missing:['IA','유저플로우','운영정책서']
 },
 {
- id:'literacy', main:{src:'assets/main_literacy.webp',w:1440,h:812,cap:'문해력탐험대 학생 홈 — 어휘의 숲 탐험 지도·탐험 기록',date:'고도화 화면 · 태블릿'}, no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
+ id:'literacy', main:{src:'assets/main_literacy.webp',w:1440,h:812,dev:'tab',cap:'문해력탐험대 학생 홈 — 어휘의 숲 탐험 지도·탐험 기록',date:'고도화 화면 · 태블릿'}, no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
  cv:{role:'단독 — 서비스 기획 전담 (약관·소개서·학생매뉴얼은 선임 선행본 개정·고도화)',scope:'요구사항 → 데이터정책 V1.1 → QA(11인 분담) → 매뉴얼·약관 → CS 12건, 전 주기',out:'실제 도입 학교 <mark>0 → 10곳</mark> · 실사용 학생 <mark>533명</mark>'},
  stamp:'단독', status:'오픈 · 운영 중',
  one:'초·중등 대상 AI 문해력 진단·트레이닝. 요구사항부터 운영·CS까지 한 서비스의 전 주기를 맡아, 실제 도입 학교 2025년 0곳 → 2026년 10곳으로 이어졌습니다.',
@@ -893,7 +897,7 @@ var P = [
  missing:['요구사항정의서','IA','화면기획서']
 },
 {
- id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'box',devLabel:'HOLOORDER',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
+ id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'cab',devLabel:'HOLOORDER',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
  cv:{role:'서비스기획 담당 — 착수(킥오프)부터 참여 · 총괄 기획은 대표',scope:'점주·최고관리자 관리자 기능 정의 · 화면기획서 31종 · 운영 정책 · QA 시트 · 개발 테스트 플로우 · 사용안내서/서비스소개서',out:null,outNote:'실증 운영 성과(매출·주문·설문)는 PoC 데모 데이터라 기재하지 않음'},
  stamp:'착수 참여', status:'개발 서버 구동 · QA 단계 확인 — 실증 매장 정식 운영 여부 확인 필요',
  one:'무인 카페에서 홀로그램 AI 매니저와 음성·터치로 주문하는 키오스크와 점주 관리자 웹입니다. 착수 회의부터 참여해 관리자 기능 정의, 화면기획서 31종, 운영 정책, QA 시트를 맡았습니다.',
@@ -975,8 +979,11 @@ function polHTML(p){
     if(e.dev==='stand'){ /* 대형 스탠드형 안내 키오스크 — 흰 외함 + 두꺼운 하단 베젤 + 바닥 받침 */
       return '<figure class="scr dev stand"><div class="kio"><div class="kb"><div class="ks">'+img+'</div><div class="kl"><i></i><span>'+esc(e.devLabel||'')+'</span><i></i></div></div><div class="kf"></div></div>'+cap+'</figure>';
     }
-    if(e.dev==='box'){ /* 소형 통형 주문 키오스크 — 깊이 있는 흰 캐비닛, 상단 카메라, 하단 베젤 */
-      return '<figure class="scr dev box"><div class="kio"><div class="kb"><span class="cam"></span><div class="ks">'+img+'</div><div class="kl"><span>'+esc(e.devLabel||'')+'</span></div></div><div class="kf"></div></div>'+cap+'</figure>';
+    if(e.dev==='tab'){ /* 태블릿 가로 */
+      return '<figure class="scr dev tab"><div class="kio" style="width:100%"><div class="kb"><div class="ks">'+img+'</div></div></div>'+cap+'</figure>';
+    }
+    if(e.dev==='cab'){ /* 소형 통형 주문 키오스크 — 깊이 있는 흰 캐비닛, 상단 카메라, 하단 베젤 */
+      return '<figure class="scr dev cab"><div class="kio"><div class="kb"><span class="cam"></span><div class="ks">'+img+'</div><div class="kl"><span>'+esc(e.devLabel||'')+'</span></div></div><div class="kf"></div></div>'+cap+'</figure>';
     }
     return '<figure class="scr'+(pt?' pt':'')+'"><div class="sc">'+img+'</div>'+cap+'</figure>';
   }
