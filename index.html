@@ -1152,6 +1152,9 @@ function figHTML(src,w,h,alt,cap,date,ck){
 function buildCard(p,i){
   var a = document.createElement('article');
   a.className='pcard'; a.id='p-'+p.id; a.setAttribute('data-id',p.id); a.style.setProperty('--ac',p.ac);
+  /* 카드 배경 = 프로젝트 색의 연한 톤 (순서가 바뀌어도 배경·동그라미가 같은 계열) */
+  var BG={xaas:'#eaf0ff',literacy:'#fff1ec',interviewking:'#e8faf3',crew:'#e3f6fb',jobkok:'#fff8e0',janggo:'#f3edff',schoolkiosk:'#ffe9f3',holoorder:'#fff3e6'};
+  if(BG[p.id]) a.style.background=BG[p.id];
   var prev=P[i-1], next=P[i+1];
   var h='';
   /* 상단 슬림 바 */
