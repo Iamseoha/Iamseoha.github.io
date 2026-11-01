@@ -97,6 +97,9 @@ nav a.on{color:var(--ink)}
 .pcard:nth-child(5){background:#f3edff;top:146px}
 .pcard .hd{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap}
 .pcard .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;border:1.5px solid var(--ink);background:#fff;padding:5px 11px;border-radius:100px;text-transform:uppercase}
+.pcard h3 .en,.pc-tb .nm .en{font-family:var(--mono);font-weight:500;letter-spacing:.08em;color:var(--gy);vertical-align:middle}
+.pcard h3 .en{font-size:.36em;margin-left:.5em;position:relative;top:-.1em}
+.pc-tb .nm .en{font-size:.72em}
 .pcard h3{font-size:clamp(28px,3.6vw,46px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-top:16px}
 .pcard .bd{display:grid;grid-template-columns:1.1fr 1fr;gap:38px;margin-top:22px;align-items:start}
 .pcard p{font-size:15.5px;color:#3d3d44;text-wrap:pretty}
@@ -307,8 +310,9 @@ html.lock{overflow:hidden}
 .scr.cab .kl{height:42px;display:grid;place-items:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;color:var(--gy)}
 .scr.cab .kf{width:150px;height:14px;margin-top:6px;border:2.5px solid var(--ink);border-radius:4px;background:#e9e5dc;box-shadow:5px 5px 0 var(--ink)}
 /* 태블릿(가로): 균일한 검정 베젤 + 전면 카메라 점 */
-.scr.tab .kb{position:relative;border:2.5px solid var(--ink);border-radius:22px;background:#1d1d22;padding:16px 20px;box-shadow:9px 9px 0 var(--ink)}
-.scr.tab .kb::before{content:'';position:absolute;left:8px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:#55555c}
+.scr.tab .kb{position:relative;border:2.5px solid var(--ink);border-radius:22px;background:#fff;padding:16px 20px;box-shadow:9px 9px 0 var(--ink)}
+.scr.tab .kb::before{content:'';position:absolute;left:8px;top:50%;width:5px;height:5px;margin-top:-2.5px;border-radius:50%;background:var(--ink)}
+.scr.tab .ks{border:2px solid var(--ink)}
 .scr.tab .ks{width:100%;max-width:400px;border-radius:6px}
 .scr.tab .ks img{height:auto}
 @media(max-width:760px){.scr.stand .ks{width:176px}.scr.stand .kf{width:226px}.scr.cab .ks{width:156px}.scr.tab .kb{padding:10px 14px;border-radius:16px}}
@@ -547,7 +551,7 @@ html.lock{overflow:hidden}
     </div>
     <div class="lego-slot" aria-hidden="true">
       <div class="lego" id="lego" data-state="hero" title="임서하">
-        <div class="lg-bubble" id="lgBubble">안녕하세요<br>임서하입니다.</div>
+        <div class="lg-bubble" id="lgBubble">안녕하세요!<br>임서하입니다.</div>
         <div class="lg-fig"><div class="lg-tilt">
           <div class="lg-p lg-legs" style="--i:0;position:absolute;inset:0;z-index:1">
             <img class="lg-part" style="left:23.9%;top:55.31%;width:75.49%" src="assets/lego_studs.webp" alt="" draggable="false">
@@ -638,7 +642,7 @@ function CK(t){return '<span class="ck">확인 필요'+(t?' · '+esc(t):'')+'</s
 /* ================= 데이터 (출처: projects.json verified_numbers / my_role / deliverables) ================= */
 var P = [
 {
- id:'xaas', main:{src:'assets/xaas_admin_home_v2.webp',w:1600,h:1120,cap:'자스 관리자 홈 (고도화) — 회차 잔여일·교육 현황·점수 비교',date:'Figma 디자인 v2 · PC'}, no:'001', name:'자스', tag:'AI 교육 · B2B SaaS', period:'2025.02 – 2025.07 (고도화)', ac:'#2f5bff',
+ id:'xaas', main:{src:'assets/xaas_admin_home_v2.webp',w:1600,h:1120,cap:'자스 관리자 홈 (고도화) — 회차 잔여일·교육 현황·점수 비교',date:'Figma 디자인 v2 · PC'}, no:'001', name:'자스', en:'XaaS', tag:'AI 교육 · B2B SaaS', period:'2025.02 – 2025.07 (고도화)', ac:'#2f5bff',
  cv:{role:'단독 — AI 교육 고도화 기획 (요구사항·스토리보드 작성)',roleCk:'v2 시각 디자인 제작 주체',scope:'교육생·관리자 고도화 요구사항(교육 8 · 면접 4) · 교육 스토리보드 20p · 관리자 홈·상담사·교육 관리·평가 리포트 재설계',out:null,outNote:'개발 반영·운영 여부와 사용 지표는 근거가 없어 기재하지 않음'},
  stamp:'단독', status:'고도화 기획서 · Figma v2 PC 화면 확인 — 개발 반영·운영 여부 확인 필요',
  one:'NIPA XaaS 선도프로젝트로 만든 상담원 대상 AI 교육·AI 면접 서비스입니다. 이전 기획자가 설계한 1차 버전을 2025년에 고도화하며 요구사항과 교육생·관리자 스토리보드를 단독으로 작성했습니다.',
@@ -676,7 +680,7 @@ var P = [
  missing:['IA','유저플로우','운영정책서']
 },
 {
- id:'literacy', main:{src:'assets/main_literacy.webp',w:1440,h:812,dev:'tab',cap:'문해력탐험대 학생 홈 — 어휘의 숲 탐험 지도·탐험 기록',date:'고도화 화면 · 태블릿'}, no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
+ id:'literacy', main:{src:'assets/main_literacy.webp',w:1280,h:736,dev:'tab',cap:'문해력탐험대 진단하기 홈 — 어휘의 숲 탐험 지도·탐험 기록',date:'Figma 고도화 디자인 · 태블릿'}, no:'002', name:'문해력탐험대', tag:'Education · B2G', period:'2024.11 – 운영 중', ac:'#ff5d3b',
  cv:{role:'단독 — 서비스 기획 전담 (약관·소개서·학생매뉴얼은 선임 선행본 개정·고도화)',scope:'요구사항 → 데이터정책 V1.1 → QA(11인 분담) → 매뉴얼·약관 → CS 12건, 전 주기',out:'실제 도입 학교 <mark>0 → 10곳</mark> · 실사용 학생 <mark>533명</mark>'},
  stamp:'단독', status:'오픈 · 운영 중',
  one:'초·중등 대상 AI 문해력 진단·트레이닝. 요구사항부터 운영·CS까지 한 서비스의 전 주기를 맡아, 실제 도입 학교 2025년 0곳 → 2026년 10곳으로 이어졌습니다.',
@@ -793,7 +797,7 @@ var P = [
  missing:['IA','유저플로우','WBS','회의록']
 },
 {
- id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:806,cap:'잡콕 2.0 홈 — 통합 검색 + 직군 20종 마퀴',date:'Figma 2.0 디자인 · PC'}, no:'005', name:'잡콕', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
+ id:'jobkok', main:{src:'assets/main_jobkok.webp',w:1440,h:806,cap:'잡콕 2.0 홈 — 통합 검색 + 직군 20종 마퀴',date:'Figma 2.0 디자인 · PC'}, no:'005', name:'잡콕', en:'JOBKOK', tag:'Platform / Data', period:'2025.10 – 고도화 중', ac:'#ffc83d',
  cv:{role:'공동 — 고도화 기획 · QA · 데이터 담당',scope:'QA TC 작성 규칙 제정 · QA 체크리스트 설계(7인 분담) · 직무분류표 · 온톨로지 4종 · 약관 3종',out:'QA <mark>397케이스</mark> 설계, N/A <mark>12건 전부</mark> 기획서 미정의로 역추적'}, polFile:'잡콕_QA_체크리스트_임서하.xlsx',
  stamp:'공동', status:'개발중 · 고도화 진행 중',
  one:'AI 면접 분석 + 채용공고 통합 플랫폼. QA 397케이스를 설계해 N/A 12건 전부가 기획서 미정의였음을 역추적하고, 직무분류·온톨로지 등 AI 데이터 파트까지 맡았습니다.',
@@ -829,7 +833,7 @@ var P = [
  missing:['기능명세서','IA','WBS']
 },
 {
- id:'janggo', main:{src:'assets/main_janggo.webp',w:1440,h:945,cap:'장고 구직자 홈 — 공고 검색 + AI 적합도 공고 카드',date:'Figma 디자인 · PC'}, no:'006', name:'장고', tag:'서울형 R&D 사업 · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
+ id:'janggo', main:{src:'assets/main_janggo.webp',w:1440,h:945,cap:'장고 구직자 홈 — 공고 검색 + AI 적합도 공고 카드',date:'Figma 디자인 · PC'}, no:'006', name:'장고', en:'JANGO', tag:'서울형 R&D 사업 · B2G', period:'2026.04 – 2026.09', ac:'#9a63ff',
  cv:{role:'단독 — 기획 전담 + 인증·검증 문서 총괄',scope:'하이어 정책 이관 · 요구사항 v2.0 · 기능명세 v2.0 · IA 3도메인 · ISO/IEC 25023 사용성 검증 · TTA 증빙',out:'사용성 검증 <mark>176건</mark>으로 기획-구현 불일치(60초 vs 15초) 적발·수정'},
  stamp:'단독', status:'과제 완료 (2026-09-16 최종보고) · 서비스 단계 확인 필요',
  one:'장애인 취업지원 AI 플랫폼 R&D 시제품. 중단된 하이어의 확정 정책을 국가과제 요건(정량지표·ISO 검증·AI 신뢰성 증빙)에 맞춰 재설계·이관하고, 인증 대응 문서를 총괄했습니다.',
@@ -868,7 +872,7 @@ var P = [
  missing:['WBS','매뉴얼','운영정책서']
 },
 {
- id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'007', name:'인터박스', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
+ id:'schoolkiosk', main:{src:'assets/main_kiosk.webp',w:540,h:960,dev:'stand',devLabel:'INTERBOX',cap:'인터박스 메인 — AI 안내원 + 길찾기·급식·학교소식·FAQ',date:'최종 퍼블리싱 화면 · 1080×1920'}, no:'007', name:'인터박스', en:'INTERBOX', tag:'Kiosk · B2G', period:'2026.09 – 진행 중', ac:'#ff6fae',
  cv:{role:'단독 — 신규 착수 기획 담당',roleCk:'역할 범위',scope:'킥오프 회의록 정리 · 홀로오더 자산 재사용/신규/삭제 매핑 · 배리어프리 무인정보단말기 법규 리서치',out:null,outNote:'진행 중 과제 — 성과·도입 실적은 기재하지 않음'}, polFile:'홀로오더 자산 재사용/신규/삭제 매핑표', polFileCk:'파일명',
  stamp:'단독', stampCk:true, status:'착수 · 요구사항 수집 단계',
  one:'학교 로비 안내 캐릭터 대화형 키오스크(서비스명 인터박스). 주문·결제형 키오스크 자산을 학교 안내형으로 전환하는 신규 착수 과제입니다.',
@@ -897,7 +901,7 @@ var P = [
  missing:['요구사항정의서','IA','화면기획서']
 },
 {
- id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'cab',devLabel:'HOLOORDER',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
+ id:'holoorder', main:{src:'assets/main_holo.webp',w:678,h:1209,dev:'cab',devLabel:'HOLOORDER',cap:'홀로오더 메뉴 화면 — 홀로그램 AI 매니저 + 추천 메뉴·장바구니',date:'holoorder.kr 실서비스 · 키오스크'}, no:'008', name:'홀로오더', en:'HoloOrder', tag:'Kiosk · O2O', period:'2026.06 – 2026.09', ac:'#ff8a3d',
  cv:{role:'서비스기획 담당 — 착수(킥오프)부터 참여 · 총괄 기획은 대표',scope:'점주·최고관리자 관리자 기능 정의 · 화면기획서 31종 · 운영 정책 · QA 시트 · 개발 테스트 플로우 · 사용안내서/서비스소개서',out:null,outNote:'실증 운영 성과(매출·주문·설문)는 PoC 데모 데이터라 기재하지 않음'},
  stamp:'착수 참여', status:'개발 서버 구동 · QA 단계 확인 — 실증 매장 정식 운영 여부 확인 필요',
  one:'무인 카페에서 홀로그램 AI 매니저와 음성·터치로 주문하는 키오스크와 점주 관리자 웹입니다. 착수 회의부터 참여해 관리자 기능 정의, 화면기획서 31종, 운영 정책, QA 시트를 맡았습니다.',
@@ -1009,7 +1013,7 @@ function buildCard(p,i){
   var h='';
   /* 상단 슬림 바 */
   h+='<div class="pc-tb"><div class="in"><div class="tbi">'+
-     '<span class="tag">'+p.no+'</span><b class="nm" id="t-'+p.id+'">'+esc(p.name)+'</b><span class="ms">'+esc(p.stamp)+'</span>'+
+     '<span class="tag">'+p.no+'</span><b class="nm" id="t-'+p.id+'">'+esc(p.name)+(p.en?' <small class="en" lang="en">'+esc(p.en)+'</small>':'')+'</b><span class="ms">'+esc(p.stamp)+'</span>'+
      '<span class="cur" aria-hidden="true"></span>'+
      '<button type="button" class="ib pv"'+(prev?' aria-label="이전 프로젝트: '+esc(prev.name)+'"':' disabled aria-label="이전 프로젝트 없음"')+'>&larr;</button>'+
      '<button type="button" class="ib nx"'+(next?' aria-label="다음 프로젝트: '+esc(next.name)+'"':' disabled aria-label="다음 프로젝트 없음"')+'>&rarr;</button>'+
@@ -1019,7 +1023,7 @@ function buildCard(p,i){
   var cv=p.cv, outDD = cv.out ? cv.out+(cv.outNote?' <small>· '+esc(cv.outNote)+'</small>':'') : esc(cv.outNote||'');
   h+='<div class="pc-sw"><div class="in"><div class="sum"><div class="sl">'+
      '<div class="tags"><span class="tag">'+p.no+' · '+esc(p.tag)+'</span><span class="tag">'+esc(p.period)+'</span></div>'+
-     '<h3>'+esc(p.name)+'</h3><p class="one">'+esc(p.one)+'</p>'+
+     '<h3>'+esc(p.name)+(p.en?'<small class="en" lang="en">'+esc(p.en)+'</small>':'')+'</h3><p class="one">'+esc(p.one)+'</p>'+
      '<dl class="cv" aria-label="'+esc(p.name)+' 요약 경력기술서">'+
        '<div><dt>역할</dt><dd>'+esc(cv.role)+(cv.roleCk?CK(cv.roleCk):'')+'</dd></div>'+
        '<div><dt>담당 범위</dt><dd>'+esc(cv.scope)+'</dd></div>'+
@@ -1199,7 +1203,7 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
       var p = 0;
       if(i < cards.length - 1){
         var nTop = cards[i+1].getBoundingClientRect().top;
-        var pin = tops[i+1] || 160;
+        var pin = parseFloat(getComputedStyle(cards[i+1]).top) || tops[i+1] || 160;
         p = 1 - (nTop - pin) / 420;
         p = p < 0 ? 0 : (p > 1 ? 1 : p);
       }
@@ -1210,6 +1214,18 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
   function onScroll(){ if(!ticking){ ticking = true; requestAnimationFrame(update); } }
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
+  /* 카드가 화면보다 길면 고정 위치를 위로 올려, 하단 '자세히 보기'까지 보인 뒤에 고정되게 한다 */
+  function fitPins(){
+    if(OPEN) return;
+    cards.forEach(function(c,i){
+      if(window.innerWidth <= 900){ c.style.removeProperty('top'); return; }
+      var base = tops[i] || 160, h = c.offsetHeight, room = window.innerHeight - 24;
+      if(base + h > room) c.style.top = Math.round(room - h) + 'px'; else c.style.removeProperty('top');
+    });
+  }
+  fitPins();
+  window.addEventListener('resize', fitPins);
+  window.addEventListener('load', fitPins);
   e12Update = update;
   update();
 })();
@@ -1282,7 +1298,7 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
     var lego = document.getElementById('lego'), slot = document.querySelector('.lego-slot'), bub = document.getElementById('lgBubble');
     if(!lego || !slot) return;
     var W = 183, H = 320;
-    var TXT = {hero:'안녕하세요\n임서하입니다.', work:'설계도 보는 중', way:'예외 찾는 중', contact:'읽어주셔서 감사합니다!'};
+    var TXT = {hero:'안녕하세요!\n임서하입니다.', work:'설계도 보는 중', way:'예외 찾는 중', contact:'읽어주셔서 감사합니다!'};
     var secs = [['work', document.getElementById('work')], ['way', document.getElementById('way')], ['contact', document.getElementById('contact')]];
     var state = 'hero', docked = false, ticking = false, bubT = null;
     function mob(){ return window.innerWidth <= 900; }
