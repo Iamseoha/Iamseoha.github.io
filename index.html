@@ -600,6 +600,9 @@ html.lock{overflow:hidden}
 .rs-row{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:44px;align-items:start}
 .rs-skill,.skz,.sk-grp{min-width:0}
 .rs-cert .rs-lic{gap:12px}
+.rs-aside{display:flex;flex-direction:column;gap:26px;min-width:0}
+.rs-edu .rs-lic b{line-height:1.35}
+.rs-edu .rs-lic small{display:block;font-size:12.5px;font-weight:500;color:var(--gy);margin-top:2px}
 .rs-cert .rs-lic li{grid-template-columns:62px 1fr}
 .sk-grp+.sk-grp{margin-top:22px}
 .sk-grp h5{font-size:13px;font-weight:700;color:var(--gy);margin-bottom:12px}
@@ -653,7 +656,7 @@ html.lock{overflow:hidden}
     </div>
     <div class="lego-slot" aria-hidden="true">
       <div class="lego" id="lego" data-state="hero" title="임서하">
-        <div class="lg-bubble" id="lgBubble">안녕하세요!<br>임서하입니다.</div>
+        <div class="lg-bubble" id="lgBubble">안녕하세요!<br>임서하입니다 😊</div>
         <div class="lg-fig"><div class="lg-tilt">
           <div class="lg-p lg-legs" style="--i:0;position:absolute;inset:0;z-index:1">
             <img class="lg-part" style="left:23.9%;top:55.31%;width:75.49%" src="assets/lego_studs.webp" alt="" draggable="false">
@@ -732,6 +735,7 @@ html.lock{overflow:hidden}
             <div class="sk-grp"><h5>툴</h5><ul><li style="--bg:var(--p1);--fg:#fff;--rot:-3deg;--n:7">AI 툴 (Claude·ChatGPT)</li><li style="--bg:var(--p4);--fg:var(--ink);--rot:2deg;--n:8">Figma</li><li style="--bg:var(--p3);--fg:#fff;--rot:-1.5deg;--n:9">SQL</li><li style="--bg:var(--p5);--fg:#fff;--rot:-2deg;--n:11">Notion</li><li style="--bg:var(--p2);--fg:#fff;--rot:1.5deg;--n:12">PowerPoint</li><li style="--bg:#fff;--fg:var(--ink);--rot:-1deg;--n:13">Excel</li><li style="--bg:var(--p1);--fg:#fff;--rot:-3deg;--n:14">HTML/CSS</li><li style="--bg:var(--p4);--fg:var(--ink);--rot:2deg;--n:15">Java·Spring</li><li style="--bg:var(--p3);--fg:#fff;--rot:-1.5deg;--n:16">Python</li></ul></div>
           </div>
         </section>
+        <div class="rs-aside">
         <section class="rs-sec rs-cert">
           <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Certificate <span>자격증</span></h4></header>
           <ul class="rs-lic">
@@ -741,6 +745,14 @@ html.lock{overflow:hidden}
             <li><time>2014.09</time><b>ICDL</b></li>
           </ul>
         </section>
+        <section class="rs-sec rs-cert rs-edu">
+          <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Training <span>교육</span></h4></header>
+          <ul class="rs-lic">
+            <li><time>2024.05</time><b>패스트캠퍼스<small>서비스 기획 PM 완주반</small></b></li>
+            <li><time>2022.10</time><b>KH교육원<small>Java 기반 공공데이터 융합 개발자 양성과정</small></b></li>
+          </ul>
+        </section>
+        </div>
       </div>
 
     </div>
@@ -1426,7 +1438,7 @@ P.forEach(function(p,i){ stack.appendChild(buildCard(p,i)); });
     var lego = document.getElementById('lego'), slot = document.querySelector('.lego-slot'), bub = document.getElementById('lgBubble');
     if(!lego || !slot) return;
     var W = 183, H = 320;
-    var TXT = {hero:'안녕하세요!\n임서하입니다.', work:'설계도 보는 중', way:'이력서 보는 중', contact:'읽어주셔서 감사합니다!'};
+    var TXT = {hero:'안녕하세요!\n임서하입니다 😊', work:'설계도 보는 중', way:'이력서 보는 중', contact:'읽어주셔서 감사합니다!'};
     var secs = [['work', document.getElementById('work')], ['way', document.getElementById('way')], ['contact', document.getElementById('contact')]];
     var state = 'hero', docked = false, ticking = false, bubT = null;
     function mob(){ return window.innerWidth <= 900; }
