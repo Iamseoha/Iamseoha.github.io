@@ -593,6 +593,30 @@ html.lock{overflow:hidden}
 .sk-etc small{flex-basis:100%;font-size:12px;color:var(--gy)}
 .sk-etc span{font-size:12.5px;font-weight:600;background:#fff;border:1.5px solid var(--ink);border-radius:100px;padding:3px 10px;line-height:1.3}
 
+
+/* v4 — 한 장 레이아웃: 경력(전체 폭) / 스킬 + 자격증(오른쪽) */
+.rsm{grid-template-columns:1fr}
+.rs-main{padding:34px 44px 38px;gap:30px}
+.rs-row{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:44px;align-items:start}
+.rs-skill,.skz,.sk-grp{min-width:0}
+.rs-cert .rs-lic{gap:12px}
+.rs-cert .rs-lic li{grid-template-columns:62px 1fr}
+.sk-grp+.sk-grp{margin-top:22px}
+.sk-grp h5{font-size:13px;font-weight:700;color:var(--gy);margin-bottom:12px}
+@media(max-width:900px){.rs-main{padding:26px 20px 28px}.rs-row{grid-template-columns:1fr;gap:28px}}
+
+/* 스킬 = 스티커. 많이 요구된 것일수록 크게, 섹션 진입 시 한 장씩 붙음 */
+.stk ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px 8px;align-items:center}
+.stk li{--mx:0px;--my:0px;--hx:0px;--hy:0px;background:var(--bg);color:var(--fg);border:2px solid var(--ink);border-radius:100px;font-weight:700;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;
+  box-shadow:calc(3px - var(--hx)) calc(3px - var(--hy)) 0 var(--ink);
+  transform:translate(var(--hx),var(--hy)) rotate(var(--rot)) scale(var(--s,1));opacity:var(--o,1);
+  transition:transform .55s var(--pop),opacity .3s var(--ez),box-shadow .2s var(--ez);transition-delay:calc(var(--n) * 55ms)}
+.stk .t1{font-size:17px;padding:11px 20px}
+.stk .t2{font-size:15px;padding:9px 16px}
+.stk .t3{font-size:13px;padding:7px 13px}
+.rsm:not(.fill) .stk li{--s:1.35;--o:0;--hy:-14px}
+.rsm.fill .stk li:hover{--hx:-2px;--hy:-3px;transition-delay:0s;transition-duration:.18s}
+@media(prefers-reduced-motion:reduce){.stk li{transition:none}.rsm:not(.fill) .stk li{--s:1;--o:1;--hy:0px}}
 @media(max-width:1080px){.sk2{grid-template-columns:1fr}}
 @media(max-width:900px){
   .rsm{grid-template-columns:1fr;border-radius:24px;box-shadow:6px 6px 0 var(--ink)}
@@ -690,28 +714,6 @@ html.lock{overflow:hidden}
 
   <div class="sh" id="way"><span>02</span><h2>경력</h2></div>
   <article class="rsm" aria-label="임서하 이력서">
-    <aside class="rs-side">
-      <div class="rs-me">
-        <div class="avatar"><img src="assets/lego_minifig.webp" alt="레고 미니피규어로 만든 임서하" width="412" height="720" loading="lazy"></div>
-        <div class="rs-id">
-          <h3 class="rs-name">임서하</h3>
-          <p class="rs-job">Service Planner · PM</p>
-        </div>
-      </div>
-      <section class="rs-blk">
-        <h4 class="rs-h"><i aria-hidden="true">///</i>Contact</h4>
-        <dl class="rs-ct"><dt>Email</dt><dd><a href="mailto:dart93@withmind.net">dart93@withmind.net</a></dd></dl>
-      </section>
-      <section class="rs-blk">
-        <h4 class="rs-h"><i aria-hidden="true">///</i>자격증</h4>
-        <ul class="rs-lic">
-          <li><time>2017.06</time><b>회계정보처리 FAT 1급</b></li>
-          <li><time>2017.05</time><b>GTQ 포토샵 1급</b></li>
-          <li><time>2017.04</time><b>컴퓨터활용능력 2급</b></li>
-          <li><time>2014.09</time><b>ICDL</b></li>
-        </ul>
-      </section>
-    </aside>
 
     <div class="rs-main">
       <section class="rs-sec">
@@ -724,51 +726,31 @@ html.lock{overflow:hidden}
         </ol>
       </section>
 
-      <section class="rs-sec">
-        <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Skills <span>보유 스킬</span></h4><small class="rs-note">공고 298건에서 많이 요구된 순</small></header>
-        <div class="sk2">
-          <div class="sk-col">
-            <h5>직무 역량</h5>
-            <ul class="bars c1">
-              <li style="--v:84;--n:0"><span>협업·커뮤니케이션</span><i class="trk"><i></i></i><em>84%</em></li>
-              <li style="--v:75;--n:1"><span>고도화·개선</span><i class="trk"><i></i></i><em>75%</em></li>
-              <li style="--v:53;--n:2"><span>요구사항 정의</span><i class="trk"><i></i></i><em>53%</em></li>
-              <li style="--v:50;--n:3"><span>AI·LLM 서비스 기획</span><i class="trk"><i></i></i><em>50%</em></li>
-              <li style="--v:40;--n:4"><span>정책 설계</span><i class="trk"><i></i></i><em>40%</em></li>
-              <li style="--v:37;--n:5"><span>QA·테스트</span><i class="trk"><i></i></i><em>37%</em></li>
-              <li style="--v:33;--n:6"><span>화면설계·스토리보드</span><i class="trk"><i></i></i><em>33%</em></li>
-            </ul>
+      <div class="rs-row">
+        <section class="rs-sec rs-skill">
+          <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Skills <span>보유 스킬</span></h4><small class="rs-note">공고 298건에서 많이 요구된 순</small></header>
+          <div class="skz stk">
+            <div class="sk-grp"><h5>직무 역량</h5><ul><li class="t1" style="--bg:var(--p1);--fg:#fff;--rot:-3deg;--n:0">협업·커뮤니케이션</li><li class="t1" style="--bg:var(--p4);--fg:var(--ink);--rot:2deg;--n:1">고도화·개선</li><li class="t2" style="--bg:var(--p3);--fg:#fff;--rot:-1.5deg;--n:2">요구사항 정의</li><li class="t2" style="--bg:#fff;--fg:var(--ink);--rot:2.5deg;--n:3">AI·LLM 서비스 기획</li><li class="t2" style="--bg:var(--p5);--fg:#fff;--rot:-2deg;--n:4">정책 설계</li><li class="t3" style="--bg:var(--p2);--fg:#fff;--rot:1.5deg;--n:5">QA·테스트</li><li class="t3" style="--bg:#fff;--fg:var(--ink);--rot:-1deg;--n:6">화면설계·스토리보드</li></ul></div>
+            <div class="sk-grp"><h5>툴</h5><ul><li class="t1" style="--bg:var(--p1);--fg:#fff;--rot:-3deg;--n:7">AI 툴 (Claude·ChatGPT)</li><li class="t1" style="--bg:var(--p4);--fg:var(--ink);--rot:2deg;--n:8">Figma</li><li class="t2" style="--bg:var(--p3);--fg:#fff;--rot:-1.5deg;--n:9">SQL</li><li class="t2" style="--bg:#fff;--fg:var(--ink);--rot:2.5deg;--n:10">Jira</li><li class="t2" style="--bg:var(--p5);--fg:#fff;--rot:-2deg;--n:11">Notion</li><li class="t3" style="--bg:var(--p2);--fg:#fff;--rot:1.5deg;--n:12">PowerPoint</li><li class="t3" style="--bg:#fff;--fg:var(--ink);--rot:-1deg;--n:13">Excel</li><li class="t3" style="--bg:var(--p1);--fg:#fff;--rot:-3deg;--n:14">HTML/CSS</li><li class="t3" style="--bg:var(--p4);--fg:var(--ink);--rot:2deg;--n:15">Java·Spring</li><li class="t3" style="--bg:var(--p3);--fg:#fff;--rot:-1.5deg;--n:16">Python</li><li class="t3" style="--bg:#fff;--fg:var(--ink);--rot:2.5deg;--n:17">Slack</li></ul></div>
           </div>
-          <div class="sk-col">
-            <h5>툴</h5>
-            <ul class="bars c3">
-              <li style="--v:27;--n:0"><span>AI 툴 (Claude·ChatGPT)</span><i class="trk"><i></i></i><em>27%</em></li>
-              <li style="--v:25;--n:1"><span>Figma</span><i class="trk"><i></i></i><em>25%</em></li>
-              <li style="--v:18;--n:2"><span>SQL</span><i class="trk"><i></i></i><em>18%</em></li>
-              <li style="--v:14;--n:3"><span>Jira</span><i class="trk"><i></i></i><em>14%</em></li>
-              <li style="--v:10;--n:4"><span>Notion</span><i class="trk"><i></i></i><em>10%</em></li>
-              <li style="--v:8;--n:5"><span>PowerPoint</span><i class="trk"><i></i></i><em>8%</em></li>
-              <li style="--v:6;--n:6"><span>Excel</span><i class="trk"><i></i></i><em>6%</em></li>
-            </ul>
-            <div class="sk-etc"><small>공고 요구율 5% 미만이지만 보유</small><span>HTML/CSS</span><span>Java·Spring</span><span>Python</span><span>Slack</span></div>
-          </div>
-        </div>
-      </section>
+        </section>
+        <section class="rs-sec rs-cert">
+          <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Certificate <span>자격증</span></h4></header>
+          <ul class="rs-lic">
+            <li><time>2017.06</time><b>회계정보처리 FAT 1급</b></li>
+            <li><time>2017.05</time><b>GTQ 포토샵 1급</b></li>
+            <li><time>2017.04</time><b>컴퓨터활용능력 2급</b></li>
+            <li><time>2014.09</time><b>ICDL</b></li>
+          </ul>
+        </section>
+      </div>
 
-      <section class="rs-sec">
-        <header class="rs-sh"><h4 class="rs-h"><i aria-hidden="true">///</i>Education <span>학력 · 교육</span></h4></header>
-        <ol class="tl edu">
-          <li><div class="tl-d"><time>2024.04 – 2024.05</time></div><div class="tl-b"><b>패스트캠퍼스</b><p>서비스 기획 PM 완주반</p></div></li>
-          <li><div class="tl-d"><time>2022.03 – 2022.10</time></div><div class="tl-b"><b>KH교육원</b><p>Java 기반 공공데이터 융합 개발자 양성과정</p></div></li>
-          <li><div class="tl-d"><time>2013.03 – 2017.02</time></div><div class="tl-b"><b>상지대학교</b><p>경영학과 졸업</p></div></li>
-        </ol>
-      </section>
     </div>
   </article>
 
   <div class="cta" id="contact">
     <h2>같이 만들<br>제품이 있나요?</h2>
-    <a href="mailto:dart93@withmind.net">메일 보내기 →</a>
+    <a href="mailto:dart93@withmind.net">dart93@withmind.net</a>
   </div>
   <footer>임서하 · Service Planner / PM · (주)위드마인드 서비스기획팀 · © 2026</footer>
 
@@ -1714,7 +1696,7 @@ window.__ga={open:function(id){openCard(card(id));},close:function(){closeCard()
   var cv = document.querySelector('.rsm'); if(!cv) return;
   if(!('IntersectionObserver' in window)){ cv.classList.add('fill'); return; }
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ cv.classList.add('fill'); io.disconnect(); } }); }, {threshold:0, rootMargin:'0px 0px -30% 0px'});
-  io.observe(cv.querySelector('.sk2'));
+  io.observe(cv.querySelector('.skz'));
 })();
 </script>
 </body>
